@@ -2,7 +2,8 @@ const {Router} = require('express')
 const bcrypt = require('bcrypt')
 const config = require('config')
 const jwt = require('jsonwebtoken')
-const {check, validationResult} = require('express-validator')
+const {oneOf, check, validationResult} = require('express-validator')
+const validator = require('validator')
 const User = require('../models/User')
 const router = Router()
 
@@ -10,6 +11,7 @@ const router = Router()
 router.post(
     '/register',
     [
+        check('username', 'username обязательно').exists(),
         check('email', 'Некорректный email').isEmail(),
         check('password', 'Минимальная длина 6 символов')
         .isLength({ min: 6})
@@ -44,7 +46,7 @@ router.post(
 
         await user.save()
 
-        res.status(201).json({ message: 'Пользоватеот создан'})
+        res.status(201).json({ message: 'Пользователь создан'})
 
 
 
@@ -57,9 +59,9 @@ router.post(
 router.post(
     '/login',
     [
-        check('email', 'Введите корректный email').normalizeEmail().isEmail(),
+        check('email', 'Введите корректный email').exists(),
         check('password', 'Введите пароль').exists()
-    ], 
+    ],
     async (req, res) => {
     try {
         const errors = validationResult(req)
@@ -73,7 +75,14 @@ router.post(
 
         const {email, password} = req.body
 
-        const user = await User.findOne({ email}) // .findOne({ email: email})
+        const username = !validator.isEmail(email) ? email : null
+
+        const user = await User.findOne({
+            $or: [
+                {username: username},
+                {email: email} 
+            ]
+        })
 
         if (!user) {
             return res.status(400).json({ message: 'Пользователь не найден'})
@@ -82,7 +91,7 @@ router.post(
         const isMatch = await bcrypt.compare(password, user.password)
 
         if (!isMatch) {
-            return res.status(400).json({ message: 'Неверный пароль'})
+            return res.status(400).json({ message: 'Неверный Логин или пароль'})
         }
 
         const token = jwt.sign(
