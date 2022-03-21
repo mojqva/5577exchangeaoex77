@@ -1,0 +1,87 @@
+.popup {
+    position: fixed;
+    z-index: 99;
+    background: rgba(54,70,93,.95);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.active {
+    display: block;
+}
+.popup .in {
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 480px;
+    margin-left: -240px;
+    margin-top: -300px;
+    border-radius: 12px 12px 10px 10px;
+    -moz-border-radius: 12px 12px 10px 10px;
+    -webkit-border-radius: 12px 12px 10px 10px;
+    box-shadow: 0 30px 100px rgb(32 43 59 / 95%);
+}
+.popup .popupHeader {
+    background: #182536;
+    padding: 15px 20px;
+    border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    text-align: left;
+    color: #fff;
+    background: #3dd94b;
+}
+.popup .popupHeader .icon {
+    font-size: 18px;
+    color: #c2e7c5;
+}
+.popup .close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 21px;
+    color: #fff;
+    font-size: 12px;
+}
+.popup .popupContainer {
+    padding: 30px 20px 20px 20px;
+    width: 380px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.popup .line {
+    margin: 0 0 10px 0;
+}
+.line-cpt {
+    display: flex;
+}
+.popup .lineInfo {
+    font-size: 11px;
+    text-align: center;
+    color: #a8aac3;
+}
+.popup .lineButtons {
+    margin-top: 20px;
+}
+.popup .line .fl {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.popup .line .btn {
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+}
+.btn.green {
+    background-image: -moz-linear-gradient(90deg,#3dd94b 0,#6be877 100%);
+    background-image: -webkit-linear-gradient(90deg,#3dd94b 0,#6be877 100%);
+    background-image: -ms-linear-gradient(90deg,#3dd94b 0,#6be877 100%);
+}

@@ -1,0 +1,15 @@
+/* @import "~materialize-css/dist/css/materialize.min.css"; */
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    line-height: 1;
+    font: 14px/18px 'PT Sans', sans-serif;
+    color: #3c4859;
+    font-weight: 400;
+    background: #fff;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
