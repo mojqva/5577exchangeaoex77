@@ -107,4 +107,19 @@ router.post(
     }
 })
 
+router.get(
+    '/:username',
+    async (req, res) => {
+        try {
+            const user = User.findOne({username:req.params.username})
+
+            if(user) {
+                return user
+            }
+        } catch (e) {
+            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова'})
+        }
+    }
+)
+
 module.exports = router

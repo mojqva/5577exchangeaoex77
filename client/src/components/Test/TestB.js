@@ -4,13 +4,42 @@ import TestC from './TestC'
 
 const AMOUNT = 2
 
+const giveCoins = document.querySelector('#giveCoins')
+const takeCoins = document.querySelector('#takeCoins')
+const addressCoins = document.querySelector('#addressCoins')
+const emailCoins = document.querySelector('#emailCoins')
+const telegramCoins = document.querySelector('#telegramCoins')
+
+document.addEventListener("wheel", function(event){
+    if(document.activeElement.type === "number"){
+        document.activeElement.blur();
+    }
+});
+
 const TestB = ({coins, giveName, takeName}) => {
     const [step, setStep] = useState(false)
+    const [errors, setErrors] = useState('')
     const [form, setForm] = useState({
         give: '', take: '', address: '', email: '', telegram: ''
     })
     const give = coins.find(item => item.name === giveName)
     const take = coins.find(item => item.name === takeName)
+
+    const ErrorsHandler = () => {
+        const amountInputEmpty = giveCoins.value === '' || takeCoins.value === ''
+        const emailValidation = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+        const emailInputWrong = emailCoins.value === '' || !emailValidation.test(String(emailCoins.value).toLowerCase())
+        const telegramInputEmpty = telegramCoins.value === ''
+
+        if(amountInputEmpty) {
+            setErrors('Введите количество монет для отправки и получения')
+        } else if(emailInputWrong) {
+            setErrors('Введите адрес электронной почты')
+        } else if(telegramInputEmpty) {
+            setErrors('Введите телеграм')
+        }
+        console.log(errors);
+    }
 
     const calculateTakeAmount = (input, amount) => {
         return input*amount
@@ -50,7 +79,7 @@ const TestB = ({coins, giveName, takeName}) => {
     return (
         <div className={s.container}>
             {
-                !step ?
+                !step && errors === '' ?
                 <>
                     <div className={s.header}>
                         <p>Обмен {giveName} на {takeName}</p>
@@ -61,7 +90,7 @@ const TestB = ({coins, giveName, takeName}) => {
                                 Отдаете {give.code}
                                 <input 
                                     id='giveCoins' 
-                                    type='text' 
+                                    type='number' 
                                     name='give'
                                     onChange={handleInputChange}
                                 />
@@ -70,7 +99,7 @@ const TestB = ({coins, giveName, takeName}) => {
                                 Получаете {take.code}
                                 <input 
                                     id='takeCoins' 
-                                    type='text'
+                                    type='number'
                                     name='take'
                                     onChange={handleOutputChange}
                                 />
@@ -78,6 +107,7 @@ const TestB = ({coins, giveName, takeName}) => {
                             <label>
                                 Адрес {takeName}
                                 <input 
+                                    id='addressCoins'
                                     type='text'
                                     name='address'
                                     onChange={changeHandler}
@@ -86,6 +116,7 @@ const TestB = ({coins, giveName, takeName}) => {
                             <label>
                                 Электронная почта
                                 <input 
+                                    id='emailCoins'
                                     type='text'
                                     name='email'
                                     onChange={changeHandler}
@@ -94,12 +125,16 @@ const TestB = ({coins, giveName, takeName}) => {
                             <label>
                                 Ваш телеграм
                                 <input 
+                                    id='telegramCoins'
                                     type='text'
                                     name='telegram'
                                     onChange={changeHandler}
                                 />
                             </label>
-                            <button onClick={handleSubmit}>
+                            <button onClick={() => {
+                                ErrorsHandler();
+                                handleSubmit();
+                            }}>
                                 обменять
                             </button>
 

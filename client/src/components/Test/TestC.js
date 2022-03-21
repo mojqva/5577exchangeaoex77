@@ -14,6 +14,7 @@ const TestC = ({form, give, take, address, email, telegram}) => {
     }
     const auth = useContext(AuthContext)
     const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
+
     return (
         <>
             <p>Отдаете {give}</p>
@@ -32,7 +33,7 @@ const TestC = ({form, give, take, address, email, telegram}) => {
                     form: form
                 }}
             >
-                <button>
+                <button onClick={() => auth.pay()}>
                     Оплатить
                 </button>
             </Link>

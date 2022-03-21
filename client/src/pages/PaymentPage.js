@@ -3,7 +3,7 @@ import CancelPage from "./CancelPage";
 
 const PaymentPage = () => {
     const location = useLocation()
-    const {give, take, address, email, telegram} = location.state
+    const {give, take, address, email, telegram} = location.state || {}
     return (
         <div>
             PaymentPage
