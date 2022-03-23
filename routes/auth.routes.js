@@ -6,6 +6,7 @@ const {oneOf, check, validationResult} = require('express-validator')
 const validator = require('validator')
 const User = require('../models/User')
 const router = Router()
+const auth = require('../middleware/auth.middleware')
 
 // /api/auth/register
 router.post(
@@ -107,15 +108,18 @@ router.post(
     }
 })
 
+// /api/auth/users
 router.get(
-    '/:username',
-    async (req, res) => {
+    '/:id',
+    (req, res) => {
         try {
-            const user = User.findOne({username:req.params.username})
-
-            if(user) {
-                return user
-            }
+            User.find({_id: req.params.id})
+            .then((result) => {
+                res.send(result)
+            })
+            .catch(e => {
+                console.log(e);
+            })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова'})
         }

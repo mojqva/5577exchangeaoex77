@@ -1,14 +1,29 @@
-import {useHttp} from '../hooks/http.hook'
+import { useEffect, useContext, useState } from 'react' 
+import { AuthContext } from "../context/AuthContext"
+const axios = require('axios')
+
 
 const AccountPage = () => {
-    // const {request} = useHttp()
-    // const handleGetUser = async () => {
-    //     const data = await request('/api/auth/rrr', 'GET')
-    //     console.log(data);
-    // }
+    const auth = useContext(AuthContext)
+    const [user, setUser] = useState({})
+    console.log('User', user)
+
+
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                const res = await axios.get(`/api/auth/${auth.userId}`)
+                setUser(res.data[0])
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getUsers()
+    }, [])
+    
     return (
         <div>
-            AccountPage by
+            AccountPage by {user.username}
         </div>
     );
 };
