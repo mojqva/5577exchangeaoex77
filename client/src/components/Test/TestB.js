@@ -84,6 +84,7 @@ const TestB = ({coins, giveName, takeName}) => {
                     email={form.email}
                     telegram={form.telegram}
                     form={form}
+                    ownerAddress={give.address}
                 />
             }
         </div>

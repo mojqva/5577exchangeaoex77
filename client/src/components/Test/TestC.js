@@ -8,7 +8,7 @@ const hashes = [
     '62346ac0c36e14e20063070f'
 ]
 
-const TestC = ({giveName, form, give, take, address, email, telegram}) => {
+const TestC = ({ownerAddress, giveName, form, give, take, address, email, telegram}) => {
     function getRandom(max) {
         return Math.floor(Math.random() * max)
     }
@@ -31,7 +31,8 @@ const TestC = ({giveName, form, give, take, address, email, telegram}) => {
                     email: email,
                     telegram: telegram,
                     form: form,
-                    giveName: giveName
+                    giveName: giveName,
+                    ownerAddress: ownerAddress
                 }}
             >
                 <button onClick={() => auth.pay()}>
