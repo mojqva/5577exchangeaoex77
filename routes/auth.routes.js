@@ -6,7 +6,6 @@ const {oneOf, check, validationResult} = require('express-validator')
 const validator = require('validator')
 const User = require('../models/User')
 const router = Router()
-const auth = require('../middleware/auth.middleware')
 
 // /api/auth/register
 router.post(
@@ -124,6 +123,18 @@ router.get(
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова'})
         }
     }
+)
+
+router.post(
+    '/:id',
+    (req, res) => {
+        try {
+            
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    //TODO
 )
 
 module.exports = router

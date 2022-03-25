@@ -52,6 +52,9 @@ export const useRoutes = (isAuthenticated, isPayment) => {
     return (
         <Routes>
             <Route path="/" exact element={<MainPage/>}/>
+            {
+                isPayment ? <Route path="/payment/go/:id" element={<PaymentPage/>}/> : null
+            }
             <Route path="/booster" exact element={<BoosterPage/>}/>
             <Route path="/blog" element={<BlogPage/>}/>
             <Route path="/about" element={<AboutPage/>}/>
@@ -60,7 +63,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
             <Route path="/partners" element={<PartnersPage/>}/>
             <Route path="/pages/crypto-helper" element={<CryptoPage/>}/>
             <Route path="/support" element={<SupportPage/>}/>
-            <Route path="/payment/go/:id" element={<PaymentPage/>}/>
+            <Route path="/payment/go/:id" element={<CancelPage/>}/>
             <Route path="*" exact element={<ErrorPage/>} />
 
             <Route path="/ru/" exact element={<MainPage/>}/>

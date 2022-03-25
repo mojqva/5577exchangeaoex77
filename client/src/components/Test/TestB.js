@@ -77,6 +77,7 @@ const TestB = ({coins, giveName, takeName}) => {
                     handleSubmit={handleSubmit}
                 /> :
                 <TestC
+                    giveName={giveName}
                     give={form.give}
                     take={form.take}
                     address={form.address}
