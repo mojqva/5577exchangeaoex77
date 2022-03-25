@@ -2,7 +2,24 @@ const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
 
+const AdminBro = require('admin-bro')
+const mongooseAdminBro = require('@admin-bro/mongoose')
+const expressAdminBro = require('@admin-bro/express')
+const Wallet = require('./models/Wallet')
+const Payment = require('./models/Payment')
+
 const app = express()
+
+//Admin Bro
+AdminBro.registerAdapter(mongooseAdminBro)
+const AdminBroOptions = {
+    resources: [Wallet, Payment],
+}
+
+const adminBro = new AdminBro(AdminBroOptions)
+const router = expressAdminBro.buildRouter(adminBro)
+
+app.use(adminBro.options.rootPath, router)
 
 app.use(express.json({ extended: true }))
 
