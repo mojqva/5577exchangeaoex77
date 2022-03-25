@@ -12,6 +12,7 @@ import PartnersPage from './pages/PartnersPage'
 import ReviewsPage from './pages/ReviewsPage'
 import CancelPage from './pages/CancelPage'
 import PaymentPage from './pages/PaymentPage'
+import AdminPage from './pages/AdminPage'
 
 export const useRoutes = (isAuthenticated, isPayment) => {
     if (isAuthenticated) {
@@ -22,6 +23,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
                     isPayment ? <Route path="/payment/go/:id" element={<PaymentPage/>}/> : null
                 }
                 <Route path="/" exact element={<MainPage/>}/>
+                <Route path="/admin" exact element={<AdminPage/>}/>
                 <Route path="/booster" exact element={<BoosterPage/>}/>
                 <Route path="/blog" element={<BlogPage/>}/>
                 <Route path="/about" element={<AboutPage/>}/>
