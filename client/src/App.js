@@ -7,6 +7,13 @@ import { useAuth } from './hooks/auth.hook'
 import { AuthContext } from './context/AuthContext'
 import usePay from './hooks/pay.hook'
 
+//clear url from query params
+let uri = window.location.toString();
+if (uri.indexOf("?") > 0) {
+    var clean_uri = uri.substring(0, uri.indexOf("?"));
+    window.history.replaceState({}, document.title, clean_uri);
+}
+
 
 function App() {
 	const {token, login, logout, userId} = useAuth()

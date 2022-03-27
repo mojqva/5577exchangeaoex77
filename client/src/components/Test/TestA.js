@@ -1,8 +1,10 @@
 import s from './style.module.css'
 
-const TestA = ({giveName, takeName, handleGiveChange, handleTakeChange, handleSwitch, coins}) => {
+const TestA = ({giveName, takeName, handleGiveChange, handleTakeChange, handleSwitch, filteredApi, walletsTemplate}) => {
+    const coins = filteredApi ? filteredApi : walletsTemplate
     const give = coins.find(item => item.name === giveName)
     const take = coins.find(item => item.name === takeName)
+
 
     return (
         <div className={s.container}>
@@ -11,7 +13,7 @@ const TestA = ({giveName, takeName, handleGiveChange, handleTakeChange, handleSw
                         {
                             coins.map(coin => (
                                 <option id={coin.name} key={coin.name} value={coin.name}>
-                                    {coin.name} {coin.code}
+                                    {coin.name} {coin.symbol}
                                 </option>
                             ))
                         }
@@ -22,7 +24,7 @@ const TestA = ({giveName, takeName, handleGiveChange, handleTakeChange, handleSw
                         {
                             coins.map(coin => (
                                 <option key={coin.name} value={coin.name}>
-                                    {coin.name} {coin.code}
+                                    {coin.name} {coin.symbol}
                                 </option>
                             ))
                         }

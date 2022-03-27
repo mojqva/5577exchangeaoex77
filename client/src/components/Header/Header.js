@@ -45,11 +45,6 @@ const Header = ({isAuth}) => {
                         <>
                             <a className={s.eas} onClick={() => setLoginModalActive(true)}>Вход</a>
                             /
-                            {/*Добавить отдельное состояние для модуля регистрации и пропсами передавать тип модального окна */}
-                            {/*TODO 
-                                Сделать регистрацию на сервер
-                                Подправить Schema для наших нужд
-                            */}
                             <a className={s.eas} onClick={() => setRegisterModalActive(true)}>Регистрация</a>
                         </>
 

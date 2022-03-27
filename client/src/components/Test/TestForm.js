@@ -17,13 +17,17 @@ const TestForm = ({
 
     const errorsHandler = () => {
         const amountInputEmpty = form.give.length === 0 || form.take.length === 0
-        const emailInputWrong = form.email.length === 0 || !emailValidation.test(String(form.email).toLowerCase())   
+        const emailInputWrong = form.email.length === 0 || !emailValidation.test(String(form.email).toLowerCase())
+        const userAddressWrong = form.address.length < 26 || form.address.length > 35
         
         if(amountInputEmpty) {
             return 'inputs'
         }
         if(emailInputWrong) {
             return 'email'
+        }
+        if(userAddressWrong) {
+            return 'address'
         }
         return null
     }

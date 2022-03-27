@@ -19,7 +19,7 @@ const AdminBroOptions = {
 const adminBro = new AdminBro(AdminBroOptions)
 const router = expressAdminBro.buildRouter(adminBro)
 
-app.use(adminBro.options.rootPath, router)
+app.use(adminBro.options.rootPath, router) //localhost:5000/admin
 
 app.use(express.json({ extended: true }))
 
@@ -27,6 +27,8 @@ app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/payment', require('./routes/payment.routes'))
 
 const PORT = config.get('port') || 5000
+
+
 
 async function start() {
     try {

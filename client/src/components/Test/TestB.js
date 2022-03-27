@@ -11,7 +11,8 @@ document.addEventListener("wheel", function(event){
     }
 });
 
-const TestB = ({coins, giveName, takeName}) => {
+const TestB = ({giveName, takeName, walletsTemplate, coinsDb}) => {
+    const coins = coinsDb ? coinsDb : walletsTemplate
     const [step, setStep] = useState(false)
     const messages = {
         inputs: 'Введите количество монет для отправки и получения',

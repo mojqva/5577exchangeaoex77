@@ -12,7 +12,7 @@ const AdminPage = () => {
     //         console.log(e);
     //     })
     // })
-    // const html = admin
+    // console.log(admin); //plain HTML text
 
     return (
         <>

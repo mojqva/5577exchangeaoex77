@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import TestB from "../components/Test/TestB";
 const axios = require('axios')
 
-const coins1 = [
+const coinGeckoApi = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+
+const walletsTemplate = [
     {
         name: 'Bitcoin',
         code: 'BTC',
@@ -16,22 +18,19 @@ const coins1 = [
         address: '2222'
     },
     {
-        name: 'Ripple',
+        name: 'XRP',
         code: 'XRP',
         address: '3333'
-    },
-    
+    }, 
 ]
 
 
 const MainPage = () => {
-    const [coins, setCoins] = useState(coins1)
 
-    //test func for date
-    const getDate = () => {
-        const today = new Date(Date.now()).toLocaleString();
-        console.log(today)
-    }
+    const [coins, setCoins] = useState(walletsTemplate)
+    const [api, setApi] = useState()
+
+    const cryptoNames = []
 
     useEffect(() => {
         const getCoins = async () => {
@@ -42,14 +41,27 @@ const MainPage = () => {
                 console.error(error)
             }
         }
+        const getCryptoApi = () => {
+            axios.get(coinGeckoApi)
+            .then(res => {
+                setApi(res.data)
+            })
+            .catch(e => console.log(e))
+        }
         getCoins()
+        getCryptoApi()
     }, [])
+
+    if(coins.length !== 0) {
+        coins.forEach(item => cryptoNames.push(item.name))
+    }
+
+    let filteredApi = api ? api.filter(item => cryptoNames.includes(item.name)) : null
 
 
     const [giveName, setGiveName] = useState(coins[0].name)
     const [takeName, setTakeName] = useState(coins[1].name)
 
-    console.log(coins);
 
     const handleSwitch = ()=> {
         const temp = giveName
@@ -64,14 +76,40 @@ const MainPage = () => {
         const giveCoins = document.querySelector('#giveCoins')
         const takeCoins = document.querySelector('#takeCoins')
         takeCoins.value = [giveCoins.value, giveCoins.value = takeCoins.value][0]
-        getDate()
     }
+
 
     const handleGiveChange = event => {
         setGiveName(event.target.value)
+
+        let selectGive = document.querySelector('#give')
+        let selectTake = document.querySelector('#take')
+
+        if(selectGive.value === selectTake.value && selectGive.value !== 'Bitcoin') {
+            selectTake.value = 'Bitcoin'
+            setTakeName('Bitcoin')
+        }
+        if(selectGive.value === selectTake.value && selectGive.value !== 'Ethereum') {
+            selectTake.value = 'Ethereum'
+            setTakeName('Ethereum')
+        }
+
+        
     }
     const handleTakeChange = event => {
         setTakeName(event.target.value)
+
+        let selectGive = document.querySelector('#give')
+        let selectTake = document.querySelector('#take')
+
+        if(selectTake.value === selectGive.value && selectTake.value !== 'Bitcoin') {
+            selectGive.value = 'Bitcoin'
+            setGiveName('Bitcoin')
+        }
+        if(selectTake.value === selectGive.value && selectTake.value !== 'Ethereum') {
+            selectGive.value = 'Ethereum'
+            setGiveName('Ethereum')
+        }
     }
     return (
         <div className={s.container}>
@@ -81,13 +119,15 @@ const MainPage = () => {
                 handleGiveChange={handleGiveChange}
                 handleTakeChange={handleTakeChange}
                 handleSwitch={handleSwitch}
-                coins={coins}
+                filteredApi={filteredApi}
+                walletsTemplate={walletsTemplate}
             />
             <br/>
             <TestB
                 giveName={giveName}
                 takeName={takeName} 
-                coins={coins}
+                coinsDb={coins}
+                walletsTemplate={walletsTemplate}
             />
         </div>
     );

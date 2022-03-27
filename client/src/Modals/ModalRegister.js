@@ -9,17 +9,27 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const {loading, request, error, clearError} = useHttp()
+    const [rePassword, setRePassword] = useState("")
+    const [formErrors, setFormErrors] = useState(false)
     const [form, setForm] = useState({
         username: "", email: "", password: ""
     })
 
-    useEffect(() => {
-        message(error)
-        clearError()
-    }, [error, message, clearError])
+    // useEffect(() => {
+    //     console.log(formErrors);
+    // }, [formErrors])
+
+    // useEffect(() => {
+    //     message(error)
+    //     clearError()
+    // }, [error, message, clearError])
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
+    }
+
+    const rePasswordHandler = event => {
+        setRePassword(event.target.value)
     }
 
     const registerHandler = async () => {
@@ -27,10 +37,29 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
             const data = await request('/api/auth/register', 'POST', {...form})
             const loginAfterRegister = await request('/api/auth/login', 'POST', {...form})
             auth.login(loginAfterRegister.token, loginAfterRegister.userId)
-            if(error == null) {
-                setRegisterActive(false)
-            }
+            // if(error == null && rePassword === "") {
+            //     setRegisterActive(false)
+            // }
         } catch (e) {}
+    }
+
+    const errorsHandler = () => {
+        const repasswordWrong = rePassword !== form.password
+
+        if(repasswordWrong) {
+            console.log('Повторите пароль')
+            
+        } else {
+            registerHandler()
+        }
+    }
+
+    const toContin = () => {
+        errorsHandler()
+        console.log(formErrors)
+        if(formErrors === false) {
+            registerHandler()
+        }
     }
 
     return (
@@ -78,10 +107,11 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
                         <div className={s.line}>
                             <input 
                                 type='text' 
+                                id='repassword'
                                 className={s.inp} 
                                 name='repassword' 
                                 placeholder='Повтор пароля'
-                                onChange={changeHandler}
+                                onChange={rePasswordHandler}
                             />
                         </div>
                         <div className={cn(s.line, s.lineCpt)}>
@@ -107,7 +137,7 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
                             <div className={s.fl}>
                                 <button 
                                     className={cn(s.btn, s.green)}
-                                    onClick={registerHandler}
+                                    onClick={errorsHandler}
                                     disabled={loading}
                                 >
                                     Создать аккаунт
