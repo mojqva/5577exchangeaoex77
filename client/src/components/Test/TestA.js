@@ -5,6 +5,8 @@ const TestA = ({giveName, takeName, handleGiveChange, handleTakeChange, handleSw
     const give = coins.find(item => item.name === giveName)
     const take = coins.find(item => item.name === takeName)
 
+    const ration = give.current_price / take.current_price
+
 
     return (
         <div className={s.container}>
@@ -24,7 +26,7 @@ const TestA = ({giveName, takeName, handleGiveChange, handleTakeChange, handleSw
                         {
                             coins.map(coin => (
                                 <option key={coin.name} value={coin.name}>
-                                    {coin.name} {coin.symbol}
+                                    {coin.name} {ration}
                                 </option>
                             ))
                         }

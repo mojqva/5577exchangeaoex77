@@ -1,0 +1,26 @@
+.statistic {
+    background: #0facf3;
+    padding: 70px 0 60px 0;
+    color: #fff;
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 700;
+}
+.inner {
+    padding: 0 30px 60px;
+    max-width: 1680px;
+    width: 100%;
+    min-width: 320px;
+    position: relative;
+    margin: 0 auto;
+}
+.statistic .row {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+.statistic .row .sub {
+    font-size: 20px;
+    font-weight: 400;
+    opacity: .7;
+}

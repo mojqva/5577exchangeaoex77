@@ -6,7 +6,8 @@ const ExchangerIn = () => {
         <div className={s.exchangeLeftBorder}>
             <div className={cn(s.exchangeLeft, s.exchangeEquels)}>
                 <div className={s.bigArrow}>
-                    <span className={s.flaticonArrRight}>
+                    <span className={s.flaticonArrRight}></span>
+                </div>
                         <div className={s.title}>
                             <span className={cn(s.flaticonMoney1, s.icon, s.i1)}>
                                 <b>Направление</b> обмена
@@ -27,8 +28,9 @@ const ExchangerIn = () => {
                                     <div className={cn(s.option, s.active)} data-retype='1'>Фикс</div>
                                     <div className={s.option} data-retype=''>Лучший</div>
                                 </div>
+                            </div>
                                 <div className={s.exchangeDir}>Отдаете</div>
-                                <div className={cn(s.customCurrencyDropdown, s.give, s.opened)} data-type='give'>
+                                <div className={cn(s.customCurrencyDropdown, s.give)} data-type='give'>
                                     <div className={s.selected}>
                                         <span className={cn(s.icon, s.customCurrencyGiveIcon)}>
                                             <img src='/' alt='Bitcoin'></img>
@@ -145,15 +147,63 @@ const ExchangerIn = () => {
                                         </li>
                                     </ul>
                                 </div>
-
-                                
-
-                            </div>
-                        </div>
-                    </span>
+                                <div className={s.exchangeRate}>
+                                    <div className={s.rate}>
+                                        <div className={s.row}>
+                                            Курс
+                                            <b className={s.customCurrencyRate}>
+                                                1
+                                                <span>BTC</span>
+                                                ~ 13.914
+                                                <span>ETH</span>
+                                            </b>
+                                        </div>
+                                        <div className={s.row}>
+                                            Резерв
+                                            <b className={s.customCurrencyReserve}>
+                                                709.4
+                                                <span>ETH</span>
+                                            </b>
+                                        </div>
+                                        <div className={s.row}>
+                                            Последний обмен
+                                            <b className={s.customCurrencyLastexchange}>
+                                                18 мин
+                                                <span>назад</span>
+                                            </b>
+                                        </div>
+                                    </div>
+                                    <div className={s.exchangeTerms}>
+                                        <h5>Условия для направления</h5>
+                                        <ul>
+                                            <li className={s.termsRateType}>
+                                                Обмен будет инициирован после получения 
+                                                <b>2 подтверждений</b>
+                                                транзакции
+                                            </li>
+                                            <li className={s.termsRateType}>
+                                                Комиссия сервиса 
+                                                <b>0.4</b>
+                                                %. Обновление биржевого курса на основе
+                                                <a href='https://coinmarketcap.com/' target='_blank'>CoinMarketCap</a>
+                                            </li>
+                                            <li className={s.termsRateType}>
+                                                Курс корректируется каждые  
+                                                <b>5 минут</b>
+                                                , подробнее в разделе
+                                                <a href='/' target='_blank'>помощь</a>
+                                            </li>
+                                            <li className={s.termsRateType}>
+                                                Курс в заявке может быть изменен на актуальный, согласно пункту 5.5  
+                                                <a href="/">текущих правил</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+                        </div> 
                 </div>
             </div>
-        </div>
     )
 }
 

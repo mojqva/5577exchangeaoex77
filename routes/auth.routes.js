@@ -32,6 +32,10 @@ router.post(
         const candidate = await User.findOne({ email: email })
         const usernameCandidate = await User.findOne({ username: username})
 
+        // if (formErrors.length === 0) {
+        //     return res.status(400).json({ message: formErrors})
+        // }
+
         if (candidate) {
             return res.status(400).json({ message: 'Такой email уже существует'})
         }

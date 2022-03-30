@@ -10,19 +10,16 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
     const message = useMessage()
     const {loading, request, error, clearError} = useHttp()
     const [rePassword, setRePassword] = useState("")
-    const [formErrors, setFormErrors] = useState(false)
+    const [formErrors, setFormErrors] = useState("")
     const [form, setForm] = useState({
         username: "", email: "", password: ""
     })
 
-    // useEffect(() => {
-    //     console.log(formErrors);
-    // }, [formErrors])
+    useEffect(() => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
 
-    // useEffect(() => {
-    //     message(error)
-    //     clearError()
-    // }, [error, message, clearError])
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
@@ -34,33 +31,45 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
 
     const registerHandler = async () => {
         try {
-            const data = await request('/api/auth/register', 'POST', {...form})
+            const data = await request('/api/auth/register', 'POST', {...form, formErrors: formErrors})
             const loginAfterRegister = await request('/api/auth/login', 'POST', {...form})
             auth.login(loginAfterRegister.token, loginAfterRegister.userId)
-            // if(error == null && rePassword === "") {
-            //     setRegisterActive(false)
-            // }
+            if(error == null) {
+                setRegisterActive(false)
+            }
         } catch (e) {}
     }
 
     const errorsHandler = () => {
-        const repasswordWrong = rePassword !== form.password
+        const passwordWrong = form.password.length === 0
+        const emailWrong = form.email.length === 0
+        const usernameWrong = form.username.length === 0
+        const repasswordWrong = rePassword !== form.password || rePassword.length === 0
 
         if(repasswordWrong) {
-            console.log('Повторите пароль')
-            
+            setFormErrors("Repeat password") 
+        } else if (usernameWrong) {
+            setFormErrors("Input username")
+        } else if (emailWrong) {
+            setFormErrors("Input email")
+        } else if (passwordWrong) {
+            setFormErrors("Input password")
+        } else {
+            setFormErrors("")
+        }
+    }
+
+    const toContin = () => {
+        if(formErrors.length !== 0) {
+            console.log(formErrors);
         } else {
             registerHandler()
         }
     }
 
-    const toContin = () => {
+    useEffect(() => {
         errorsHandler()
-        console.log(formErrors)
-        if(formErrors === false) {
-            registerHandler()
-        }
-    }
+    }, [form, rePassword])
 
     return (
         <div className={registerActive ? cn(s.popup, s.active): s.popup}>
@@ -137,7 +146,8 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
                             <div className={s.fl}>
                                 <button 
                                     className={cn(s.btn, s.green)}
-                                    onClick={errorsHandler}
+                                    type="button"
+                                    onClick={toContin}
                                     disabled={loading}
                                 >
                                     Создать аккаунт

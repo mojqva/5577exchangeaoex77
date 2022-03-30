@@ -1,0 +1,288 @@
+.exchangeLeftBorder {
+    float: left;
+    width: 49%;
+    margin-right: 1%;
+    padding: 0;
+    border-radius: 13px;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+}
+.exchangeLeft {
+    background: #fff;
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 50px 0 rgb(13 21 30 / 50%);
+    padding: 0;
+    min-height: 500px;
+    padding-bottom: 20px;
+}
+.exchangeLeft .bigArrow {
+    position: absolute;
+    top: 50%;
+    right: -48px;
+    margin-top: -32px;
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    box-shadow: 0 0 50px 0 rgb(13 21 30 / 20%);
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    content: "";
+    z-index: 999;
+    text-align: center;
+    font-size: 18px;
+    line-height: 62px;
+    padding-left: 2px;
+    color: #0facf3;
+    background: #354550;
+    box-shadow: none;
+    box-shadow: inset 0 0 50px 0 rgb(13 21 30 / 20%);
+    color: #fff;
+    overflow: hidden;
+}
+.exchangeLeft .title {
+    font-size: 22px;
+    line-height: 22px;
+    padding: 25px 30px;
+    border-bottom: 1px solid #edf2f5;
+}
+.exchangeLeft .title span {
+    color: #0facf3;
+    margin-right: 5px;
+}
+.exchangeLeft .title b {
+    color: #0d151e;
+    font-weight: 700;
+}
+.exchangeLeft .in {
+    padding: 30px 30px 10px 30px;
+}
+.exchangeRateChoice {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.exchangeRateChoice .t {
+    font-size: 13px;
+    color: #708692;
+    text-align: right;
+}
+.exchangeRateChoice .t .help {
+    cursor: pointer;
+    font-size: 11px;
+    color: #708692;
+}
+.exchangeRateChoice .r {
+    font-size: 12px;
+}
+.exchangeRateChoice .r .option:nth-child(1) {
+    border-radius: 0 20px 20px 0;
+    border-left: 0;
+}
+.exchangeRateChoice .r .option {
+    font-size: 13px;
+    color: #708692;
+    border: 1px solid #d9e3e9;
+    text-align: center;
+    float: right;
+    width: 64px;
+}
+.exchangeRateChoice .r .option.active {
+    background-color: #3dd94b;
+    background: -webkit-linear-gradient(to bottom,#49eb58,#3dd94b);
+    background: linear-gradient(to bottom,#49eb58,#3dd94b);
+    border-color: #3dd94b;
+    border-top-color: #49eb58;
+    color: #fff!important;
+    font-weight: 700;
+    cursor: default!important;
+}
+.exchangeDir {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    text-align: left;
+    color: #9facbd;
+    position: relative;
+    z-index: 1;
+}
+.customCurrencyDropdown {
+    position: relative;
+    margin-bottom: 30px;
+}
+.customCurrencyDropdown .selected {
+    border: 1px solid #edf2f5;
+    border: 1px solid #d9e3e9;
+    border-radius: 10px;
+    padding: 15px 20px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #d9e3e9;
+}
+.customCurrencyDropdown .selected .icon {
+    display: flex;
+    height: 30px;
+    min-width: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+.customCurrencyDropdownTitle {
+    outline: 0!important;
+    text-decoration: none;
+}
+.customCurrencyDropdown .selected .name {
+    font-size: 18px;
+    font-weight: 700;
+    align-items: left;
+    color: #0d151e;
+}
+.customCurrencyDropdown .selected .currency{
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #79a;
+    margin-left: 5px;
+}
+.customCurrencyDropdown .selected .arrow {
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+}
+.customCurrencyDropdown .search .inp {
+    border: 0;
+    position: relative;
+    height: 64px;
+    padding: 15px 20px 15px 64px;
+    border-radius: 10px 10px 0 0;
+}
+.customCurrencyDropdown .search .icon {
+    background-size: 22px 22px;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 50%;
+    left: 22px;
+    margin-top: -11px;
+    z-index: 3;
+}
+.customCurrencyDropdown .search .arrow {
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 3;
+    cursor: pointer;
+    text-align: right;
+    line-height: 64px;
+    font-weight: 700;
+}
+.customCurrencyDropdown.opened .list, .custom-currency-dropdown.opened .search {
+    display: block;
+}
+.customCurrencyDropdown .list {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+.customCurrencyDropdown ul {
+    max-height: 450px;
+    box-shadow: 0 10px 25px rgb(147 170 184 / 30%);
+    border-radius: 0 0 10px 10px;
+    overflow-y: auto;
+    z-index: 2;
+    border: 1px solid #d9e3e9;
+    border: 1px solid #c5d1d9;
+    border-top: 0;
+    background: #fff;
+}
+.customCurrencyDropdown ul li:first-child {
+    border-top: 0;
+}
+.customCurrencyDropdown ul li.empty {
+    padding: 30px 20px;
+    display: none;
+}
+.customCurrencyDropdown ul li {
+    padding: 15px 20px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    border-top: 1px dashed #edf2f5;
+}
+.customCurrencyDropdown ul li.active, .customCurrencyDropdown ul li:hover {
+    background: #edf2f5;
+}
+.customCurrencyDropdown ul li .icon {
+    display: flex;
+    height: 30px;
+    min-width: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+.customCurrencyDropdown ul li .name {
+    font-size: 18px;
+    font-weight: 700;
+    align-items: left;
+    color: #0d151e;
+}
+.customCurrencyDropdown ul li .currency {
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #79a;
+    margin-left: 5px;
+}
+.customCurrencyDropdown .rate {
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+}
+.exchangeRate .rate {
+    font-size: 12px;
+    padding: 0 0 30px 0;
+    color: #95abb7;
+}
+.exchangeRate .rate .row {
+    float: left;
+    width: 33%;
+}
+.exchangeRate .rate .row b {
+    display: block;
+    font-size: 16px;
+    color: #0d151e;
+}
+.exchangeRate h5 {
+    color: #95abb7;
+    border-top: 1px solid #eef0f7;
+    padding: 20px 0 10px 0;
+}
+.exchangeRate ul {
+    list-style: disc;
+    font-size: 13px;
+    line-height: 16px;
+    color: #95abb7;
+    margin-left: 5px;
+}
+.exchangeRate ul li {
+    margin: 0 0 0 20px;
+    padding-bottom: 6px;
+}
+

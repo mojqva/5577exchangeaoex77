@@ -31,9 +31,6 @@ function App() {
 				isAuth={isAuthenticated}
 			/>
 			{routes}
-			<button onClick={() => console.log(payment)}>
-				CONSOLE
-			</button>
 			<Footer/>
 		</Router>
 		</AuthContext.Provider>

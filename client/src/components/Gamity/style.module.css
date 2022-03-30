@@ -1,0 +1,74 @@
+.gamityMain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    position: relative;
+    margin: 20px 0 0 0;
+}
+.gamityMain .fifty:nth-child(1) {
+    padding-right: 15px;
+}
+.gamityMain .fifty .in {
+    background: rgba(15,21,29,.3);
+    color: #fff;
+    padding: 12px 166px 15px 65px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    position: relative;
+    background: -webkit-linear-gradient(90deg,rgba(15,21,29,.3) 0,rgba(15,21,29,.1) 100%);
+    overflow: hidden;
+}
+.gamityMain .fifty h3 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+.gamityMain .fifty .image {
+    width: 50px;
+    height: 60px;
+}
+.gamityMain .fifty .desc {
+    color: #7a8593;
+    line-height: 17px;
+}
+.gamityMain .fifty .desc span {
+    color: #fff;
+    font-weight: 700;
+}
+.gamityMain .fifty:nth-child(1) h3 span {
+    color: #3dd94b;
+}
+.gamityMain .fifty:nth-child(2) h3 span {
+    color: #0facf3;
+}
+.gamityMain .fifty .button {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -20px;
+}
+.gamityMain .fifty .button a {
+    text-decoration: none;
+    border: 1px solid #7a8593;
+    border: 1px solid #58626f;
+    height: 38px;
+    line-height: 36px;
+    padding: 0 20px;
+    outline: 0;
+    display: inline-block;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    color: #fff;
+    font-weight: 700;
+    min-width: 110px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .gamityMain {
+        margin: 35px 0 0 0;
+    }
+}
