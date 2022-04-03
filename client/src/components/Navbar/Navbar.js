@@ -2,19 +2,31 @@ import { Link } from 'react-router-dom'
 import s from './style.module.css'
 import Navigation from './Navigation'
 import MobileNavigation from './MobileNavigation'
+import {useState} from 'react'
+import {ReactComponent as Logo} from '../../img/logo.svg'
 
 const Navbar = () => {
-  return (
-    <div className={s.NavBar}>
-        <div className={s.logo}>
-            <Link to={'/ru/'}>
-                <img src='' alt='AvanChange'/>
-            </Link>
+    const [open, setOpen] = useState(false)
+
+    const toggleNav = () => {
+        setOpen(prev => !prev)
+    }
+    console.log(open);
+    return (
+        <div className={s.wrapper}>
+            <div className={s.mainNav}>
+                <div className={s.logo}>
+                    <Link to={'/ru/'}>
+                        <Logo/>
+                    </Link>
+                </div>
+                <Navigation toggleNav={toggleNav}/>
+                <MobileNavigation open={open} toggleNav={toggleNav}/>
+            </div>
         </div>
-        <Navigation/>
-        <MobileNavigation/>
-    </div>
-  )
+
+        
+    )
 }
 
 export default Navbar

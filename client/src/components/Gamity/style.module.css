@@ -67,8 +67,45 @@
     text-align: center;
 }
 
-@media screen and (max-width: 1024px) {
+@media (max-width: 480px) {
+    .gamityMain {
+        margin: 25px 0 0 0;
+    }
+    .gamityMain .fifty .in {
+        padding: 12px 20px 15px 20px;
+    }
+    .gamityMain .fifty .image {
+        display: none;
+    }
+    .gamityMain .fifty .button {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 860px) {
+    .gamityMain {
+        margin: 25px 0 0 0;
+    }
+    .gamityMain .fifty:nth-child(1) {
+        padding-right: 0;
+        width: 100%;
+    }
+    .gamityMain .fifty:nth-child(2) {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
     .gamityMain {
         margin: 35px 0 0 0;
+    }
+    .gamityMain .fifty:nth-child(1) {
+        padding-right: 10px;
+    }
+    .gamityMain .fifty:nth-child(2) {
+        padding-left: 10px;
     }
 }

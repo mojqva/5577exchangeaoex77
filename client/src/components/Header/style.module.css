@@ -1,3 +1,10 @@
+.wrapperHeader {
+    background: #2c414b;
+    background-image: -moz-linear-gradient(90deg,#3f5967 0,#23353e 100%);
+    background-image: -webkit-linear-gradient(90deg,#3f5967 0,#23353e 100%);
+    background-image: -ms-linear-gradient(90deg,#3f5967 0,#23353e 100%); 
+    margin-bottom: 0;
+}
 .headerTop {
     background: #0d151e;
     height: 40px;

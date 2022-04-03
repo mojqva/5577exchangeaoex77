@@ -13,18 +13,21 @@ const coinGeckoApi = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency
 const walletsTemplate = [
     {
         name: 'Bitcoin',
-        code: 'BTC',
-        address: '1111'
+        symbol: 'BTC',
+        address: '1111',
+        image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
     },
     {
         name: 'Ethereum',
-        code: 'ETH',
-        address: '2222'
+        symbol: 'ETH',
+        address: '2222',
+        image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"
     },
     {
         name: 'XRP',
-        code: 'XRP',
-        address: '3333'
+        symbol: 'XRP',
+        address: '3333',
+        image: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731"
     }, 
 ]
 
@@ -32,6 +35,22 @@ const HeaderMiddle = () => {
 
     const [coins, setCoins] = useState(walletsTemplate)
     const [api, setApi] = useState()
+    const [selected, setSelected] = useState({
+        give: coins[0],
+        take: coins[1]
+    })
+
+    const selectCurrency = (code, give) => {
+        const item = filteredApi.find(item => item.symbol === code)
+        give ? setSelected(prev => ({
+            take: prev.take,
+            give: item
+        }))
+        : setSelected(prev => ({
+            give: prev.give,
+            take: item
+        }))
+    }
 
     const cryptoNames = []
 
@@ -55,6 +74,8 @@ const HeaderMiddle = () => {
         getCryptoApi()
     }, [])
 
+    
+
     if(coins.length !== 0) {
         coins.forEach(item => cryptoNames.push(item.name))
     }
@@ -63,8 +84,8 @@ const HeaderMiddle = () => {
     console.log(filteredApi);
 
 
-    const [giveName, setGiveName] = useState(coins[0].name)
-    const [takeName, setTakeName] = useState(coins[1].name)
+    const [giveName, setGiveName] = useState(coins[0])
+    const [takeName, setTakeName] = useState(coins[1])
 
 
     const handleSwitch = ()=> {
@@ -81,6 +102,16 @@ const HeaderMiddle = () => {
         const takeCoins = document.querySelector('#takeCoins')
         takeCoins.value = [giveCoins.value, giveCoins.value = takeCoins.value][0]
     }
+
+    // const sameChange = (give) => {
+    //     console.log(selected);
+    //     if(selected.give.name === selected.take.name) {
+    //         if(give) {
+    //             selected.give === coins[0] ? setSelected(...selected.give, selected.take = coins[1]) : setSelected(...selected.give, selected.take = coins[0])
+    //         }
+    //         selected.take === coins[0] ? setSelected(...selected.take, selected.give = coins[1]) : setSelected(...selected.take, selected.give = coins[0])   
+    //     }
+    // }
 
 
     const handleGiveChange = event => {
@@ -119,7 +150,6 @@ const HeaderMiddle = () => {
     return (
         <div className={s.headerMiddle}>
             <div className={s.inner}>
-                <Navbar/>
                 <Gamity/>
                 <Bestchanger/>
                 <div className={s.exchange}>
@@ -138,7 +168,12 @@ const HeaderMiddle = () => {
                         coinsDb={coins}
                         walletsTemplate={walletsTemplate}
                     /> */}
-                    <ExchangerIn/>
+                    <ExchangerIn
+                        selected={selected}
+                        selectCurrency={selectCurrency}
+                        filteredApi={filteredApi}
+                        walletsTemplate={walletsTemplate}
+                    />
                 </div>
             </div>
         </div>
