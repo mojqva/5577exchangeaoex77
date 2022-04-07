@@ -1,17 +1,17 @@
 import s from './style.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'
+import {ReactComponent as LogoBlue} from '../../img/logo-blue.svg'
 
 const Footer = () => {
     return (
         <>
         <div className={s.footer}>
             <div className={s.inner}>
-                
-                <div className={s.row}>
+                <div className={cn(s.row, s.row1)}>
                     <div className={s.logo}>
                         <Link to={'/ru/'}>
-                            <img src='/' alt='AvanChange'></img>
+                            <LogoBlue/>
                         </Link>
                     </div>
                     <div className={s.copyright}>
@@ -19,7 +19,7 @@ const Footer = () => {
                     © 2018-2022 AvanChange
                     </div>
                 </div>
-                <div className={s.row}>
+                <div className={cn(s.row, s.row2)}>
                     <div className={s.title}>
                         Основное
                     </div>
@@ -44,7 +44,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className={s.row}>
+                <div className={cn(s.row, s.row3)}>
                     <div className={s.title}>
                         Полезное
                     </div>
@@ -85,19 +85,16 @@ const Footer = () => {
                     <ul className={s.social}>
                         <li>
                             <a href="https://t.me/avanchange_bot" rel="nofollow" target="_blank" class="eas">
-                                <span class="flaticon-chat-message tg"></span> 
                                 <b>Telegram (Бот)</b>
                             </a>
                         </li>
                         <li>
                             <a href="https://t.me/avanchange" rel="nofollow" target="_blank" class="eas">
-                                <span class="flaticon-chat-message tg"></span> 
                                 <b>Telegram (Канал)</b>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.instagram.com/avanchange/" rel="nofollow" target="_blank" class="eas">
-                                <span class="flaticon-chat-message tg"></span>
                                 <b>Instagram</b>
                             </a>
                         </li>

@@ -2,23 +2,28 @@ import {useState, useEffect} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 
-const Dropdown = ({sameChange, selected, selectCurrency, give, filteredApi, walletsTemplate}) => {
-    const List = filteredApi ? filteredApi : walletsTemplate
+const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeItem}) => {
+    const List = filteredApi
     
-    const Selected = give ? selected.give : selected.take
-
-    console.log(List);
+    const Selected = give ? giveItem : takeItem
 
     const [isListOpen, setIsListOpen] = useState(false)
 
     const [filter, setFilter] = useState('')
+
+    const sameChange = () => {
+        if(selected.give == selected.take) {
+            selectCurrency('btc', false)
+        }
+    }
 
     const selectItem = (item) => {
         selectCurrency(item.symbol, give)
         setIsListOpen(false)
     }
 
-
+    console.log('new selected.give',selected.give);
+    console.log('new selected.take',selected.take);
     return (
         <div className={s.customCurrencyDropdown}>
             {
@@ -38,7 +43,7 @@ const Dropdown = ({sameChange, selected, selectCurrency, give, filteredApi, wall
                             </span>
                         </span>
                     </div>
-                :   <div className={s.selected}>
+                :   <div className={s.selected} id={give ? 'give' : 'take'}>
                         <span className={cn(s.icon, s.customCurrencyGiveIcon)}>
                             <img src={Selected.image} alt={Selected.name}></img>
                         </span>
@@ -62,7 +67,7 @@ const Dropdown = ({sameChange, selected, selectCurrency, give, filteredApi, wall
                     <ul className={s.list}>
                         {List.length !== 0
                         ?   List.filter(i => i.name.toLowerCase().includes(filter.toLowerCase()) || i.symbol.toLowerCase().includes(filter.    toLowerCase()) ||filter === '').map(item => (
-                                <li key={item.code} onClick={() => selectItem(item)}>
+                                <li key={item.id} onClick={() => selectItem(item)}>
                                     <span className={s.icon}>
                                         <img src={item.image} alt={item.name}></img>
                                     </span>

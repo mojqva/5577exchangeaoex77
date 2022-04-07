@@ -1,8 +1,24 @@
+import {useState, useEffect} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 import Dropdown from '../Dropdown/Dropdown'
+import {ReactComponent as Switch} from '../../img/switch.svg'
+import ratioPrice from '../../utils/ratio'
 
-const ExchangerIn = ({sameChange, filteredApi, walletsTemplate, selected, selectCurrency}) => {
+
+const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency}) => {
+    let giveItem = filteredApi? filteredApi.find(item => item.symbol.toLowerCase() === selected.give) : null
+
+    let takeItem = filteredApi ? filteredApi.find(item => item.symbol.toLowerCase() === selected.take) : null
+
+    const swapItems = () => {
+        giveItem = [takeItem, takeItem = giveItem][0]
+        
+        selectCurrency(giveItem.symbol, true)
+        selectCurrency(takeItem.symbol, false)
+    }
+
+    const ratio = ratioPrice(giveItem.current_price, takeItem.current_price)
 
     return (
         <div className={s.exchangeLeftBorder}>
@@ -35,6 +51,8 @@ const ExchangerIn = ({sameChange, filteredApi, walletsTemplate, selected, select
                     <Dropdown
                         selected={selected}
                         selectCurrency={selectCurrency}
+                        giveItem={giveItem}
+                        takeItem={takeItem}
                         give={true}
                         filteredApi={filteredApi}
                         walletsTemplate={walletsTemplate}
@@ -44,13 +62,16 @@ const ExchangerIn = ({sameChange, filteredApi, walletsTemplate, selected, select
                         <div 
                             className={cn(s.exchangeReverseSwitch, s.eas)}
                             data-tooltip='Обратное направление'
+                            onClick={swapItems}
                         >
-                            <img src='/' alt='Switch'/>
+                            <Switch/>
                         </div>
                     </div>
                     <Dropdown
                         selected={selected}
                         selectCurrency={selectCurrency}
+                        giveItem={giveItem}
+                        takeItem={takeItem}
                         give={false}
                         filteredApi={filteredApi}
                         walletsTemplate={walletsTemplate}
@@ -61,9 +82,9 @@ const ExchangerIn = ({sameChange, filteredApi, walletsTemplate, selected, select
                                 Курс
                                 <b className={s.customCurrencyRate}>
                                     1
-                                    <span>{selected.give.symbol.toUpperCase()}</span>
-                                    ~ 13.914
-                                    <span>{selected.take.symbol.toUpperCase()}</span>
+                                    <span>{giveItem.symbol.toUpperCase()}</span>
+                                    ~ {ratio}
+                                    <span>{takeItem.symbol.toUpperCase()}</span>
                                 </b>
                             </div>
                             <div className={s.row}>

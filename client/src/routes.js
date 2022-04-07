@@ -65,7 +65,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
             <Route path="/partners" element={<PartnersPage/>}/>
             <Route path="/pages/crypto-helper" element={<CryptoPage/>}/>
             <Route path="/support" element={<SupportPage/>}/>
-            <Route path="/payment/go/:id" element={<CancelPage/>}/>
+            <Route path="/payment/go/:id" element={<CancelPage/>}/> {'//CHANGE TO CANCEL'}
             <Route path="*" exact element={<ErrorPage/>} />
 
             <Route path="/ru/" exact element={<MainPage/>}/>

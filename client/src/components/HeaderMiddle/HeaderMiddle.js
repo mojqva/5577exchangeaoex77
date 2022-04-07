@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Bestchanger from '../Bestchanger/Bestchanger'
 import Gamity from '../Gamity/Gamity'
-import Navbar from '../Navbar/Navbar'
 import s from './middle.module.css'
 import TestA from '../Test/TestA'
 import TestB from '../Test/TestB'
 import ExchangerIn from "../Exchangers/ExchangerIn";
+import ExchangerOut from "../Exchangers/ExchangerOut";
 const axios = require('axios')
 
 const coinGeckoApi = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
@@ -32,127 +32,141 @@ const walletsTemplate = [
 ]
 
 const HeaderMiddle = () => {
-
     const [coins, setCoins] = useState(walletsTemplate)
-    const [api, setApi] = useState()
+    const [api, setApi] = useState() 
+    const cryptoNames = []
+
+    let isCancel = false
+
+    useEffect(() => {
+        
+        const getCoins = async () => {
+            try {
+                if(!isCancel) {
+                    const res = await axios.get(`/api/payment/wallets`)
+                    setCoins(res.data)
+                    return res.data
+                }
+                
+            } catch (error) {
+                console.error(error)
+            }
+        }  
+
+        const getCryptoApi = async () => {
+            try {
+                if(!isCancel) {
+                    const response = await axios.get(coinGeckoApi)
+                    const data = await response.data
+                    setApi(data)
+        
+                    return data
+                }   
+            } catch (e) {
+                throw new Error(e)
+            }
+        }
+        getCryptoApi()
+        getCoins()
+
+
+        //Cleanup
+        return () => {isCancel = true}
+        
+    }, [])
+
+
+    coins.forEach(item => cryptoNames.push(item.symbol.toLowerCase()))
+
+    console.log('api',api);
+    console.log('coins',coins);
+    console.log('crypto',cryptoNames);
+
+    let filteredApi = coins && api ? api.filter(item => cryptoNames.includes(item.symbol)): []
+    console.log('filtered',filteredApi);
+    
     const [selected, setSelected] = useState({
-        give: coins[0],
-        take: coins[1]
+        give: 'btc',
+        take: 'eth'
     })
 
     const selectCurrency = (code, give) => {
         const item = filteredApi.find(item => item.symbol === code)
-        give ? setSelected(prev => ({
-            take: prev.take,
-            give: item
-        }))
-        : setSelected(prev => ({
-            give: prev.give,
-            take: item
-        }))
-    }
-
-    const cryptoNames = []
-
-    useEffect(() => {
-        const getCoins = async () => {
-            try {
-                const res = await axios.get(`/api/payment/wallets`)
-                setCoins(res.data)
-            } catch (error) {
-                console.error(error)
+        if(give) {
+            let equal = item.symbol === selected.take
+            if(equal) {
+                if(item.symbol === 'btc') {
+                    setSelected(prev => ({
+                        give: item.symbol,
+                        take: 'eth'
+                    }))
+                    return
+                }
+                setSelected(prev => ({
+                    give: item.symbol,
+                    take: 'btc'
+                }))
+                return
             }
+            setSelected(prev => ({
+                give: item.symbol,
+                take: prev.take
+            }))
+            return
         }
-        const getCryptoApi = () => {
-            axios.get(coinGeckoApi)
-            .then(res => {
-                setApi(res.data)
-            })
-            .catch(e => console.log(e))
+        if(!give) {
+            let equal = item.symbol === selected.give
+            if(equal) {
+                if(item.symbol === 'btc') {
+                    setSelected(prev => ({
+                        give: 'eth',
+                        take: item.symbol
+                    }))
+                    return
+                }
+                setSelected(prev => ({
+                    give: 'btc',
+                    take: item.symbol
+                }))
+                return
+            }
+            setSelected(prev => ({
+                give: prev.give,
+                take: item.symbol
+            }))
         }
-        getCoins()
-        getCryptoApi()
-    }, [])
+        
 
-    
-
-    if(coins.length !== 0) {
-        coins.forEach(item => cryptoNames.push(item.name))
+        // give ? setSelected(prev => ({
+        //     take: prev.take,
+        //     give: item.symbol
+        // }))
+        // : setSelected(prev => ({
+        //     give: prev.give,
+        //     take: item.symbol
+        // }))
     }
 
-    let filteredApi = api ? api.filter(item => cryptoNames.includes(item.name)) : null
-    console.log(filteredApi);
-
-
-    const [giveName, setGiveName] = useState(coins[0])
-    const [takeName, setTakeName] = useState(coins[1])
-
-
-    const handleSwitch = ()=> {
-        const temp = giveName
-        setGiveName(takeName)
-        setTakeName(temp)
-
-        let selectGive = document.querySelector('#give')
-        let selectTake = document.querySelector('#take')
-        selectTake.value = [selectGive.value, selectGive.value = selectTake.value][0]
-        // [selectGive.value, selectTake.value] = [selectTake.value, selectGive.value]
-
-        const giveCoins = document.querySelector('#giveCoins')
-        const takeCoins = document.querySelector('#takeCoins')
-        takeCoins.value = [giveCoins.value, giveCoins.value = takeCoins.value][0]
-    }
-
-    // const sameChange = (give) => {
-    //     console.log(selected);
-    //     if(selected.give.name === selected.take.name) {
-    //         if(give) {
-    //             selected.give === coins[0] ? setSelected(...selected.give, selected.take = coins[1]) : setSelected(...selected.give, selected.take = coins[0])
-    //         }
-    //         selected.take === coins[0] ? setSelected(...selected.take, selected.give = coins[1]) : setSelected(...selected.take, selected.give = coins[0])   
-    //     }
+    // const sameChange = () => {
+    //     setSelected(prev => ({
+    //         take: prev.take,
+    //         give: coins[0]
+    //     }))
     // }
 
-
-    const handleGiveChange = event => {
-        setGiveName(event.target.value)
-
-        let selectGive = document.querySelector('#give')
-        let selectTake = document.querySelector('#take')
-
-        if(selectGive.value === selectTake.value && selectGive.value !== 'Bitcoin') {
-            selectTake.value = 'Bitcoin'
-            setTakeName('Bitcoin')
-        }
-        if(selectGive.value === selectTake.value && selectGive.value !== 'Ethereum') {
-            selectTake.value = 'Ethereum'
-            setTakeName('Ethereum')
-        }
-
-        
-    }
-    const handleTakeChange = event => {
-        setTakeName(event.target.value)
-
-        let selectGive = document.querySelector('#give')
-        let selectTake = document.querySelector('#take')
-
-        if(selectTake.value === selectGive.value && selectTake.value !== 'Bitcoin') {
-            selectGive.value = 'Bitcoin'
-            setGiveName('Bitcoin')
-        }
-        if(selectTake.value === selectGive.value && selectTake.value !== 'Ethereum') {
-            selectGive.value = 'Ethereum'
-            setGiveName('Ethereum')
-        }
-    }
+    // useEffect(() => {
+    //     console.log('newItem from header middle', selected.give)
+    //     sameChange()       
+    // })
 
     return (
         <div className={s.headerMiddle}>
             <div className={s.inner}>
                 <Gamity/>
                 <Bestchanger/>
-                <div className={s.exchange}>
+                {
+                    filteredApi.length !== 0 ?
+                    <div className={s.exchange}>
                     {/* <TestA
                         giveName={giveName}
                         takeName={takeName}
@@ -174,7 +188,15 @@ const HeaderMiddle = () => {
                         filteredApi={filteredApi}
                         walletsTemplate={walletsTemplate}
                     />
-                </div>
+                    <ExchangerOut
+                        selected={selected}
+                        coins={coins}
+                        filteredApi={filteredApi}
+                    />
+                    </div>
+                    :null
+                }
+                
             </div>
         </div>
     )
