@@ -139,3 +139,37 @@
     position: absolute;
     right: 20px;
 }
+
+@media (max-width: 480px) {
+    .customCurrencyDropdown {
+        margin-bottom: 20px;
+    }
+    .customCurrencyDropdown .selected {
+        background: #fff;
+        border-color: #fff;
+        border-radius: 6px;
+        padding: 10px 16px;
+    }
+    .customCurrencyDropdown .selected .icon, .customCurrencyDropdown ul li .icon {
+        margin-right: 8px;
+        height: 24px;
+        min-width: 24px;
+    }
+    .customCurrencyDropdown .selected .name, .customCurrencyDropdown ul li .name {
+        font-size: 16px;
+    }
+    .customCurrencyDropdown .selected .currency, .customCurrencyDropdown ul li .currency {
+        font-size: 14px;
+    }
+    .customCurrencyDropdown .search {
+        margin-top: -52px;
+        border-radius: 6px 6px 0 0;
+    }
+    .customCurrencyDropdown .search .inp {
+        height: 50px;
+        padding: 15px 20px 15px 50px;
+    }
+    .customСurrencyВropdown .search .icon {
+        left: 16px;
+    }
+}

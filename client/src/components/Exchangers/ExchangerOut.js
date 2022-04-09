@@ -25,7 +25,8 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
         give: '', take: '', address: '', email: '', telegram: ''
     })
 
-    const ownerAddress = coins.find(item => item.symbol === giveItem.symbol)
+    const ownerAddress = coins.find(item => item.symbol.toLowerCase() === giveItem.symbol)
+    console.log(ownerAddress);
 
     const clearForm = () => {
         setForm({give: '', take: '', address: '', email: '', telegram: ''})

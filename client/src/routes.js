@@ -33,7 +33,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
                 <Route path="/pages/crypto-helper" element={<CryptoPage/>}/>
                 <Route path="/support" element={<SupportPage/>}/>
                 <Route path="/account" element={<AccountPage/>}/>
-                <Route path="/payment/go/:id" element={<CancelPage/>}/>
+                <Route path="/payment/go/:id" element={<PaymentPage/>}/>
                 <Route path="*" exact element={<ErrorPage/>} />
                 {'//RU'}
                 <Route path="/ru/" exact element={<MainPage/>}/>
@@ -46,7 +46,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
                 <Route path="/ru/pages/crypto-helper" element={<CryptoPage/>}/>
                 <Route path="/ru/support" element={<SupportPage/>}/>
                 <Route path="/ru/account" element={<AccountPage/>}/>
-                <Route path="/ru/payment/go/:id" element={<CancelPage/>}/>
+                <Route path="/ru/payment/go/:id" element={<PaymentPage/>}/>
             </Routes>
         )
     }
@@ -65,7 +65,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
             <Route path="/partners" element={<PartnersPage/>}/>
             <Route path="/pages/crypto-helper" element={<CryptoPage/>}/>
             <Route path="/support" element={<SupportPage/>}/>
-            <Route path="/payment/go/:id" element={<CancelPage/>}/> {'//CHANGE TO CANCEL'}
+            <Route path="/payment/go/:id" element={<PaymentPage/>}/> {'//CHANGE TO CANCEL'}
             <Route path="*" exact element={<ErrorPage/>} />
 
             <Route path="/ru/" exact element={<MainPage/>}/>
@@ -77,7 +77,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
             <Route path="/ru/partners" element={<PartnersPage/>}/>
             <Route path="/ru/pages/crypto-helper" element={<CryptoPage/>}/>
             <Route path="/ru/support" element={<SupportPage/>}/>
-            <Route path="/ru/payment/go/:id" element={<CancelPage/>}/>
+            <Route path="/ru/payment/go/:id" element={<PaymentPage/>}/>
         </Routes>
     )
 }

@@ -1,10 +1,22 @@
-import { useEffect } from "react"
 import s from './style.module.css'
 const axios = require('axios')
 
 
-const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress}) => {
-    const date = new Date(Date.now()).toLocaleString()
+
+const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, day, month, year, hour, minutes, timeH, timeM, timeS}) => {
+
+    // if(auth.hoursTimer + auth.minutesTimer + auth.secondsTimer <= 0) {
+    //     console.log('0');
+    // }
+
+    // useEffect(() => {
+    //     auth.pay()
+
+    //     if(hoursTimer + minutesTimer + secondsTimer <= 0) {
+    //         auth.cancelPay()
+    //     }
+    // }, [auth.isPayment])
+
     // useEffect(() => {
     //     const sendInfo = async () => {
     //         await axios.post('/api/payment/sendInfo', {
@@ -17,12 +29,13 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
     //     }
     //     sendInfo()
     // }, [])
+
     return (
         <div className={s.inner}>
-            <h1>Обмен №{number} от 04 Апр 2022, 20:04</h1>
+            <h1>Обмен №{number} от {day} {month} {year}, {hour}:{minutes}</h1>
             <div className={s.paymentGive}>
                 <h3>
-                    <img src={giveImg}/>
+                    <img src={giveImg} alt='giveImg'/>
                     Отдаете {giveName}
                 </h3>
                 <div className={s.line}>
@@ -36,7 +49,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
             </div>
             <div className={s.paymentTake}>
                 <h3>
-                    <img src={takeImg}/>
+                    <img src={takeImg} alt='takeImg'/>
                     Получаете {takeName}
                 </h3>
                 <div className={s.line}>
@@ -61,13 +74,13 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                 <div className={s.qrcode}>
                     <img src='/' alt="QR"/>
                 </div>
-                <div className={s.timer}>01:19:12</div>
+                <div className={s.timer}>{timeH}:{timeM}:{timeS}</div>
                 <div className={s.timerInfo}>Осталось времени</div>
                 <div className={s.paymentType}>
                     <h5>Тип обмена: <b>Лучший курс</b></h5>
                     <div className={s.desc}>
                         Курс может корректироваться при высоких колебаниях 
-                        <a href="https://coinmarketcap.com/" target="_blank" rel="nofollow"> рынка</a>
+                        <a href="https://coinmarketcap.com/" target="_blank" rel="noreferrer"> рынка</a>
                     </div>
                 </div>
                 <div className={s.mempoolFees}>

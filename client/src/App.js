@@ -17,14 +17,14 @@ if (uri.indexOf("?") > 0) {
 
 function App() {
 	const {token, login, logout, userId} = useAuth()
-	const {payment, pay} = usePay()
+	const {payment, pay, cancelPay} = usePay()
 	const isAuthenticated = !!token // to boolean
 	const isPayment = payment
 	const routes = useRoutes(isAuthenticated, isPayment)
 
 	return (
 		<AuthContext.Provider value={{
-			token, login, logout, userId, isAuthenticated, isPayment, pay
+			token, login, logout, userId, isAuthenticated, isPayment, pay, cancelPay
 		}}>
 		<Router>
 			<Header

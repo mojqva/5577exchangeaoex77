@@ -40,18 +40,20 @@ const HeaderMiddle = () => {
 
     useEffect(() => {
         
-        const getCoins = async () => {
-            try {
-                if(!isCancel) {
-                    const res = await axios.get(`/api/payment/wallets`)
-                    setCoins(res.data)
-                    return res.data
-                }
+        // const getCoins = async () => {
+        //     try {
+        //         if(!isCancel) {
+        //             const res = await axios.get(`/api/payment/wallets`)
+        //             const data = await res.data
+        //             setCoins(data)
+
+        //             return data
+        //         }
                 
-            } catch (error) {
-                console.error(error)
-            }
-        }  
+        //     } catch (error) {
+        //         console.error(error)
+        //     }
+        // }  
 
         const getCryptoApi = async () => {
             try {
@@ -67,7 +69,7 @@ const HeaderMiddle = () => {
             }
         }
         getCryptoApi()
-        getCoins()
+        // getCoins()
 
 
         //Cleanup
@@ -78,12 +80,7 @@ const HeaderMiddle = () => {
 
     coins.forEach(item => cryptoNames.push(item.symbol.toLowerCase()))
 
-    console.log('api',api);
-    console.log('coins',coins);
-    console.log('crypto',cryptoNames);
-
     let filteredApi = coins && api ? api.filter(item => cryptoNames.includes(item.symbol)): []
-    console.log('filtered',filteredApi);
     
     const [selected, setSelected] = useState({
         give: 'btc',

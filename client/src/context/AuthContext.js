@@ -8,6 +8,11 @@ export const AuthContext = createContext({
     login: noop,
     logout: noop,
     isAuthenticated: false,
+    payments: [],
     isPayment: false,
-    pay: noop
+    pay: noop,
+    cancelPay: noop,
+    hoursTimer: 1,
+    minutesTimer: 2,
+    secondsTimer: 3,
 })
