@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './style.module.css'
+import Bestchange from '../../img/bestchange.png'
 
 const Bestchanger = () => {
   return (
@@ -7,12 +8,12 @@ const Bestchanger = () => {
         <h5>Понравился обменник</h5>
         <div className={s.desc}>
             Оставь отзыв на 
-            <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank">BestChange</a> 
+            <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank" rel="noreferrer">BestChange</a> 
             и получи <b>5 USDT TRC20</b>
         </div>
         <div className={s.logo}>
-            <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank">
-                <img src="/uploads/images/static/reviews/bestchange.png" alt="BestChange"/>
+            <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank" rel="noreferrer">
+                <img src={Bestchange} alt="BestChange"/>
             </a>
         </div>
         <div className={s.button}>

@@ -22,7 +22,7 @@ const NavLinks = () => {
             <li className={s.li}>
                 <Link to={'/ru/'}>Помощь</Link>
             </li> 
-            <li className={s.li}>
+            <li className={cn(s.li, s.toNone)}>
                 <Link to={'/ru/'}>Отзывы</Link>
             </li> 
             <li className={s.li}>

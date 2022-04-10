@@ -34,7 +34,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
     }
     
     return (
-        <div className={s.formExchange}>
+        <form className={s.formExchange}>
             <div className={s.lines}>
                 <div className={s.line}>
                     <div className={s.lineInput}>
@@ -85,18 +85,19 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                     <div className={s.i}>Например @selld2 (необязательно)</div>
                 </div>
             </div>
+            <div className={s.lineBreak}></div>
             <div className={s.exchangeRightF}>
                 <div className={s.terms}>
                     Нажимая кнопку <b>"Обменять"</b> вы подтверждаете свое согласие с 
-                    <a href="/" target="_blank">Правилами предоставления услуг</a>
+                    <a href="/" target="_blank" rel="noreferrer">Правилами предоставления услуг</a>
                 </div>
                 <div className={s.button}>
-                    <button className={cn(s.btn, s.green)} onClick={toContin}>
+                    <button className={cn(s.btn, s.green)} onClick={toContin} type='button'>
                         Обменять
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 

@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer'
 import { useAuth } from './hooks/auth.hook'
 import { AuthContext } from './context/AuthContext'
 import usePay from './hooks/pay.hook'
+import MainPage from './pages/MainPage'
 
 //clear url from query params
 let uri = window.location.toString();
@@ -30,7 +31,8 @@ function App() {
 			<Header
 				isAuth={isAuthenticated}
 			/>
-			{routes}
+			{/* {routes} */}
+				<MainPage/>
 			<Footer/>
 		</Router>
 		</AuthContext.Provider>

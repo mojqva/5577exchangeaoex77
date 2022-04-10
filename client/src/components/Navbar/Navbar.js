@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className={s.mainNav}>
                 <div className={s.logo}>
                     <Link to={'/ru/'}>
-                        <Logo/>
+                        <Logo className={s.logoSvg}/>
                     </Link>
                 </div>
                 <Navigation toggleNav={toggleNav}/>

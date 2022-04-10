@@ -86,8 +86,18 @@ ul li a {
     }
 
 } */
+.logoSvg g > path {
+    fill: #fff
+}
+.logoSvg g:nth-child(1) > path:nth-child(2) {
+    fill: #3dd94b
+}
+.logoSvg g:nth-child(4) > path {
+    fill: #7993a1;
+}
 .wrapper {
     max-width: 1680px;
+    min-width: 320px;
     width: 100%;
     margin: 0 auto;
     background: #2c414b;
@@ -99,6 +109,8 @@ ul li a {
 .mainNav {
     background: #2c414b;
     min-height: 80px;
+    display: flex;
+    justify-content: space-between;
 }
 .logo {
     float: left;
@@ -110,7 +122,9 @@ ul li a {
     padding: 18px 0 0 0;
     position: absolute;
     z-index: 2;
+    display: block;
 }
+
 .navButton {
     display: none;
     color: #fff;
@@ -173,6 +187,8 @@ ul li a {
 }
 .ul {
     list-style: none;
+    display: flex;
+    flex-flow: row wrap;
 }
 .ul > * {
     vertical-align: middle;
@@ -196,9 +212,9 @@ ul li a {
     -o-transition: all ease-out .2s;
     transition: all ease-out .2s;
 }
-.last {
-    float: right;
-    margin: 18px 0 0 0;
+li.last {
+    margin-top: 18px;
+    margin-left: auto;
     padding: 0;
 }
 .last a {
@@ -274,12 +290,21 @@ ul li a {
     vertical-align: middle
 }
 
+@media (max-width: 320px) {
+    .logo {
+        width: 60%;
+    }
+    .navButton {
+        width: 25px;
+    }
+}
+
 @media (max-width: 1024px) {
     .mainNav {
         height: 42px;
     }
     .navButton {
-        display: inline-block;
+        display: block;
     }
     .nav {
         display: none;

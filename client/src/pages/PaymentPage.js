@@ -51,7 +51,7 @@ const PaymentPage = () => {
             localStorage.setItem(storageName, JSON.stringify({isPayment: auth.isPayment, timeH, timeM, timeS}))
             const localStorageRef = localStorage.getItem(storageName)
             setState({timer: JSON.parse(localStorageRef)})
-            setCountDownNum(prev => prev - 1000)
+            // setCountDownNum(prev => prev - 1000)
             // setCountDownNum(JSON.parse(localStorageRef.count))
         }  
     }, [timeH, timeM, timeS, auth])

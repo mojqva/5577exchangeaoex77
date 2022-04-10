@@ -1,7 +1,7 @@
 import s from './style.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'
-import {ReactComponent as LogoBlue} from '../../img/logo-blue.svg'
+import {ReactComponent as LogoBlue} from '../../img/logo/logo-blue.svg'
 
 const Footer = () => {
     return (
@@ -10,7 +10,7 @@ const Footer = () => {
             <div className={s.inner}>
                 <div className={cn(s.row, s.row1)}>
                     <div className={s.logo}>
-                        <Link to={'/ru/'}>
+                        <Link to={'/ru/'}>     
                             <LogoBlue/>
                         </Link>
                     </div>
@@ -101,6 +101,10 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
+            {/* <div className={s.inner}>
+                
+                
+            </div> */}
         </div>
         </>
     );

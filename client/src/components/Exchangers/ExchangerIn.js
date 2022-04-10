@@ -64,7 +64,7 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency}) 
                             data-tooltip='Обратное направление'
                             onClick={swapItems}
                         >
-                            <Switch/>
+                            <Switch className={s.reverseSvg}/>
                         </div>
                     </div>
                     <Dropdown
