@@ -6,12 +6,16 @@
     position: relative;
     margin: 20px 0 0 0;
 }
+.gamityMain .fifty {
+    width: 50%;
+}
 .gamityMain .fifty:nth-child(1) {
     padding-right: 15px;
 }
 .gamityMain .fifty .in {
     background: rgba(15,21,29,.3);
     color: #fff;
+    height: 71px;
     padding: 12px 166px 15px 65px;
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -28,6 +32,9 @@
 .gamityMain .fifty .image {
     width: 50px;
     height: 60px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
 .gamityMain .fifty .desc {
     color: #7a8593;

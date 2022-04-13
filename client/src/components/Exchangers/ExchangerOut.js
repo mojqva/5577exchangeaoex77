@@ -75,7 +75,7 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
                     Обмен <b className={s.exchangeGiveName}>{giveItem.name}</b> на <b className={s.exchangeTakeName}>{takeItem.name}</b>
                 </div>
                 <div className={s.in}>
-                {
+                    {
                         !step ?
                         <Form
                             giveItem={giveItem}
@@ -98,8 +98,7 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
                             clearForm={clearForm}
                             ownerAddress={ownerAddress}
                         />
-                    }
-                    
+                    }      
                 </div>
             </div>
         </div>

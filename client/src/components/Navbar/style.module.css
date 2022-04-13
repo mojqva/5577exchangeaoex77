@@ -188,7 +188,6 @@ ul li a {
 .ul {
     list-style: none;
     display: flex;
-    flex-flow: row wrap;
 }
 .ul > * {
     vertical-align: middle;
@@ -212,9 +211,9 @@ ul li a {
     -o-transition: all ease-out .2s;
     transition: all ease-out .2s;
 }
-li.last {
+ul .last {
     margin-top: 18px;
-    margin-left: auto;
+    align-self: flex-end;
     padding: 0;
 }
 .last a {

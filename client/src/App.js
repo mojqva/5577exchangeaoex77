@@ -31,8 +31,7 @@ function App() {
 			<Header
 				isAuth={isAuthenticated}
 			/>
-			{/* {routes} */}
-				<MainPage/>
+			{routes}
 			<Footer/>
 		</Router>
 		</AuthContext.Provider>

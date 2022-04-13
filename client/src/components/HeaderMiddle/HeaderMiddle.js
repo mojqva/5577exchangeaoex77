@@ -81,6 +81,7 @@ const HeaderMiddle = () => {
     coins.forEach(item => cryptoNames.push(item.symbol.toLowerCase()))
 
     let filteredApi = coins && api ? api.filter(item => cryptoNames.includes(item.symbol)): []
+    console.log('Filtered', filteredApi)
     
     const [selected, setSelected] = useState({
         give: 'btc',
@@ -164,32 +165,17 @@ const HeaderMiddle = () => {
                 {
                     filteredApi.length !== 0 ?
                     <div className={s.exchange}>
-                    {/* <TestA
-                        giveName={giveName}
-                        takeName={takeName}
-                        handleGiveChange={handleGiveChange}
-                        handleTakeChange={handleTakeChange}
-                        handleSwitch={handleSwitch}
-                        filteredApi={filteredApi}
-                        walletsTemplate={walletsTemplate}
-                    />
-                    <TestB
-                        giveName={giveName}
-                        takeName={takeName} 
-                        coinsDb={coins}
-                        walletsTemplate={walletsTemplate}
-                    /> */}
-                    <ExchangerIn
-                        selected={selected}
-                        selectCurrency={selectCurrency}
-                        filteredApi={filteredApi}
-                        walletsTemplate={walletsTemplate}
-                    />
-                    <ExchangerOut
-                        selected={selected}
-                        coins={coins}
-                        filteredApi={filteredApi}
-                    />
+                        <ExchangerIn
+                            selected={selected}
+                            selectCurrency={selectCurrency}
+                            filteredApi={filteredApi}
+                            walletsTemplate={walletsTemplate}
+                        />
+                        <ExchangerOut
+                            selected={selected}
+                            coins={coins}
+                            filteredApi={filteredApi}
+                        />
                     </div>
                     :null
                 }

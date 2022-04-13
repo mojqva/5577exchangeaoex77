@@ -24,7 +24,7 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency}) 
         <div className={s.exchangeLeftBorder}>
             <div className={cn(s.exchangeLeft, s.exchangeEquels)}>
                 <div className={s.bigArrow}>
-                    <span className={s.flaticonArrRight}></span>
+                    <span className={s.flaticonArrRight}>&#8594;</span>
                 </div>
                 <div className={s.title}>
                     <span className={cn(s.flaticonMoney1, s.icon, s.i1)}>

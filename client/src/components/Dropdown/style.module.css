@@ -44,12 +44,19 @@
     position: absolute;
     right: 20px;
 }
+.customCurrencyDropdown .search {
+    border: 1px solid #d9e3e9;
+    box-shadow: 0 10px 25px rgb(147 170 184 / 10%);
+    border-radius: 10px 10px 0 0;
+}
 .customCurrencyDropdown .search .inp {
     border: 0;
     position: relative;
     height: 64px;
+    width: 100%;
     padding: 15px 20px 15px 64px;
     border-radius: 10px 10px 0 0;
+    outline: 0;
 }
 .customCurrencyDropdown .search .icon {
     background-size: 22px 22px;
@@ -162,7 +169,6 @@
         font-size: 14px;
     }
     .customCurrencyDropdown .search {
-        margin-top: -52px;
         border-radius: 6px 6px 0 0;
     }
     .customCurrencyDropdown .search .inp {
