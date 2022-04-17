@@ -1,22 +1,49 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Confirmation from './Confirmation'
 import Form from './Form'
 import ratioPrice from '../../utils/ratio'
 import s from './style.module.css'
+const axios = require('axios')
 
 const ExchangerOut = ({selected, coins, filteredApi}) => {
+    const [wallet, setWallet] = useState('1111')
 
     const giveItem = filteredApi? filteredApi.find(item => item.symbol.toLowerCase() === selected.give) : null
 
     const takeItem = filteredApi ? filteredApi.find(item => item.symbol.toLowerCase() === selected.take) : null
+    
+    useEffect(() => { 
+        let isApi = true 
+        const getWallets = async () => {
+            try {
+                if(isApi) {
+                    const response = await axios.get('/api/payment/wallets')
+                    const data = await response.data
+                    const ownerAddress = data && data.find(item => item.symbol.toLowerCase() === giveItem.symbol)
+                    setWallet(ownerAddress === undefined ? '1111' : ownerAddress.address)
 
-    const AMOUNT = ratioPrice(giveItem.current_price, takeItem.current_price)
+                    return ownerAddress
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        getWallets()
+        
+        return () => {
+            isApi = false
+        }
+    }, [giveItem.symbol])
+
+    let AMOUNT = ratioPrice(giveItem.current_price, takeItem.current_price)
 
     const messages = {
         inputs: 'Введите количество монет для отправки и получения',
-        address: `Введите действительный адрес кошелька ${selected.take.name}`,
+        address: `Введите действительный адрес кошелька ${selected.take.toUpperCase()}`,
         email: 'Введите действительный email',
         telegram: 'Телеграм должен начинаться с @',
+        reserve: `Превышен лимит резерва ${selected.take.toUpperCase()}`
     }
 
     const [step, setStep] = useState(false)
@@ -24,9 +51,6 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
     const [form, setForm] = useState({
         give: '', take: '', address: '', email: '', telegram: ''
     })
-
-    const ownerAddress = coins.find(item => item.symbol.toLowerCase() === giveItem.symbol)
-    console.log(ownerAddress);
 
     const clearForm = () => {
         setForm({give: '', take: '', address: '', email: '', telegram: ''})
@@ -37,11 +61,17 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
     }
 
     const calculateTakeAmount = (input, amount) => {
-        return input*amount
+        const a = input*amount
+        if(a > 1) return a.toFixed(3)
+        if(a === 0) return a.toFixed(0)
+        return a.toFixed(7)   
     }
 
     const calculateGiveAmount = (output, amount) => {
-        return output/amount
+        const a = output/amount
+        if(a > 1) return a.toFixed(3)
+        if(a === 0) return a.toFixed(1)
+        return a.toFixed(7)  
     }
 
     const handleInputChange = event => {
@@ -96,7 +126,7 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
                             form={form}
                             handleSubmit={handleSubmit}
                             clearForm={clearForm}
-                            ownerAddress={ownerAddress}
+                            ownerAddress={wallet}
                         />
                     }      
                 </div>

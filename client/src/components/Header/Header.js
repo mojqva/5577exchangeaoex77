@@ -13,6 +13,11 @@ const Header = ({isAuth}) => {
     }
     const [loginModalActive, setLoginModalActive] = useState(false)
     const [registerModalActive, setRegisterModalActive] = useState(false)
+
+    const switchModals = () => {
+        setRegisterModalActive(prev => !prev)
+        setLoginModalActive(prev => !prev)
+    }
     return (
         <div className={s.wrapperHeader}>
             <div className={s.headerTop}>
@@ -57,10 +62,12 @@ const Header = ({isAuth}) => {
             <ModalLogin 
                 loginActive={loginModalActive}
                 setLoginActive={setLoginModalActive}
+                switchModals={switchModals}
             />
             <ModalRegister
                 registerActive={registerModalActive}
                 setRegisterActive={setRegisterModalActive}
+                switchModals={switchModals}
             />
         </div>
     );

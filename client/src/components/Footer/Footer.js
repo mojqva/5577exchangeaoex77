@@ -1,9 +1,11 @@
 import s from './style.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'
+import findImg from '../../utils/img'
 import {ReactComponent as LogoBlue} from '../../img/logo/logo-blue.svg'
 
 const Footer = () => {
+    const {Best, Summo, Kurs, All} = findImg()
     return (
         <>
         <div className={s.footer}>
@@ -101,10 +103,22 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
-            {/* <div className={s.inner}>
-                
-                
-            </div> */}
+            <div className={s.agregators}>
+                <div className={s.inner}>
+                    <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank" rel="noreferrer" title="Сервис поиска выгодного курса обмена">
+                        <img src={Best} alt="BestChange"/>
+                    </a>
+                    <a href="https://exchangesumo.com/exchanger/955/Avanchange/" target="_blank" rel="noreferrer" title="Сервис поиска выгодного курса обмена">
+                        <img src={Summo} alt="BestChange"/>
+                    </a>
+                    <a href="https://kurs.expert/ru/obmennik/avanchange-com/feedbacks.html" target="_blank" rel="noreferrer" title="Сервис поиска выгодного курса обмена">
+                        <img src={Kurs} alt="BestChange"/>
+                    </a>
+                    <Link to={'/ru/reviews'} target={"_blank"} rel={"noreferrer"}>
+                        <img src={All} alt="BestChange"/>
+                    </Link>
+                </div>
+            </div>
         </div>
         </>
     );

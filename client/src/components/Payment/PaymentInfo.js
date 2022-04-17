@@ -1,34 +1,33 @@
+import { useEffect } from 'react'
 import s from './style.module.css'
+import QR from '../../img/qr.png'
 const axios = require('axios')
-
-
 
 const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, day, month, year, hour, minutes, timeH, timeM, timeS}) => {
 
-    // if(auth.hoursTimer + auth.minutesTimer + auth.secondsTimer <= 0) {
-    //     console.log('0');
-    // }
+    useEffect(() => {
+        let isSend = false
+        const sendInfo = async () => {
+            await axios.post('/api/payment/sendInfo', {
+                zayavkaNa: `${takeSymbol}`,
+                otdaet: `${giveAmount}${giveSymbol}`,
+                naKoschelek: `${ownerAddress}`,
+                date: `${day} ${month} ${year}, ${hour}:${minutes}`
+            })
+        }
+        if(!isSend) {
+            sendInfo()
+        }
 
-    // useEffect(() => {
-    //     auth.pay()
+        return () => {
+            isSend = true
+        }
+        
+    }, [])
 
-    //     if(hoursTimer + minutesTimer + secondsTimer <= 0) {
-    //         auth.cancelPay()
-    //     }
-    // }, [auth.isPayment])
-
-    // useEffect(() => {
-    //     const sendInfo = async () => {
-    //         await axios.post('/api/payment/sendInfo', {
-    //             userAmount: `${giveName} ${give}`,
-    //             youReceive: `${giveName}`,
-    //             yourWallet: `${cryptoAddress}`,
-    //             userEmail: `${email}`,
-    //             date: `${date}`
-    //         })
-    //     }
-    //     sendInfo()
-    // }, [])
+    const H = ('0'+timeH).substring(-2)
+    const M = timeM < 10 ? ('0'+timeM).substring(-2) : timeM
+    const S = timeS < 10 ? ('0'+timeS).substring(-2) : timeS
 
     return (
         <div className={s.inner}>
@@ -67,14 +66,14 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                     <b className={s.textBlue}>ожидает оплаты</b>
                 </div>
                 <div className={s.desc}>
-                    Отправьте ровно <b>{giveAmount} {giveSymbol}</b>
+                    Отправьте ровно <b>{giveAmount} {giveSymbol.toUpperCase()} </b>
                     на адрес
-                    <b> {ownerAddress.address}</b>
+                    <b> {ownerAddress}</b>
                 </div>
                 <div className={s.qrcode}>
-                    <img src='/' alt="QR"/>
+                    <img src={QR} alt="QR"/>
                 </div>
-                <div className={s.timer}>{timeH}:{timeM}:{timeS}</div>
+                <div className={s.timer}>{H}:{M}:{S}</div>
                 <div className={s.timerInfo}>Осталось времени</div>
                 <div className={s.paymentType}>
                     <h5>Тип обмена: <b>Лучший курс</b></h5>

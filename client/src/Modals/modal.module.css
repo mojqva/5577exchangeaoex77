@@ -33,6 +33,11 @@
     text-align: left;
     color: #fff;
 }
+.popup .popupHeader h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 16px;
+}
 .popup .popupContainer {
     padding: 30px 20px 20px 20px;
     width: 380px;
@@ -91,24 +96,24 @@
 }
 .popup .lineButtons {
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 .popup .lineButtons .l {
-    float: left;
     font-size: 12px;
     line-height: 20px;
 }
 .popup .lineButtons .l a {
     color: #b7bbc9;
 }
-.popup .lineButtons .r {
-    float: right;
+.popup .lineButtons .l b {
+    color: #0facf3;
 }
 .popup .line .btn {
     height: 42px;
     line-height: 42px;
     font-size: 14px;
 }
-
 .btn {
     color: #fff;
     position: relative;
@@ -142,4 +147,33 @@
     -webkit-border-radius: 100px;
     margin-top: -1px;
     margin-bottom: 1px;
+}
+
+
+@media (max-width: 480px) {
+    .popup .in {
+        top: 10%;
+        left: 0;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0px;
+    }
+    .popup .popupHeader {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0px;
+    }
+    .popup .lineButtons .l {
+        margin-bottom: 20px;
+    }
+    .popup .lineButtons {
+        flex-wrap: wrap;
+    }
+    .popup .lineButtons .l, .popup .lineButtons .r {
+        width: 100%;
+        text-align: center;
+    }
 }

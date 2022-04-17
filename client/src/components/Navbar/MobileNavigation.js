@@ -6,12 +6,6 @@ import {Link} from 'react-router-dom'
 
 const MobileNavigation = ({open, toggleNav}) => {
 
-    // const hamburgerIcon = <VscMenu 
-    //                             className={s.Hamburger} 
-    //                             size='40px' 
-    //                             color='white'
-    //                             onClick={() => setOpen(!open)}
-    //                         />
     const closeIcon = <VscClose 
                             className={s.Hamburger} 
                             size='18px' 
@@ -28,13 +22,28 @@ const MobileNavigation = ({open, toggleNav}) => {
                             <Link to={'/ru/'}>Главная</Link>
                         </li> 
                         <li>
-                            <Link to={'/ru/'}>Риски</Link>
+                            <Link to={'/ru/booster'}>Скидки</Link>
                         </li> 
                         <li>
-                            <Link to={'/ru/'}>О нас</Link>
+                            <Link to={'/ru/blog'}>Блог</Link>
+                        </li> 
+                        <li>
+                            <Link to={'/ru/about'}>О сервисе</Link>
+                        </li> 
+                        <li>
+                            <Link to={'/ru/pages/help'}>Помощь</Link>
+                        </li> 
+                        <li>
+                            <Link to={'/ru/reviews'}>Отзывы</Link>
+                        </li> 
+                        <li>
+                            <Link to={'/ru/partners'}>Партнерам</Link>
+                        </li> 
+                        <li>
+                            <Link to={'/ru/pages/crypto-helper'}>Крипто-помощник</Link>
                         </li> 
                         <li className={s.last}>
-                            <Link  to={'/ru/'}>Поддержка</Link>
+                            <Link  to={'/ru/support'}>Тех.поддержка</Link>
                         </li> 
                     </ul>
                 </nav>

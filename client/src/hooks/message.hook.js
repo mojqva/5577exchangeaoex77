@@ -2,7 +2,7 @@ import { useCallback } from "react"
 
 
 export const useMessage = () => {
-return useCallback(text => {
-    console.log(text);
-}, [])
+    return useCallback(text => {
+        console.log(text);
+    }, [])
 }

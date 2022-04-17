@@ -14,7 +14,6 @@
     max-width: 1680px;
     width: 100%;
     min-width: 320px;
-    position: relative;
     margin: 0 auto;
 }
 .footer .row {
@@ -52,6 +51,22 @@
 .footer .row .titleSocial {
     padding-top: 20px;
 }
+.footer .agregators {
+    margin: 30px 0 0 0;
+    padding: 20px 0 15px 0;
+    background: #fafafc;
+}
+.footer .agregators a {
+    margin: 0 30px 0 0;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+}
+.footer .agregators a img {
+    filter: grayscale(100%) opacity(50%);
+    height: 100%!important;
+}
 
 @media (max-width: 340px) {
     .inner {
@@ -69,6 +84,9 @@
     }
     .footer .row4 {
         text-align: left;
+    }
+    .footer .agregators {
+        text-align: center;
     }
 }
 

@@ -5,7 +5,7 @@ import { useHttp } from '../hooks/http.hook';
 import { useMessage } from '../hooks/message.hook';
 import { AuthContext } from '../context/AuthContext';
 
-const ModalRegister = ({registerActive, setRegisterActive}) => {
+const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const {loading, request, error, clearError} = useHttp()
@@ -14,6 +14,7 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
     const [form, setForm] = useState({
         username: "", email: "", password: ""
     })
+
 
     useEffect(() => {
         message(error)
@@ -76,9 +77,7 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
             <div className={s.in}>
                 <div className={s.popupHeader}>
                     <h3>
-                        <span className={cn(s.flaticonSignup, s.icon)}>
-                            Регистрация
-                        </span>
+                        Регистрация
                     </h3>
                     <div className={cn(s.close, s.eas)} onClick={() => setRegisterActive(false)}>
                         <span className={s.flaticonClose}>X</span>
@@ -123,24 +122,9 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
                                 onChange={rePasswordHandler}
                             />
                         </div>
-                        <div className={cn(s.line, s.lineCpt)}>
-                            <div className={s.row}>
-                                <input
-                                    type='text' 
-                                    className={s.inp} 
-                                    name='code' 
-                                    placeholder='Код с картинки'
-                                    maxLength='8'
-                                    onChange={changeHandler}
-                                />
-                            </div>
-                            <div className={s.row}>
-                                <h4>CAPTCHA IS HERE</h4>
-                            </div>
-                        </div>
                         <div className={s.lineInfo}>
-                            Создавая аккаунт вы соглашаетесь с <a href='/#'>правилами обработки персональных данных</a> и
-                            <a href='/#'>правилами сервиса</a>
+                            Создавая аккаунт вы соглашаетесь с <a href='/#'> правилами обработки персональных данных </a> и
+                            <a href='/#'> правилами сервиса</a>
                         </div>
                         <div className={cn(s.line, s.lineButtons)}>
                             <div className={s.fl}>
@@ -155,7 +139,7 @@ const ModalRegister = ({registerActive, setRegisterActive}) => {
                             </div>
                             <div className={s.fl}>
                                 Есть аккаунт?
-                                <a>Войти</a> {'//Open sign-in modal'}
+                                <a onClick={switchModals}> Войти</a>
                             </div>
                         </div>
                     </form>

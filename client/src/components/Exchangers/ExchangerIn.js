@@ -5,20 +5,40 @@ import Dropdown from '../Dropdown/Dropdown'
 import {ReactComponent as Switch} from '../../img/switch.svg'
 import ratioPrice from '../../utils/ratio'
 
+const reserves = {
+    'btc': 21.35,
+    'eth': 615.81,
+    'ltc': 4001.29,
+    'xlm': 21.35,
+    'xtz': 11050.18,
+    'zec': 5665.62,
+    'trx': 242515.16,
+    'xmr': 615.81,
+    'doge': 187308.55,
+    'dash': 897.58,
+    'usdt': 554035.4,
+}
 
-const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency}) => {
+
+const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, setSelected}) => {
+    const reserve = Object.keys(reserves).find(item => selected.take.toLowerCase() === item)
+
     let giveItem = filteredApi? filteredApi.find(item => item.symbol.toLowerCase() === selected.give) : null
 
     let takeItem = filteredApi ? filteredApi.find(item => item.symbol.toLowerCase() === selected.take) : null
 
     const swapItems = () => {
         giveItem = [takeItem, takeItem = giveItem][0]
-        
-        selectCurrency(giveItem.symbol, true)
-        selectCurrency(takeItem.symbol, false)
+        setSelected({
+            give: giveItem.symbol.toLowerCase(),
+            take: takeItem.symbol.toLowerCase()
+        })
     }
 
     const ratio = ratioPrice(giveItem.current_price, takeItem.current_price)
+    const reverseRatio = ratioPrice(takeItem.current_price, giveItem.current_price)
+
+    const priceZero = ratio <= 0.0001
 
     return (
         <div className={s.exchangeLeftBorder}>
@@ -80,25 +100,35 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency}) 
                         <div className={s.rate}>
                             <div className={s.row}>
                                 Курс
-                                <b className={s.customCurrencyRate}>
-                                    1
-                                    <span>{giveItem.symbol.toUpperCase()}</span>
-                                    ~ {ratio}
-                                    <span>{takeItem.symbol.toUpperCase()}</span>
-                                </b>
+                                {
+                                    priceZero ?
+                                    <b className={s.customCurrencyRate}>
+                                        {reverseRatio}
+                                        <span>{giveItem.symbol.toUpperCase()}</span>
+                                        ~ 1
+                                        <span>{takeItem.symbol.toUpperCase()}</span>
+                                    </b>
+                                    : <b className={s.customCurrencyRate}>
+                                            1
+                                            <span>{giveItem.symbol.toUpperCase()}</span>
+                                            ~ {ratio}
+                                            <span>{takeItem.symbol.toUpperCase()}</span>
+                                        </b>
+                                }
+                                
                             </div>
                             <div className={s.row}>
                                 Резерв
                                 <b className={s.customCurrencyReserve}>
-                                    709.4
-                                    <span>ETH</span>
+                                    {reserves[reserve]}
+                                    <span>{selected.take.toUpperCase()}</span>
                                 </b>
                             </div>
                             <div className={s.row}>
                                 Последний обмен
                                 <b className={s.customCurrencyLastexchange}>
                                     18 мин
-                                    <span>назад</span>
+                                    <span> назад</span>
                                 </b>
                             </div>
                         </div>

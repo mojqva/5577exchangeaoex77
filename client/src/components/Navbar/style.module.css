@@ -109,8 +109,6 @@ ul li a {
 .mainNav {
     background: #2c414b;
     min-height: 80px;
-    display: flex;
-    justify-content: space-between;
 }
 .logo {
     float: left;
@@ -188,6 +186,7 @@ ul li a {
 .ul {
     list-style: none;
     display: flex;
+    justify-content: space-between;
 }
 .ul > * {
     vertical-align: middle;
@@ -211,9 +210,8 @@ ul li a {
     -o-transition: all ease-out .2s;
     transition: all ease-out .2s;
 }
-ul .last {
+.ul .last {
     margin-top: 18px;
-    align-self: flex-end;
     padding: 0;
 }
 .last a {
@@ -282,8 +280,7 @@ ul .last {
     padding: 16px 20px 16px 0;
     color: #fff;
     font-size: 11px;
-    text-align: right;
-    
+    text-align: right;  
 }
 .navButtonClose > * {
     vertical-align: middle
@@ -292,15 +289,17 @@ ul .last {
 @media (max-width: 320px) {
     .logo {
         width: 60%;
+        display: block;
     }
-    .navButton {
-        width: 25px;
-    }
+    /* .navButton {
+        margin-right: 10px;
+    } */
 }
 
 @media (max-width: 1024px) {
     .mainNav {
         height: 42px;
+        min-width: 100%;
     }
     .navButton {
         display: block;
@@ -315,6 +314,10 @@ ul .last {
     .nav {
         padding-left: 200px;
     }
+    
+}
+
+@media (max-width: 1320px) {
     .toNone {
         display: none;
     }

@@ -7,32 +7,35 @@ const NavLinks = () => {
     return (
         <>
         <ul className={s.ul}>
-            <li className={s.li}>
-                <Link to={'/ru/'}>Главная</Link>
-            </li> 
-            <li className={cn(s.li, s.toNone)}>
-                <Link to={'/ru/'}>Скидки</Link>
-            </li> 
-            <li className={cn(s.li, s.toNone)}>
-                <Link to={'/ru/'}>Блог</Link>
-            </li>
-            <li className={s.li}>
-                <Link to={'/ru/'}>О сервисе</Link>
-            </li> 
-            <li className={s.li}>
-                <Link to={'/ru/'}>Помощь</Link>
-            </li> 
-            <li className={cn(s.li, s.toNone)}>
-                <Link to={'/ru/'}>Отзывы</Link>
-            </li> 
-            <li className={s.li}>
-                <Link to={'/ru/'}>Партнерам</Link>
-            </li> 
-            <li className={s.li}>
-                <Link to={'/ru/'}>Крипто-помощник</Link>
-            </li> 
+            <div>
+                <li className={s.li}>
+                    <Link to={'/ru/'}>Главная</Link>
+                </li> 
+                <li className={cn(s.li, s.toNone)}>
+                    <Link to={'/ru/booster'}>Скидки</Link>
+                </li> 
+                <li className={cn(s.li, s.toNone)}>
+                    <Link to={'/ru/blog'}>Блог</Link>
+                </li>
+                <li className={s.li}>
+                    <Link to={'/ru/about'}>О сервисе</Link>
+                </li> 
+                <li className={s.li}>
+                    <Link to={'/ru/pages/help'}>Помощь</Link>
+                </li> 
+                <li className={cn(s.li, s.toNone)}>
+                    <Link to={'/ru/reviews'}>Отзывы</Link>
+                </li> 
+                <li className={s.li}>
+                    <Link to={'/ru/partners'}>Партнерам</Link>
+                </li> 
+                <li className={s.li}>
+                    <Link to={'/ru/pages/crypto-helper'}>Крипто-помощник</Link>
+                </li> 
+            </div>
+            
             <li className={cn(s.li, s.last)}>
-                <Link  to={'/ru/'}>Тех.поддержка</Link>
+                <Link  to={'/ru/support'}>Тех.поддержка</Link>
             </li> 
         </ul>
         </>

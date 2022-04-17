@@ -26,8 +26,8 @@ router.post(
     '/sendInfo',
     async (req,res) => {
         try {
-            const {userAmount, youReceive, yourWallet, userEmail, date} = req.body
-            const payment = new Payment({userAmount, youReceive, yourWallet, userEmail, date})
+            const {zayavkaNa, otdaet, naKoschelek, userEmail, date} = req.body
+            const payment = new Payment({zayavkaNa, otdaet, naKoschelek, userEmail, date})
 
             await payment.save()
             res.status(201).json({ message: 'Заявка отправлена'})

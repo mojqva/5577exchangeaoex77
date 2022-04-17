@@ -59,6 +59,8 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const takeName = takeItem.name
     const takeImg = takeItem.image
     const takeSymbol = takeItem.symbol
+    
+    const currDate = Date.parse(new Date()) + 100000
 
   return (
     <div className={s.exchangeConfirmation}>
@@ -67,7 +69,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
             от
             <b> {day} {month} {year}</b>
         </h3>
-        Для завершения необходимо оплатить <b>{form.give} {giveSymbol}</b>
+        Для завершения необходимо оплатить <b>{form.give} {giveSymbol.toUpperCase()} </b>
         в платежной системе <b>{giveName}</b>
         <div className={s.warning}>
             <b className={s.textBlue}>Внимание:</b> заявка активна <b>120 минут </b>, после чего она будет отменена
@@ -114,9 +116,10 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 takeImg: takeImg,
                 hash: hash,
                 userAddress: form.address,
+                currDate: currDate
             }}
             className={cn(s.btn, s.green)} 
-            onClick={() => auth.pay()}
+            onClick={() => auth.isPayment = true}
         >
             Оплатить
         </Link>

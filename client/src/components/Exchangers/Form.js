@@ -3,13 +3,29 @@ import s from './style.module.css'
 import cn from 'classnames'
 import { Link } from 'react-router-dom'
 
+const reserves = {
+    'btc': 21.35,
+    'eth': 615.81,
+    'ltc': 4001.29,
+    'xlm': 21.35,
+    'xtz': 11050.18,
+    'zec': 5665.62,
+    'trx': 242515.16,
+    'xmr': 615.81,
+    'doge': 187308.55,
+    'dash': 897.58,
+    'usdt': 554035.4,
+}
+
 const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, handleInputChange, handleOutputChange}) => {
     const emailValidation = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    const reserve = Object.keys(reserves).find(item => takeItem.symbol.toLowerCase() === item)
 
     const errorsHandler = () => {
         const amountInputEmpty = form.give.length === 0 || form.take.length === 0
         const emailInputWrong = form.email.length === 0 || !emailValidation.test(String(form.email).toLowerCase())
         const userAddressWrong = form.address.length < 26 || form.address.length > 35
+        const reserveOut = form.take >= reserves[reserve]
         
         if(amountInputEmpty) {
             return 'inputs'
@@ -19,6 +35,9 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
         }
         if(userAddressWrong) {
             return 'address'
+        }
+        if(reserveOut) {
+            return 'reserve'
         }
         return null
     }
@@ -32,7 +51,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
             console.log(messages[handlerResult]);
         }
     }
-    
+
     return (
         <form className={s.formExchange}>
             <div className={s.lines}>
@@ -42,10 +61,10 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                         <label htmlFor='giveCoins'>Отдаете <span>{giveItem.symbol.toUpperCase()}</span></label>
                     </div>
                     <div className={s.i}>
-                        Min: <span>0.3</span> Max: <span>6.5</span>
-                        <br/>
+                        {/* Min: <span>0.3</span> Max: <span>6.5</span>
+                        <br/> */}
                         С учетом скидки партнера: 
-                        <span>2</span>%
+                        <span> 3</span>%
                     </div>
                 </div>
                 <div className={s.line}>
@@ -54,7 +73,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                         <label htmlFor='takeCoins'>Получаете <span>{takeItem.symbol.toUpperCase()}</span></label>
                     </div>
                     <div className={s.i}>
-                        Резерв: <span>706.52</span>
+                        Резерв: <span>{reserves[reserve]}</span>
                     </div>
                 </div>
                 <div className={cn(s.line, s.lineFull)}>

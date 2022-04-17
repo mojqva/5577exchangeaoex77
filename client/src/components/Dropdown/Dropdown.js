@@ -11,19 +11,10 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
 
     const [filter, setFilter] = useState('')
 
-    const sameChange = () => {
-        if(selected.give == selected.take) {
-            selectCurrency('btc', false)
-        }
-    }
-
     const selectItem = (item) => {
         selectCurrency(item.symbol, give)
         setIsListOpen(false)
     }
-
-    console.log('new selected.give',selected.give);
-    console.log('new selected.take',selected.take);
     return (
         <div className={s.customCurrencyDropdown}>
             {
@@ -76,7 +67,7 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                                         <span className={s.currency}>{item.symbol}</span>
                                         {
                                             !give && (
-                                                <span>{item.current_price}</span>
+                                                <span className={s.rate}>{item.current_price}</span>
                                             )
                                         }
                                     </span>

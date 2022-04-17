@@ -7,13 +7,14 @@ const mongooseAdminBro = require('@admin-bro/mongoose')
 const expressAdminBro = require('@admin-bro/express')
 const Wallet = require('./models/Wallet')
 const Payment = require('./models/Payment')
+const User = require('./models/User')
 
 const app = express()
 
 //Admin Bro
 AdminBro.registerAdapter(mongooseAdminBro)
 const AdminBroOptions = {
-    resources: [Wallet, Payment],
+    resources: [Wallet, Payment, User],
 }
 
 const adminBro = new AdminBro(AdminBroOptions)

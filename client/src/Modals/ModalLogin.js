@@ -5,7 +5,7 @@ import { useHttp } from '../hooks/http.hook';
 import { useMessage } from '../hooks/message.hook';
 import { AuthContext } from '../context/AuthContext';
 
-const ModalLogin = ({loginActive, setLoginActive}) => {
+const ModalLogin = ({loginActive, setLoginActive, switchModals}) => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const {loading, request, error, clearError} = useHttp()
@@ -37,9 +37,7 @@ const ModalLogin = ({loginActive, setLoginActive}) => {
             <div className={s.in}>
                 <div className={s.popupHeader}>
                     <h3>
-                        <span className={cn(s.flaticonSignin, s.icon)}>
-                            Вход в AvanChange
-                        </span>
+                        Вход в AvanChange
                     </h3>
                     <div className={cn(s.close, s.eas)} onClick={() => setLoginActive(false)}>
                         <span className={s.flaticonClose}>X</span>
@@ -69,9 +67,7 @@ const ModalLogin = ({loginActive, setLoginActive}) => {
 
                         <div className={cn(s.line, s.lineButtons)}>
                             <div className={s.l}>
-                                <a href='#'>Забыли пароль?</a>
-                                <br/>
-                                <a href='#'><b>Создать аккаунт</b></a>
+                                <a onClick={switchModals}><b>Создать аккаунт</b></a>
                             </div>
                             <div className={s.r}>
                                 <button 
@@ -80,7 +76,7 @@ const ModalLogin = ({loginActive, setLoginActive}) => {
                                     disabled={loading}
                                 >
                                     Войти
-                                </button> {'now is a register & login button for test'}
+                                </button>
                             </div>
                         </div>
                     </form>

@@ -29,12 +29,18 @@ const walletsTemplate = [
         address: '3333',
         image: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731"
     }, 
+    {
+        name: 'DOGE',
+        symbol: 'DOGE',
+        address: '4444',
+        image: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731"
+    }
 ]
 
 const HeaderMiddle = () => {
     const [coins, setCoins] = useState(walletsTemplate)
     const [api, setApi] = useState() 
-    const cryptoNames = []
+    const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20', 'usdt']
 
     let isCancel = false
 
@@ -78,10 +84,9 @@ const HeaderMiddle = () => {
     }, [])
 
 
-    coins.forEach(item => cryptoNames.push(item.symbol.toLowerCase()))
+    // coins.forEach(item => cryptoNames.push(item.symbol.toLowerCase()))
 
-    let filteredApi = coins && api ? api.filter(item => cryptoNames.includes(item.symbol)): []
-    console.log('Filtered', filteredApi)
+    let filteredApi = api ? api.filter(item => cryptoNames.includes(item.symbol)): []
     
     const [selected, setSelected] = useState({
         give: 'btc',
@@ -170,6 +175,7 @@ const HeaderMiddle = () => {
                             selectCurrency={selectCurrency}
                             filteredApi={filteredApi}
                             walletsTemplate={walletsTemplate}
+                            setSelected={setSelected}
                         />
                         <ExchangerOut
                             selected={selected}
