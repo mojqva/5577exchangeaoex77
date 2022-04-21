@@ -12,7 +12,6 @@ import PartnersPage from './pages/PartnersPage'
 import ReviewsPage from './pages/ReviewsPage'
 import TermsPage from './pages/TermsPage'
 import PaymentPage from './pages/PaymentPage'
-import AdminPage from './pages/AdminPage'
 
 export const useRoutes = (isAuthenticated, isPayment) => {
     if (isAuthenticated) {

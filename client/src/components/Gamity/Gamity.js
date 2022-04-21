@@ -13,7 +13,7 @@ const Gamity = () => {
                     Розыгрыш из <span>метавселенной </span>
                 </h3>
                 <div className={s.image}>
-                    <a className={s.eas}>
+                    <a href='https://avanchange.com/ru/contest/4/' target={'_blank'} rel='noreferrer' className={s.eas}>
                         <img src={Prize1} alt ='Party'></img>
                     </a>
                 </div>
@@ -28,8 +28,8 @@ const Gamity = () => {
         <div className={s.fifty}>
             <div className={s.in}>
                 <div className={s.image}>
-                    <a className={s.eas}>
-                    <img src={Prize2} alt ='Party'></img>
+                    <a href='https://avanchange.com/ru/weekly/' target={'_blank'} rel='noreferrer' className={s.eas}>
+                        <img src={Prize2} alt ='Party'></img>
                     </a>
                 </div>
                 <h3>

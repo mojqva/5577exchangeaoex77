@@ -20,11 +20,11 @@ const SupportPage = () => {
                         </ul>
                         <div className={s.supportsocTitle}>Вы также можете с нами связаться через:</div>
                         <div className={s.supportSoc}>
-                            <a href="https://t.me/avanchange" target="_blank" rel="nofollow" className={s.eas}>
+                            <a href="https://t.me/avanchange" target="_blank" rel="noreferrer" className={s.eas}>
                                 <b><FaTelegramPlane size={25} color='#0facf3'/></b>
                                 avanchange
                             </a>
-                            <a href="https://www.instagram.com/avanchange/" target="_blank" rel="nofollow" className={s.eas}>
+                            <a href="https://www.instagram.com/avanchange/" target="_blank" rel="noreferrer" className={s.eas}>
                                 <b><FaInstagram size={25} color='#bc2a8d'/></b>
                                 avanchange
                             </a>

@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import s from '../../pages/account.module.css'
 import cn from 'classnames'
 import { Link } from 'react-router-dom'

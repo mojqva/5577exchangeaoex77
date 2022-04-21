@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 import Dropdown from '../Dropdown/Dropdown'
@@ -144,7 +143,7 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, s
                                     Комиссия сервиса 
                                     <b> 0.4</b>
                                     %. Обновление биржевого курса на основе
-                                    <a href='https://coinmarketcap.com/' target='_blank'> CoinMarketCap</a>
+                                    <a href='https://coinmarketcap.com/' target='_blank' rel='noreferrer'> CoinMarketCap</a>
                                 </li>
                                 <li className={s.termsRateType}>
                                     Курс корректируется каждые  

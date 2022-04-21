@@ -1,5 +1,4 @@
 import {useContext} from 'react'
-import { useCountdown } from '../../hooks/countdown.hook'
 import { Link } from 'react-router-dom'
 import s from './style.module.css'
 import cn from 'classnames'
@@ -16,12 +15,6 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const auth = useContext(AuthContext)
     const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
 
-    // const [hoursTimer, minutesTimer, secondsTimer] = useCountdown()
-
-    const startPayment = () => {
-        
-        
-    }
 
     const date = new Date(Date.now()).toLocaleString('ru', {
         year: 'numeric',
@@ -114,7 +107,6 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 takeSymbol: takeSymbol,
                 giveImg: giveImg,
                 takeImg: takeImg,
-                hash: hash,
                 userAddress: form.address,
                 currDate: currDate,
                 green: green,
@@ -125,7 +117,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
         >
             Оплатить
         </Link>
-        <a className={cn(s.btn, s.ghost)} onClick={stepBack}>Отменить</a>
+        <Link to={'/'} className={cn(s.btn, s.ghost)} onClick={stepBack}>Отменить</Link>
     </div>
   )
 }

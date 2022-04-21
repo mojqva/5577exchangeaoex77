@@ -59,11 +59,11 @@ const BoosterPage = () => {
                             <div className={s.l}>
                                 <div className={s.question}>
                                     <h5><span>Для чего нужны баллы?</span></h5>
-                                    <div className={s.answer}>В рамках нашей <a href="/ru/partners/" target="_blank">программы лояльности</a>, после каждого обмена вы получаете баллы в эквиваленте 5% от суммы обмена по курсу USD. Например, при обмене 1 000$ вы получаете 50 бонусных баллов. Выполняя эти задания, вы можете получать дополнительные баллы, которые суммируются для вашего аккаунта. Чем больше у вас баллов - тем выше ваша скидка при обмене.</div>
+                                    <div className={s.answer}>В рамках нашей <a href="/ru/partners/" target="_blank" rel='noreferrer'>программы лояльности</a>, после каждого обмена вы получаете баллы в эквиваленте 5% от суммы обмена по курсу USD. Например, при обмене 1 000$ вы получаете 50 бонусных баллов. Выполняя эти задания, вы можете получать дополнительные баллы, которые суммируются для вашего аккаунта. Чем больше у вас баллов - тем выше ваша скидка при обмене.</div>
                                 </div>
                                 <div className={s.question}>
                                     <h5><span>Я выполнил все задания, это все?</span></h5>
-                                    <div className={s.answer}>Мы регулярно будем добавлять новые задания, чтобы дать возможность зарабатывать больше баллов. Следите за новостями на нашем <a href="https://t.me/avanchange" target="_blank">Telegram</a> канале и <a href="/ru/blog/">нашем блоге</a>.</div>
+                                    <div className={s.answer}>Мы регулярно будем добавлять новые задания, чтобы дать возможность зарабатывать больше баллов. Следите за новостями на нашем <a href="https://t.me/avanchange" target="_blank" rel='noreferrer'>Telegram</a> канале и <a href="/ru/blog/">нашем блоге</a>.</div>
                                 </div>
                                 <div className={s.question}>
                                     <h5><span>Для чего нужно задание с привязкой Telegram аккаунта?</span></h5>
@@ -71,18 +71,18 @@ const BoosterPage = () => {
                                 </div>
                                 <div className={s.question}>
                                     <h5><span>Не опасно ли привязывать Telegram?</span></h5>
-                                    <div className={s.answer}>Конечно же нет! Мы не получаем никакого доступа к вашему аккаунту. Авторизация происходит на стороне <b><a href="https://telegram.org" target="_blank">telegram.org</a></b> через открытый <a href="https://core.telegram.org/api/auth" target="_blank">Telegram User Authorization API</a>. После авторизации, Telegram передает нашему сайту, по защищенному каналу, только ваши публичные данные. А именно ваш <b>`user_name`</b> и <b>`user_id`</b> с хешем, для проверки подлинности.</div>
+                                    <div className={s.answer}>Конечно же нет! Мы не получаем никакого доступа к вашему аккаунту. Авторизация происходит на стороне <b><a href="https://telegram.org" target="_blank" rel='noreferrer'>telegram.org</a></b> через открытый <a href="https://core.telegram.org/api/auth" target="_blank" rel='noreferrer'>Telegram User Authorization API</a>. После авторизации, Telegram передает нашему сайту, по защищенному каналу, только ваши публичные данные. А именно ваш <b>`user_name`</b> и <b>`user_id`</b> с хешем, для проверки подлинности.</div>
                                 </div>
                             </div>
                                 
                             <div className={s.r}>
                                 <div className={s.question}>
                                     <h5><span>Баллы начисляются навсегда или временно?</span></h5>
-                                    <div className={s.answer}>Все заработанные баллы начисляются безсрочно, как и в случае с баллами от нашей <a href="/ru/partners/" target="_blank">программы лояльности</a>. Задание выполняете 1 раз, а баллы получаете навсегда.</div>
+                                    <div className={s.answer}>Все заработанные баллы начисляются безсрочно, как и в случае с баллами от нашей <a href="/ru/partners/" target="_blank" rel='noreferrer'>программы лояльности</a>. Задание выполняете 1 раз, а баллы получаете навсегда.</div>
                                 </div>
                                 <div className={s.question}>
                                     <h5><span>Сколько баллов нужно, чтобы получить скидку?</span></h5>
-                                    <div className={s.answer}>Скидка формируется исходя из накопленных баллов, чем больше баллов - тем выше скидка. Подробнее на странице <a href="/ru/partners/" target="_blank">программы лояльности</a></div>
+                                    <div className={s.answer}>Скидка формируется исходя из накопленных баллов, чем больше баллов - тем выше скидка. Подробнее на странице <a href="/ru/partners/" target="_blank" rel='noreferrer'>программы лояльности</a></div>
                                 </div>
                                 <div className={s.question}>
                                     <h5><span>Баллы начислились, но скидка не обновляется</span></h5>

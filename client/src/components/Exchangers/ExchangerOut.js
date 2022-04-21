@@ -21,7 +21,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                     const response = await axios.get('/api/payment/wallets')
                     const data = await response.data
                     const ownerAddress = data && data.find(item => item.symbol.toLowerCase() === giveItem.symbol)
-                    setWallet(ownerAddress == undefined ? '' : ownerAddress.address)
+                    setWallet(ownerAddress === undefined ? '' : ownerAddress.address)
 
                     return ownerAddress
                 }
@@ -36,7 +36,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                     const response = await axios.get('/api/payment/wallets')
                     const data = await response.data
                     const ownerQr = data && data.find(item => item.symbol.toLowerCase() === giveItem.symbol)
-                    setQr(ownerQr.qr == undefined ? '' : ownerQr.qr)
+                    setQr(ownerQr.qr === undefined ? '' : ownerQr.qr)
 
                     return ownerQr
                 }

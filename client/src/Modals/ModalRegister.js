@@ -25,15 +25,17 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
+        errorsHandler()
     }
 
     const rePasswordHandler = event => {
         setRePassword(event.target.value)
+        errorsHandler()
     }
 
     const registerHandler = async () => {
         try {
-            const data = await request('/api/auth/register', 'POST', {...form, formErrors: formErrors})
+            await request('/api/auth/register', 'POST', {...form, formErrors: formErrors})
             const loginAfterRegister = await request('/api/auth/login', 'POST', {...form})
             auth.login(loginAfterRegister.token, loginAfterRegister.userId)
             if(error == null) {
@@ -68,10 +70,6 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
             registerHandler()
         }
     }
-
-    useEffect(() => {
-        errorsHandler()
-    }, [form, rePassword])
 
     return (
         <>
@@ -141,7 +139,7 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
                             </div>
                             <div className={s.fl}>
                                 Есть аккаунт?
-                                <a onClick={switchModals}> Войти</a>
+                                <a href='/' onClick={switchModals}> Войти</a>
                             </div>
                         </div>
                     </form>

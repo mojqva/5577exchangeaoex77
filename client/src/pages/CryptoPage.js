@@ -1,7 +1,6 @@
 import s from './crypto.module.css'
 import cn from 'classnames'
 import {ReactComponent as SvgHelper} from '../img/helper.svg'
-import AskUs from '../components/AskUs/AskUs'
 
 const CryptoPage = () => {
     return (
@@ -33,7 +32,7 @@ const CryptoPage = () => {
                         <li>Точный расчет необходимой комиссии для прихода средств в заданное Вами время <strong>(бесплатно)</strong></li>
                         <li>Индивидуальные консультации по криптовалютной тематике, помощь при регистрации и идентификации, помощь по трейдингу на биржах и иных площадках.<br/><strong>Участникам бонусной программы лояльности - бесплатно!</strong></li>
                     </ul>
-                    <p>Подробнее в Telegram - <a href="https://t.me/avangardpro" target="_blank">@avangardpro</a></p>
+                    <p>Подробнее в Telegram - <a href="https://t.me/avangardpro" target="_blank" rel='noreferrer'>@avangardpro</a></p>
                 </div>  
             </div>
         </div>

@@ -1,7 +1,6 @@
 import React from 'react'
-import NavLinks from './NavLinks'
 import s from './style.module.css'
-import {VscMenu , VscClose} from 'react-icons/vsc'
+import {VscClose} from 'react-icons/vsc'
 import {Link} from 'react-router-dom'
 
 const MobileNavigation = ({open, toggleNav}) => {

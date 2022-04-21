@@ -1,10 +1,8 @@
-import { useEffect, useContext, useState } from 'react' 
-import { AuthContext } from "../context/AuthContext"
+import { useState } from 'react' 
 import { Link } from 'react-router-dom'
 import s from './account.module.css'
 import cn from 'classnames'
 import Partners from '../components/AccountPartners/Partners'
-const axios = require('axios')
 
 
 const AccountPage = () => {

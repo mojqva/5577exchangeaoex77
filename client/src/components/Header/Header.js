@@ -1,13 +1,14 @@
 import s from './style.module.css'
 import cn from 'classnames'
 import { useState, useContext } from 'react';
+import {Link} from 'react-router-dom'
 import ModalLogin from '../../Modals/ModalLogin'
 import { AuthContext } from '../../context/AuthContext';
 import ModalRegister from '../../Modals/ModalRegister';
 import {FaTelegramPlane} from 'react-icons/fa'
 import {FiMail} from 'react-icons/fi'
 import {FiUser} from 'react-icons/fi'
-// import {FaTelegramPlane} from 'react-icons/fa'
+import {ImSwitch} from 'react-icons/im'
 import Navbar from '../Navbar/Navbar';
 
 const Header = ({isAuth}) => {
@@ -27,15 +28,15 @@ const Header = ({isAuth}) => {
             <div className={s.headerTop}>
                 <div className={s.inner}>
                     <div className={s.left}>
-                        <a className={cn(s.eas, s.lang)}>RU</a>
-                        <a className={cn(s.eas, s.headerTelegram)}>
+                        <Link to={'/ru/'} target={'_blank'} rel={'noreferrer'} className={cn(s.eas, s.lang)}>RU</Link>
+                        <a href="https://t.me/avanchange_bot" rel="noreferrer" target="_blank" className={cn(s.eas, s.headerTelegram)}>
                             <FaTelegramPlane color='#0facf3' size={12}/>
                             <span> Telegram Бот v1.3</span>
                         </a>
-                        <a className={cn(s.eas, s.headerEmail)}>
+                        <Link to={'/support'} target={'_blank'} rel={'noreferrer'} className={cn(s.eas, s.headerEmail)}>
                             <FiMail size={12} color='#3dd94b'/>
                             <span> info@avanchange.com</span>
-                        </a>
+                        </Link>
                         <span className={s.worktime}>
                             <span>
                                 Сервис работает <b>круглосуточно</b>
@@ -48,16 +49,18 @@ const Header = ({isAuth}) => {
                             isAuth ?
                             <>
                                 <FiUser size={14} color='#ff7d00'/>
-                                <a className={cn(s.eas, s.url)} href="/account">Мой аккаунт</a>
-                                <a className={s.logout} href="/">
-                                    <span className={s.flaticonLogout} onClick={logOut}> O</span>
-                                </a>
+                                <Link to={'/account'} className={cn(s.eas, s.url)}> Мой аккаунт </Link>
+                                <Link to={'/'} className={s.logout}>
+                                    <span className={s.flaticonLogout} onClick={logOut}>
+                                        <ImSwitch size={12} color='#ff7d00'/>
+                                    </span>
+                                </Link>
                             </> :
                             <>
                                 <FiUser size={14} color='#ff7d00'/>
-                                <a className={s.eas} onClick={() => setLoginModalActive(true)}> Вход </a>
+                                <span className={s.eas} onClick={() => setLoginModalActive(true)}> Вход </span>
                                 /
-                                <a className={s.eas} onClick={() => setRegisterModalActive(true)}> Регистрация</a>
+                                <span className={s.eas} onClick={() => setRegisterModalActive(true)}> Регистрация</span>
                             </>
 
                         }

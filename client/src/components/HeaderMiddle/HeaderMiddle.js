@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import Bestchanger from '../Bestchanger/Bestchanger'
 import Gamity from '../Gamity/Gamity'
 import s from './middle.module.css'
-import TestA from '../Test/TestA'
-import TestB from '../Test/TestB'
 import ExchangerIn from "../Exchangers/ExchangerIn";
 import ExchangerOut from "../Exchangers/ExchangerOut";
 import Telegram from "../Telegram/Telegram";
@@ -39,7 +37,7 @@ const walletsTemplate = [
 ]
 
 const HeaderMiddle = () => {
-    const [coins, setCoins] = useState(walletsTemplate)
+    const coins = walletsTemplate
     const [api, setApi] = useState([]) 
     const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20']
     const cryptoUsdt = ['usdt']
@@ -57,14 +55,6 @@ const HeaderMiddle = () => {
     trc.id = 'trc20'
     
 
-    // if(trc != undefined && erc != undefined) {
-    //     erc.name = 'USDT ERC20'
-    //     erc.key = 'erc20'
-    //     trc.name = 'USDT TRC20'
-    //     trc.key = 'trc20'
-    // }
-    
-
     const [green, setGreen] = useState({
         fix: false,
         best: true
@@ -80,10 +70,8 @@ const HeaderMiddle = () => {
         }))
     }
 
-    let isCancel = false
-
     useEffect(() => {
-
+        let isCancel = false
         const getCryptoApi = async () => {
             try {
                 if(!isCancel) {

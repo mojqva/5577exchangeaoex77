@@ -1,6 +1,5 @@
 import BlogNews from '../components/BlogNews/BlogNews';
 import s from './blog.module.css'
-import findImg from '../utils/img';
 import One from '../img/blog/1.jpg'
 import Two from '../img/blog/2.jpg'
 import Three from '../img/blog/3.jpg'
@@ -21,7 +20,6 @@ import Seventeen from '../img/blog/17.jpg'
 import Eighteen from '../img/blog/18.jpg'
 
 const BlogPage = () => {
-    const {First} = findImg()
     return (
         <div className={s.static}>
             <div className={s.inner}>

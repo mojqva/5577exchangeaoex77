@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Review from '../components/Review/Review';
 import findImg from '../utils/img';
 import { useMessage } from '../hooks/message.hook';
-import { ToastContainer } from 'react-toastify';
 import { AiFillStar} from 'react-icons/ai'
 
 const ReviewsPage = () => {

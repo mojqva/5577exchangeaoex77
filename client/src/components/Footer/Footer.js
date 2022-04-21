@@ -63,7 +63,7 @@ const Footer = () => {
                             <Link to={'/ru/partners'}>Регулярный розыгрыш</Link>
                         </li>
                         <li>
-                            <a href="https://api.avanchange.com/" target="_blank">Документация API</a>
+                            <a href="https://api.avanchange.com/" target="_blank" rel='noreferrer'>Документация API</a>
                         </li>
                     </ul>
                 </div>
@@ -79,7 +79,7 @@ const Footer = () => {
                             <Link to={'/ru/booster'}>Правила сервиса</Link>
                         </li>
                         <li>
-                            <a href="https://api.avanchange.com/" target="_blank">Источник происхождения средств</a>
+                            <a href="https://api.avanchange.com/" target="_blank" rel='noreferrer'>Источник происхождения средств</a>
                         </li>
                     </ul>
 
@@ -88,19 +88,19 @@ const Footer = () => {
                     </div>
                     <ul className={s.social}>
                         <li>
-                            <a href="https://t.me/avanchange_bot" rel="nofollow" target="_blank" class="eas">
+                            <a href="https://t.me/avanchange_bot" rel="noreferrer" target="_blank" class="eas">
                                 <FaTelegramPlane color='#0facf3' size={15}/>
                                 <b> Telegram (Бот)</b>
                             </a>
                         </li>
                         <li>
-                            <a href="https://t.me/avanchange" rel="nofollow" target="_blank" class="eas">
+                            <a href="https://t.me/avanchange" rel="noreferrer" target="_blank" class="eas">
                                 <FaTelegramPlane color='#0facf3' size={15}/>
                                 <b> Telegram (Канал)</b>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/avanchange/" rel="nofollow" target="_blank" class="eas">
+                            <a href="https://www.instagram.com/avanchange/" rel='noreferrer' target="_blank" class="eas">
                                 <FaInstagram size={15} color='#bc2a8d'/>
                                 <b> Instagram</b>
                             </a>

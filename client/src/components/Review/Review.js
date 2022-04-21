@@ -1,6 +1,5 @@
 import React from 'react'
 import s from '../../pages/reviews.module.css'
-import Ghost from '../../img/ghost.png'
 import {BiGhost} from 'react-icons/bi'
 import { AiFillStar} from 'react-icons/ai'
 

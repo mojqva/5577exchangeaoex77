@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useContext, useEffect, useState} from "react";
+import { useContext, useEffect} from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useCountdown } from "../hooks/countdown.hook";
 import PaymentInfo from "../components/Payment/PaymentInfo";
@@ -9,9 +9,7 @@ import s from './payment.module.css'
 
 const PaymentPage = () => {
     const location = useLocation()
-    const {giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, hash, ownerAddress, day, month, year, minutes, hour, currDate, green, qr} = location.state || {}
-
-    // const distance = new Date().getTime() - (new Date().getTime() + 100000)
+    const {giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, day, month, year, minutes, hour, currDate, green, qr} = location.state || {}
 
     const auth = useContext(AuthContext)
 

@@ -70,7 +70,7 @@ const ModalLogin = ({loginActive, setLoginActive, switchModals}) => {
 
                         <div className={cn(s.line, s.lineButtons)}>
                             <div className={s.l}>
-                                <a onClick={switchModals}><b>Создать аккаунт</b></a>
+                                <a href='/' onClick={switchModals}><b>Создать аккаунт</b></a>
                             </div>
                             <div className={s.r}>
                                 <button 
