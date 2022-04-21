@@ -30,7 +30,7 @@ app.use(express.json({ extended: true }))
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/payment', require('./routes/payment.routes'))
 
-const PORT = config.get('port') || 5000
+const PORT = process.env.PORT || 5000
 
 if(process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
