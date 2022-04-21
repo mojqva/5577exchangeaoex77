@@ -16,8 +16,12 @@
     min-width: 320px;
     margin: 0 auto;
 }
+.footer > .inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .footer .row {
-    float: left;
     width: 25%;
     color: #9facbd;
     font-size: 14px;
@@ -53,6 +57,7 @@
 }
 .footer .agregators {
     margin: 30px 0 0 0;
+    height: 100px;
     padding: 20px 0 15px 0;
     background: #fafafc;
 }

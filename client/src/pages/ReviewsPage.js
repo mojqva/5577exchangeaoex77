@@ -3,9 +3,13 @@ import cn from 'classnames'
 import { Link } from 'react-router-dom';
 import Review from '../components/Review/Review';
 import findImg from '../utils/img';
+import { useMessage } from '../hooks/message.hook';
+import { ToastContainer } from 'react-toastify';
+import { AiFillStar} from 'react-icons/ai'
 
 const ReviewsPage = () => {
     const {Best, Summo, Kurs, Pro, Glazok, Top, Ex, Mmgp, Talk, Pilot, Wot} = findImg()
+    const message = useMessage()
     return (
         <>
         <div className={cn(s.static, s.reviews)}>
@@ -274,11 +278,11 @@ const ReviewsPage = () => {
                             5
                         </div>
                         <div className={s.s}>
-                            <span className={s.flaticonStar1}>&#9734;</span>
-                            <span className={s.flaticonStar1}>&#9734;</span>
-                            <span className={s.flaticonStar1}>&#9734;</span>
-                            <span className={s.flaticonStar1}>&#9734;</span>
-                            <span className={s.flaticonStar1}>&#9734;</span>
+                            <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                            <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                            <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                            <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                            <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
                         </div>
                         <div className={s.o}>
                             На основе 3918 отзывов
@@ -297,15 +301,8 @@ const ReviewsPage = () => {
                                 <textarea name='message' className={s.textarea} placeholder='Текст отзыва'></textarea>
                             </div>
                             <div className={s.line}>
-                                <div className={s.rate} id={'review-rating'}>
-                                    <span className={cn(s.star, s.flaticonStar0)}>&#9734;</span>
-                                    <span className={cn(s.star, s.flaticonStar0)}>&#9734;</span>
-                                    <span className={cn(s.star, s.flaticonStar0)}>&#9734;</span>
-                                    <span className={cn(s.star, s.flaticonStar0)}>&#9734;</span>
-                                    <span className={cn(s.star, s.flaticonStar0)}>&#9734;</span>
-                                </div>
                                 <div className={s.button}>
-                                    <button className={s.btn}>Написать</button>
+                                    <button className={s.btn} type='button' onClick={() => message('Не удалось отправить отзыв, попробуйте позже')}>Написать</button>
                                 </div>
                             </div>
                         </form>

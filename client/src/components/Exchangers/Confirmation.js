@@ -6,7 +6,7 @@ import cn from 'classnames'
 import ratioPrice from '../../utils/ratio'
 import { AuthContext } from "../../context/AuthContext"
 
-const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerAddress}) => {
+const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerAddress, green, qr}) => {
     const hashes = [
         '6234518dfc5c9374d6ec5e3b', 
         '623464181c1740bba9ca83fa',
@@ -60,7 +60,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const takeImg = takeItem.image
     const takeSymbol = takeItem.symbol
     
-    const currDate = Date.parse(new Date()) + 100000
+    const currDate = Date.parse(new Date()) + 1200000
 
   return (
     <div className={s.exchangeConfirmation}>
@@ -116,7 +116,9 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 takeImg: takeImg,
                 hash: hash,
                 userAddress: form.address,
-                currDate: currDate
+                currDate: currDate,
+                green: green,
+                qr
             }}
             className={cn(s.btn, s.green)} 
             onClick={() => auth.isPayment = true}

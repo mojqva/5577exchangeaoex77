@@ -4,6 +4,7 @@ import s from './register.module.css'
 import { useHttp } from '../hooks/http.hook';
 import { useMessage } from '../hooks/message.hook';
 import { AuthContext } from '../context/AuthContext';
+import { ToastContainer} from 'react-toastify'
 
 const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
     const auth = useContext(AuthContext)
@@ -62,7 +63,7 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
 
     const toContin = () => {
         if(formErrors.length !== 0) {
-            console.log(formErrors);
+            message(formErrors)
         } else {
             registerHandler()
         }
@@ -73,6 +74,7 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
     }, [form, rePassword])
 
     return (
+        <>
         <div className={registerActive ? cn(s.popup, s.active): s.popup}>
             <div className={s.in}>
                 <div className={s.popupHeader}>
@@ -145,7 +147,9 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div>   
+        <ToastContainer/>    
+        </>
     )
 }
 

@@ -9,56 +9,22 @@ import s from './payment.module.css'
 
 const PaymentPage = () => {
     const location = useLocation()
-    const {giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, hash, ownerAddress, day, month, year, minutes, hour, currDate} = location.state || {}
-    const storageName = hash
+    const {giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, hash, ownerAddress, day, month, year, minutes, hour, currDate, green, qr} = location.state || {}
 
-    const [state, setState] = useState({
-        timer: {}
-    })
     // const distance = new Date().getTime() - (new Date().getTime() + 100000)
 
     const auth = useContext(AuthContext)
-
-    // const [countDown] = useCountdown()
-
-    // const getReturnValues = (countDown) => {
-    //     // calculate time left
-    //     const hoursTimer = Math.floor(
-    //         (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    //     );
-    //     const minutesTimer = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
-    //     const secondsTimer = Math.floor((countDown % (1000 * 60)) / 1000);
-
-    //     return [hoursTimer, minutesTimer, secondsTimer];
-    // };
 
     const newDate = Date.parse(new Date())
 
     const [timeH, timeM, timeS] = useCountdown(currDate, newDate)
 
-    // useEffect(() => {
-    //     localStorage.setItem(storageName, JSON.stringify({isPayment: auth.isPayment, timeH, timeM, timeS}))
-    //     const localStorageRef = localStorage.getItem(storageName)
-    //     auth.isPayment = JSON.parse(localStorageRef).isPayment
-    //     if(auth.isPayment) {
-    //         auth.pay()
-    //     }
-    //     console.log(localStorageRef);
-    // }, [])
-
     useEffect(() => {  
         auth.pay()
-        // localStorage.setItem(storageName, JSON.stringify({isPayment: auth.isPayment, timeH, timeM, timeS}))
-        // const localStorageRef = localStorage.getItem(storageName)
-        // setState({timer: JSON.parse(localStorageRef)})
-        // setCountDownNum(prev => prev - 1000)
-        // setCountDownNum(JSON.parse(localStorageRef.count)) 
     }, [timeH, timeM, timeS, auth])
 
     if(timeH + timeM + timeS <= 0) {   
         auth.isPayment = false
-        // localStorage.setItem(storageName, JSON.stringify({isPayment: auth.isPayment, timeH: '00', timeM: '00', timeS: '00'}))
-        // localStorage.removeItem(storageName)
     }
 
     return (
@@ -85,6 +51,8 @@ const PaymentPage = () => {
                 timeH={timeH}
                 timeM={timeM}
                 timeS={timeS}
+                green={green}
+                qr={qr}
                     />
                 : <CancelPage/>
             } 

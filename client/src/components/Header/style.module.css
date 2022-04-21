@@ -1,3 +1,4 @@
+/* @import "~materialize-css/dist/css/materialize.min.css"; */
 .wrapperHeader {
     background: #2c414b;
     background-image: -moz-linear-gradient(90deg,#3f5967 0,#23353e 100%);
@@ -57,6 +58,16 @@
 .headerTop .worktime span {
     position: relative;
     padding-left: 25px;
+}
+.headerTop .worktime span:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: url(../../img/24-7.svg) no-repeat center center;
+    background-size: 15px 15px;
+    content: '';
 }
 .headerTop .worktime b {
     font-weight: 400;

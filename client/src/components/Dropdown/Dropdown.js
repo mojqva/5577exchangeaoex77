@@ -1,6 +1,9 @@
 import {useState, useEffect} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
+import {RiArrowDropDownLine} from 'react-icons/ri'
+import {RiArrowDropUpLine} from 'react-icons/ri'
+
 
 const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeItem}) => {
     const List = filteredApi
@@ -30,7 +33,7 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                         <span className={cn(s.icon, s.eas)}></span>
                         <span className={cn(s.arrow, s.close, s.eas)}>
                             <span className={s.flaticonArrTop} onClick={() => setIsListOpen(false)}>
-                                /\
+                                <RiArrowDropUpLine size={35}/>
                             </span>
                         </span>
                     </div>
@@ -46,9 +49,9 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                                 {Selected.symbol}
                             </span>
                         </span>
-                        <span className={cn(s.arrow, s.eas)}>
-                            <span className={s.flaticonArrDown} onClick={() => setIsListOpen(true)}>
-                                \/
+                        <span className={cn(s.arrow, s.eas)} onClick={() => setIsListOpen(true)}>
+                            <span className={s.flaticonArrDown}>
+                                <RiArrowDropDownLine size={35}/>
                             </span>
                         </span>
                     </div>
@@ -57,7 +60,7 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                 isListOpen && (
                     <ul className={s.list}>
                         {List.length !== 0
-                        ?   List.filter(i => i.name.toLowerCase().includes(filter.toLowerCase()) || i.symbol.toLowerCase().includes(filter.    toLowerCase()) ||filter === '').map(item => (
+                        ?   List.filter(i => i.name.toLowerCase().includes(filter.toLowerCase()) || i.symbol.toLowerCase().includes(filter    .toLowerCase()) ||filter === '').map(item => (
                                 <li key={item.id} onClick={() => selectItem(item)}>
                                     <span className={s.icon}>
                                         <img src={item.image} alt={item.name}></img>

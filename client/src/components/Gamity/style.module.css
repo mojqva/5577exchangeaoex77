@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     z-index: 2;
     position: relative;
     margin: 20px 0 0 0;
@@ -56,6 +57,13 @@
     right: 16px;
     margin-top: -20px;
 }
+.gamityMain .iphone .button a {
+    background: #5fa9ea;
+    background: #5fa9ea;
+    background: linear-gradient(180deg,#5fa9ea 0,#1688ec 100%);
+    border: none;
+    margin-top: 1px;
+}
 .gamityMain .fifty .button a {
     text-decoration: none;
     border: 1px solid #7a8593;
@@ -99,6 +107,7 @@
     .gamityMain .fifty:nth-child(1) {
         padding-right: 0;
         width: 100%;
+        display: none;
     }
     .gamityMain .fifty:nth-child(2) {
         display: none;

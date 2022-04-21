@@ -2,24 +2,43 @@ import React from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 import { Link } from 'react-router-dom'
+import {useMessage} from '../../hooks/message.hook'
 
 const reserves = {
     'btc': 21.35,
     'eth': 615.81,
     'ltc': 4001.29,
-    'xlm': 21.35,
+    'xlm': 10221.35,
     'xtz': 11050.18,
     'zec': 5665.62,
     'trx': 242515.16,
-    'xmr': 615.81,
+    'xmr': 803.24,
     'doge': 187308.55,
     'dash': 897.58,
-    'usdt': 554035.4,
+    'erc20': 491746.6,
+    'trc20': 554035.4,
+}
+
+const examples = {
+    'btc': '1CNixWkhP1Q5SE4sEEp6ymgPk',
+    'eth': '0x16E60a51AAeFFEbEB7b69E2',
+    'ltc': 'Lbp98gPwE2LiCMhemnnuiZuMY',
+    'xlm': 'GAI3GJ2Q3B35AOZJ36C4ANE3H',
+    'xtz': 'tz1PEnZxSoAnEWJLUwASEZKnG',
+    'zec': 't1YN48pMwyG4aszU411jKdY7M',
+    'trx': 'TEaC4TeFYLWYTsVaeMBG4GEz2',
+    'xmr': '46BeWrHpwXmHDpDEUmZBWZfoQ',
+    'doge': 'DES1oHaDD15kt9qcMu42gXLHp',
+    'dash': 'Xwf5i6RTSBGh1zEEMhWEB9KMK',
+    'erc20': '0x16E60a51AAeFFEbEB7b69E2',
+    'trc20': 'TFR9fP1VDmGGf7pT3f2Ag6YMW',
 }
 
 const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, handleInputChange, handleOutputChange}) => {
     const emailValidation = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     const reserve = Object.keys(reserves).find(item => takeItem.symbol.toLowerCase() === item)
+    const example = Object.keys(examples).find(item => takeItem.symbol.toLowerCase() === item)
+    const message = useMessage()
 
     const errorsHandler = () => {
         const amountInputEmpty = form.give.length === 0 || form.take.length === 0
@@ -48,7 +67,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
         if(handlerResult === null) {
             handleSubmit()
         } else {
-            console.log(messages[handlerResult]);
+            message(messages[handlerResult]);
         }
     }
 
@@ -86,7 +105,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                     </div>
                     <div className={s.i}>
                         Например
-                        <span>0x16E60a51AAeFFEbEB7b69E2...</span>
+                        <span> {examples[example]}...</span>
                     </div>
                 </div>
                 <div className={cn(s.line, s.lineEmail)}>
@@ -107,8 +126,8 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
             <div className={s.lineBreak}></div>
             <div className={s.exchangeRightF}>
                 <div className={s.terms}>
-                    Нажимая кнопку <b>"Обменять"</b> вы подтверждаете свое согласие с 
-                    <a href="/" target="_blank" rel="noreferrer">Правилами предоставления услуг</a>
+                    Нажимая кнопку <b> "Обменять" </b> вы подтверждаете свое согласие с 
+                    <Link to={'/ru/pages/terms'} target={'_blank'} rel={'noreferrer'}> Правилами предоставления услуг</Link>
                 </div>
                 <div className={s.button}>
                     <button className={cn(s.btn, s.green)} onClick={toContin} type='button'>

@@ -5,6 +5,8 @@ import { useHttp } from '../hooks/http.hook';
 import { useMessage } from '../hooks/message.hook';
 import { AuthContext } from '../context/AuthContext';
 
+import { ToastContainer} from 'react-toastify'
+
 const ModalLogin = ({loginActive, setLoginActive, switchModals}) => {
     const auth = useContext(AuthContext)
     const message = useMessage()
@@ -33,6 +35,7 @@ const ModalLogin = ({loginActive, setLoginActive, switchModals}) => {
     }
 
     return (
+        <>
         <div className={loginActive ? cn(s.popup, s.active): s.popup}>
             <div className={s.in}>
                 <div className={s.popupHeader}>
@@ -83,6 +86,8 @@ const ModalLogin = ({loginActive, setLoginActive, switchModals}) => {
                 </div>
             </div>
         </div>
+        <ToastContainer/>
+        </>
     );
 };
 

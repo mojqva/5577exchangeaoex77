@@ -4,7 +4,7 @@
     background-image: -moz-linear-gradient(90deg,#3f5967 0,#23353e 100%);
     background-image: -webkit-linear-gradient(90deg,#3f5967 0,#23353e 100%);
     background-image: -ms-linear-gradient(90deg,#3f5967 0,#23353e 100%);
-    min-height: 2000px;
+    min-height: 80px;
 }
 .inner {
     padding: 30px 30px;
@@ -17,6 +17,9 @@
 .exchange {
     padding: 20px 0 60px 0;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     z-index: 2;
 }
 

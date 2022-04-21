@@ -1,12 +1,13 @@
 import React from 'react'
 import s from './style.module.css'
+import cn from 'classnames'
 import Prize1 from '../../img/prize1.png'
 import Prize2 from '../../img/prize2.png'
 
 const Gamity = () => {
   return (
     <div className={s.gamityMain}>
-        <div className={s.fifty}>
+        <div className={cn(s.fifty, s.iphone)}>
             <div className={s.in}>
                 <h3>
                     Розыгрыш из <span>метавселенной </span>
@@ -20,7 +21,7 @@ const Gamity = () => {
                     Криптовалюты <span>The Sandbox, Decentraland, Gala</span> ждут вас
                 </div>
                 <div className={s.button}>
-                    <a>Розыгрыш</a>
+                    <a href='https://avanchange.com/ru/contest/4/' target={'_blank'} rel='noreferrer'>Хочу выиграть!</a>
                 </div>
             </div>   
         </div>
@@ -38,7 +39,7 @@ const Gamity = () => {
                     Регулярный розыгрыш, с автоматическим ростом фонда, каждый час!
                 </div>
                 <div className={s.button}>
-                    <a>Розыгрыш</a>
+                    <a href='https://avanchange.com/ru/weekly/' target={'_blank'} rel='noreferrer'>Хочу выиграть!</a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,8 @@
 const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
+const timeout = require('connect-timeout')
+const path = require('path')
 
 const AdminBro = require('admin-bro')
 const mongooseAdminBro = require('@admin-bro/mongoose')
@@ -18,9 +20,10 @@ const AdminBroOptions = {
 }
 
 const adminBro = new AdminBro(AdminBroOptions)
-const router = expressAdminBro.buildRouter(adminBro)
+const adminContent = expressAdminBro.buildRouter(adminBro)
 
-app.use(adminBro.options.rootPath, router) //localhost:5000/admin
+app.use(timeout(120000))
+app.use(adminBro.options.rootPath, adminContent) //localhost:5000/admin
 
 app.use(express.json({ extended: true }))
 
@@ -29,7 +32,13 @@ app.use('/api/payment', require('./routes/payment.routes'))
 
 const PORT = config.get('port') || 5000
 
+if(process.env.NODE_ENV === 'production') {
+    app.use('/', express.static(path.join(__dirname, 'client', 'build')))
 
+    app.use('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 async function start() {
     try {

@@ -141,6 +141,9 @@ ul li a {
     -ms-user-select: none;
     user-select: none;
 }
+.navigationWrapper > .navButton {
+    justify-content: flex-end;
+}
 .navButton p {
     font-size: 8px;
     position: absolute;
@@ -287,10 +290,24 @@ ul li a {
 }
 
 @media (max-width: 320px) {
-    .logo {
+    .navigationWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .navigationWrapper > .navButton {
+        position:relative;
+        left: 90%;
+        top: 20px;
+    }
+    .mainNav {
+        display: flex;
+        justify-content: space-between;
+    }
+    /* .logo {
         width: 60%;
         display: block;
-    }
+    } */
     /* .navButton {
         margin-right: 10px;
     } */

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router } from 'react-router-dom'
-import 'materialize-css'
 import { useRoutes } from './routes'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'

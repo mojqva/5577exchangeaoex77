@@ -4,6 +4,10 @@ import { useState, useContext } from 'react';
 import ModalLogin from '../../Modals/ModalLogin'
 import { AuthContext } from '../../context/AuthContext';
 import ModalRegister from '../../Modals/ModalRegister';
+import {FaTelegramPlane} from 'react-icons/fa'
+import {FiMail} from 'react-icons/fi'
+import {FiUser} from 'react-icons/fi'
+// import {FaTelegramPlane} from 'react-icons/fa'
 import Navbar from '../Navbar/Navbar';
 
 const Header = ({isAuth}) => {
@@ -25,12 +29,12 @@ const Header = ({isAuth}) => {
                     <div className={s.left}>
                         <a className={cn(s.eas, s.lang)}>RU</a>
                         <a className={cn(s.eas, s.headerTelegram)}>
-                            <span className={cn(s.flaticonChatMessage, s.ico2)}></span>
-                            Telegram Бот v1.3
+                            <FaTelegramPlane color='#0facf3' size={12}/>
+                            <span> Telegram Бот v1.3</span>
                         </a>
                         <a className={cn(s.eas, s.headerEmail)}>
-                            <span className={cn(s.flaticonEmail, s.ico3)}></span>
-                            info@avanchange.com
+                            <FiMail size={12} color='#3dd94b'/>
+                            <span> info@avanchange.com</span>
                         </a>
                         <span className={s.worktime}>
                             <span>
@@ -43,15 +47,17 @@ const Header = ({isAuth}) => {
                         {
                             isAuth ?
                             <>
+                                <FiUser size={14} color='#ff7d00'/>
                                 <a className={cn(s.eas, s.url)} href="/account">Мой аккаунт</a>
                                 <a className={s.logout} href="/">
                                     <span className={s.flaticonLogout} onClick={logOut}> O</span>
                                 </a>
                             </> :
                             <>
-                                <a className={s.eas} onClick={() => setLoginModalActive(true)}>Вход</a>
+                                <FiUser size={14} color='#ff7d00'/>
+                                <a className={s.eas} onClick={() => setLoginModalActive(true)}> Вход </a>
                                 /
-                                <a className={s.eas} onClick={() => setRegisterModalActive(true)}>Регистрация</a>
+                                <a className={s.eas} onClick={() => setRegisterModalActive(true)}> Регистрация</a>
                             </>
 
                         }

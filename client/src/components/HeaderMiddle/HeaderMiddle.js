@@ -6,6 +6,7 @@ import TestA from '../Test/TestA'
 import TestB from '../Test/TestB'
 import ExchangerIn from "../Exchangers/ExchangerIn";
 import ExchangerOut from "../Exchangers/ExchangerOut";
+import Telegram from "../Telegram/Telegram";
 const axios = require('axios')
 
 const coinGeckoApi = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false'
@@ -39,27 +40,49 @@ const walletsTemplate = [
 
 const HeaderMiddle = () => {
     const [coins, setCoins] = useState(walletsTemplate)
-    const [api, setApi] = useState() 
-    const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20', 'usdt']
+    const [api, setApi] = useState([]) 
+    const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20']
+    const cryptoUsdt = ['usdt']
+
+    let filteredUsdt = api.length > 1 ? api.filter(item => cryptoUsdt.includes(item.symbol)): []
+    let erc = !!filteredUsdt[0] ? JSON.parse(JSON.stringify(filteredUsdt[0])) : {}
+    let trc = !!filteredUsdt[0] ? JSON.parse(JSON.stringify(filteredUsdt[0])) : {}
+    erc.name = 'USDT ERC20'
+    erc.key = 'erc20'
+    erc.symbol = 'erc20'
+    erc.id = 'erc20'
+    trc.name = 'USDT TRC20'
+    trc.key = 'trc20'
+    trc.symbol = 'trc20'
+    trc.id = 'trc20'
+    
+
+    // if(trc != undefined && erc != undefined) {
+    //     erc.name = 'USDT ERC20'
+    //     erc.key = 'erc20'
+    //     trc.name = 'USDT TRC20'
+    //     trc.key = 'trc20'
+    // }
+    
+
+    const [green, setGreen] = useState({
+        fix: false,
+        best: true
+    })
+    const changeGreen = (name) => {
+        setGreen({
+            fix: false,
+            best: false,
+        })
+        setGreen(prev => ({
+            ...prev,
+            [name]: true
+        }))
+    }
 
     let isCancel = false
 
     useEffect(() => {
-        
-        // const getCoins = async () => {
-        //     try {
-        //         if(!isCancel) {
-        //             const res = await axios.get(`/api/payment/wallets`)
-        //             const data = await res.data
-        //             setCoins(data)
-
-        //             return data
-        //         }
-                
-        //     } catch (error) {
-        //         console.error(error)
-        //     }
-        // }  
 
         const getCryptoApi = async () => {
             try {
@@ -86,7 +109,11 @@ const HeaderMiddle = () => {
 
     // coins.forEach(item => cryptoNames.push(item.symbol.toLowerCase()))
 
-    let filteredApi = api ? api.filter(item => cryptoNames.includes(item.symbol)): []
+    let filteredApi = api.length > 1  ? api.filter(item => cryptoNames.includes(item.symbol)): []
+    !!(filteredApi.length > 1) && filteredApi.splice(2, 0, trc)
+    !!(filteredApi.length > 1) && filteredApi.splice(3, 0, erc)
+    // filteredApi.push(erc)
+    console.log(filteredApi)
     
     const [selected, setSelected] = useState({
         give: 'btc',
@@ -176,12 +203,16 @@ const HeaderMiddle = () => {
                             filteredApi={filteredApi}
                             walletsTemplate={walletsTemplate}
                             setSelected={setSelected}
+                            green={green}
+                            changeGreen={changeGreen}
                         />
                         <ExchangerOut
                             selected={selected}
                             coins={coins}
                             filteredApi={filteredApi}
+                            green={green}
                         />
+                        <Telegram/>
                     </div>
                     :null
                 }

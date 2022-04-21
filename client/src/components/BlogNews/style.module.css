@@ -8,6 +8,9 @@
     float: left;
     width: 50%;
 }
+.news:last-child, :nth-last-child(2) {
+    border-bottom: none;
+}
 .news .image {
     position: absolute;
     top: auto;
@@ -16,16 +19,19 @@
     height: 90px;
     overflow: hidden;
     z-index: 2;
-}
-.news .image img {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+}
+.news .image img {
     -webkit-transition: all ease-out .2s;
     -moz-transition: all ease-out .2s;
     -ms-transition: all ease-out .2s;
     -o-transition: all ease-out .2s;
     transition: all ease-out .2s;
+}
+.news .image img:hover {
+    transform: scale(1.1);
 }
 .news .c {
     padding-left: 170px;

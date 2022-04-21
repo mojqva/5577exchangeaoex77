@@ -3,7 +3,7 @@ import s from './style.module.css'
 import Navigation from './Navigation'
 import MobileNavigation from './MobileNavigation'
 import {useState} from 'react'
-import {ReactComponent as Logo} from '../../img/logo.svg'
+import Logo from '../../img/logo.png'
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className={s.mainNav}>
                 <div className={s.logo}>
                     <Link to={'/ru/'}>
-                        <Logo className={s.logoSvg}/>
+                        <img src={Logo} alt='Logo'/>
                     </Link>
                 </div>
                 <Navigation toggleNav={toggleNav}/>

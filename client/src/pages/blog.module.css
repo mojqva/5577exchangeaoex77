@@ -19,6 +19,11 @@
     margin-bottom: 30px;
     text-align: left!important;
 }
+.blogWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
 @media (max-width: 340px) {
     .inner {
@@ -58,10 +63,6 @@
 @media (max-width: 1680px) {
     .news:nth-child(even) {
         padding-right: 15px;
-    }
-    .news {
-        float: left;
-        width: 50%;
     }
     .static .h1News {
         font-size: 32px;

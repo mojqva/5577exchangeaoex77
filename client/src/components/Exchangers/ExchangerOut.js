@@ -5,8 +5,9 @@ import ratioPrice from '../../utils/ratio'
 import s from './style.module.css'
 const axios = require('axios')
 
-const ExchangerOut = ({selected, coins, filteredApi}) => {
-    const [wallet, setWallet] = useState('1111')
+const ExchangerOut = ({selected, coins, filteredApi, green}) => {
+    const [wallet, setWallet] = useState('')
+    const [qr, setQr] = useState('')
 
     const giveItem = filteredApi? filteredApi.find(item => item.symbol.toLowerCase() === selected.give) : null
 
@@ -20,7 +21,7 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
                     const response = await axios.get('/api/payment/wallets')
                     const data = await response.data
                     const ownerAddress = data && data.find(item => item.symbol.toLowerCase() === giveItem.symbol)
-                    setWallet(ownerAddress === undefined ? '1111' : ownerAddress.address)
+                    setWallet(ownerAddress == undefined ? '' : ownerAddress.address)
 
                     return ownerAddress
                 }
@@ -29,7 +30,23 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
             }
         }
 
+        const getQr = async () => {
+            try {
+                if(isApi) {
+                    const response = await axios.get('/api/payment/wallets')
+                    const data = await response.data
+                    const ownerQr = data && data.find(item => item.symbol.toLowerCase() === giveItem.symbol)
+                    setQr(ownerQr.qr == undefined ? '' : ownerQr.qr)
+
+                    return ownerQr
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
         getWallets()
+        getQr()
         
         return () => {
             isApi = false
@@ -127,6 +144,8 @@ const ExchangerOut = ({selected, coins, filteredApi}) => {
                             handleSubmit={handleSubmit}
                             clearForm={clearForm}
                             ownerAddress={wallet}
+                            qr={qr}
+                            green={green}
                         />
                     }      
                 </div>

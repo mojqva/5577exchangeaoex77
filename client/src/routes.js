@@ -10,7 +10,7 @@ import SupportPage from './pages/SupportPage'
 import MainPage from './pages/MainPage'
 import PartnersPage from './pages/PartnersPage'
 import ReviewsPage from './pages/ReviewsPage'
-import CancelPage from './pages/CancelPage'
+import TermsPage from './pages/TermsPage'
 import PaymentPage from './pages/PaymentPage'
 import AdminPage from './pages/AdminPage'
 
@@ -23,11 +23,12 @@ export const useRoutes = (isAuthenticated, isPayment) => {
                     isPayment ? <Route path="/payment/go/:id" element={<PaymentPage/>}/> : null
                 }
                 <Route path="/" exact element={<MainPage/>}/>
-                <Route path="/admin" exact element={<AdminPage/>}/>
+                {/* <Route path="/admin" exact element={<AdminPage/>}/> */}
                 <Route path="/booster" exact element={<BoosterPage/>}/>
                 <Route path="/blog" element={<BlogPage/>}/>
                 <Route path="/about" element={<AboutPage/>}/>
                 <Route path="/pages/help" element={<HelpPage/>}/>
+                <Route path="/pages/terms" element={<TermsPage/>}/>
                 <Route path="/reviews" element={<ReviewsPage/>}/>
                 <Route path="/partners" element={<PartnersPage/>}/>
                 <Route path="/pages/crypto-helper" element={<CryptoPage/>}/>
@@ -41,6 +42,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
                 <Route path="/ru/blog" element={<BlogPage/>}/>
                 <Route path="/ru/about" element={<AboutPage/>}/>
                 <Route path="/ru/pages/help" element={<HelpPage/>}/>
+                <Route path="/ru/pages/terms" element={<TermsPage/>}/>
                 <Route path="/ru/reviews" element={<ReviewsPage/>}/>
                 <Route path="/ru/partners" element={<PartnersPage/>}/>
                 <Route path="/ru/pages/crypto-helper" element={<CryptoPage/>}/>
@@ -61,6 +63,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
             <Route path="/blog" element={<BlogPage/>}/>
             <Route path="/about" element={<AboutPage/>}/>
             <Route path="/pages/help" element={<HelpPage/>}/>
+            <Route path="/pages/terms" element={<TermsPage/>}/>
             <Route path="/reviews" element={<ReviewsPage/>}/>
             <Route path="/partners" element={<PartnersPage/>}/>
             <Route path="/pages/crypto-helper" element={<CryptoPage/>}/>
@@ -73,6 +76,7 @@ export const useRoutes = (isAuthenticated, isPayment) => {
             <Route path="/ru/blog" element={<BlogPage/>}/>
             <Route path="/ru/about" element={<AboutPage/>}/>
             <Route path="/ru/pages/help" element={<HelpPage/>}/>
+            <Route path="/ru/pages/terms" element={<TermsPage/>}/>
             <Route path="/ru/reviews" element={<ReviewsPage/>}/>
             <Route path="/ru/partners" element={<PartnersPage/>}/>
             <Route path="/ru/pages/crypto-helper" element={<CryptoPage/>}/>

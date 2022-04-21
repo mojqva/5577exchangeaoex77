@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useCountdown = (propsTime, newTime) => {
-    const countDownDate = new Date().getTime() + 1000000;
+    const countDownDate = new Date().getTime() + 1200000;
 
     const [countDown, setCountDown] = useState(
         propsTime - newTime

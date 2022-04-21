@@ -69,15 +69,11 @@
     z-index: 3;
 }
 .customCurrencyDropdown .search .arrow {
-    width: 30px;
-    height: 100%;
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 20px;
     z-index: 3;
     cursor: pointer;
-    text-align: right;
-    line-height: 64px;
     font-weight: 700;
 }
 .customCurrencyDropdown.opened .list, .custom-currency-dropdown.opened .search {
@@ -154,7 +150,7 @@
 
 @media (max-width: 480px) {
     .customCurrencyDropdown {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
     .customCurrencyDropdown .selected {
         background: #fff;
@@ -182,6 +178,9 @@
     }
     .customСurrencyВropdown .search .icon {
         left: 16px;
+    }
+    .customCurrencyDropdown .search .arrow {
+        top: 7px;
     }
     .customCurrencyDropdown .rate {
         font-size: 12px;

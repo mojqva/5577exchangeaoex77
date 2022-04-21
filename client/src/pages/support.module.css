@@ -1,7 +1,7 @@
 .static {
     font-size: 16px;
     line-height: 28px;
-    padding: 40px 0 30px 0;
+    padding: 40px 0 60px 0;
     color: #3c4859;
 }
 .inner {
@@ -18,8 +18,12 @@
     margin-bottom: 30px;
     text-align: center;
 }
+.supportWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .supportL {
-    float: left;
     width: 50%;
     padding-right: 15px;
 }
@@ -70,7 +74,6 @@
     height: 24px;
 }
 .supportR {
-    float: left;
     width: 50%;
     padding-left: 15px;
     background: #0facf3 no-repeat center bottom;

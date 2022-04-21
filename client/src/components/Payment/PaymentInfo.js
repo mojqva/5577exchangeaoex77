@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import s from './style.module.css'
-import QR from '../../img/qr.png'
 const axios = require('axios')
 
-const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, day, month, year, hour, minutes, timeH, timeM, timeS}) => {
+const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, day, month, year, hour, minutes, timeH, timeM, timeS, green, qr}) => {
 
     useEffect(() => {
         let isSend = false
@@ -25,13 +24,18 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
         
     }, [])
 
-    const H = ('0'+timeH).substring(-2)
-    const M = timeM < 10 ? ('0'+timeM).substring(-2) : timeM
-    const S = timeS < 10 ? ('0'+timeS).substring(-2) : timeS
+    const time = [timeH, timeM, timeS]
+    let newTime = time.map(item => item = Math.abs(item))
+
+    const H = newTime[0] < 10 ? `0${newTime[0]}` : newTime[0]
+    const M = newTime[1] < 10 ? `0${newTime[1]}` : newTime[1]
+    const S = newTime[2] < 10 ? `0${newTime[2]}` : newTime[2]
+
+    console.log(H, M, S);
 
     return (
         <div className={s.inner}>
-            <h1>Обмен №{number} от {day} {month} {year}, {hour}:{minutes}</h1>
+            <h1 className={s.h1}>Обмен №{number} от {day} {month} {year}, {hour}:{minutes}</h1>
             <div className={s.paymentGive}>
                 <h3>
                     <img src={giveImg} alt='giveImg'/>
@@ -70,13 +74,16 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                     на адрес
                     <b> {ownerAddress}</b>
                 </div>
-                <div className={s.qrcode}>
-                    <img src={QR} alt="QR"/>
-                </div>
+                {
+                    qr.length !== 0 &&
+                    <div className={s.qrcode}>
+                        <img src={qr} alt="QR"/>
+                    </div>
+                }           
                 <div className={s.timer}>{H}:{M}:{S}</div>
                 <div className={s.timerInfo}>Осталось времени</div>
                 <div className={s.paymentType}>
-                    <h5>Тип обмена: <b>Лучший курс</b></h5>
+                    <h5>Тип обмена: {green.best ? <b>Лучший курс</b> : <b>Фиксированный курс</b>}</h5>
                     <div className={s.desc}>
                         Курс может корректироваться при высоких колебаниях 
                         <a href="https://coinmarketcap.com/" target="_blank" rel="noreferrer"> рынка</a>
@@ -88,17 +95,19 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                         <b> 04 Апр 2022, 21:01</b>
                     </div>
                     <div className={s.clr}></div>
-                    <div className={s.fee}>
-                        <h5>High priority</h5>
-                        <span>39 gwei</span>
-                    </div>
-                    <div className={s.fee}>
-                        <h5>Medium priority</h5>
-                        <span>36 gwei</span>
-                    </div>
-                    <div className={s.fee}>
-                        <h5>Low priority</h5>
-                        <span>27 gwei</span>
+                    <div className={s.feeWrapper}>
+                        <div className={s.fee}>
+                            <h5>High priority</h5>
+                            <span>39 gwei</span>
+                        </div>
+                        <div className={s.fee}>
+                            <h5>Medium priority</h5>
+                            <span>36 gwei</span>
+                        </div>
+                        <div className={s.fee}>
+                            <h5>Low priority</h5>
+                            <span>27 gwei</span>
+                        </div>
                     </div>
                 </div>
             </div>

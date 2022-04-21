@@ -2,7 +2,9 @@ import s from './style.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'
 import findImg from '../../utils/img'
-import {ReactComponent as LogoBlue} from '../../img/logo/logo-blue.svg'
+import LogoBlue from '../../img/logo-blue.png'
+import {FaTelegramPlane} from 'react-icons/fa'
+import {FaInstagram} from 'react-icons/fa'
 
 const Footer = () => {
     const {Best, Summo, Kurs, All} = findImg()
@@ -13,7 +15,7 @@ const Footer = () => {
                 <div className={cn(s.row, s.row1)}>
                     <div className={s.logo}>
                         <Link to={'/ru/'}>     
-                            <LogoBlue/>
+                            <img src={LogoBlue} alt='Logo'/>
                         </Link>
                     </div>
                     <div className={s.copyright}>
@@ -87,17 +89,20 @@ const Footer = () => {
                     <ul className={s.social}>
                         <li>
                             <a href="https://t.me/avanchange_bot" rel="nofollow" target="_blank" class="eas">
-                                <b>Telegram (Бот)</b>
+                                <FaTelegramPlane color='#0facf3' size={15}/>
+                                <b> Telegram (Бот)</b>
                             </a>
                         </li>
                         <li>
                             <a href="https://t.me/avanchange" rel="nofollow" target="_blank" class="eas">
-                                <b>Telegram (Канал)</b>
+                                <FaTelegramPlane color='#0facf3' size={15}/>
+                                <b> Telegram (Канал)</b>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.instagram.com/avanchange/" rel="nofollow" target="_blank" class="eas">
-                                <b>Instagram</b>
+                                <FaInstagram size={15} color='#bc2a8d'/>
+                                <b> Instagram</b>
                             </a>
                         </li>
                     </ul>
