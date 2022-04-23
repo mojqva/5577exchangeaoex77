@@ -101,7 +101,7 @@ const HeaderMiddle = () => {
     !!(filteredApi.length > 1) && filteredApi.splice(2, 0, trc)
     !!(filteredApi.length > 1) && filteredApi.splice(3, 0, erc)
     // filteredApi.push(erc)
-    
+    console.log(filteredApi)
     
     const [selected, setSelected] = useState({
         give: 'btc',
@@ -173,7 +173,7 @@ const HeaderMiddle = () => {
     // }
 
     // useEffect(() => {
-    //     
+    //     console.log('newItem from header middle', selected.give)
     //     sameChange()       
     // })
 

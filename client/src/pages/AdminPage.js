@@ -9,14 +9,14 @@ const AdminPage = () => {
     //         try {
     //             const response = await axios.get('/admin')
     //             // const data = await response.data
-    //             
+    //             console.log(response);
     //         } catch (e) {
-    //             
+    //             console.log(e)
     //         }
     //     }
     //     getAdmin()
     // }, [])
-    // 
+    // console.log(admin); //plain HTML text
 
     return (
         <div>

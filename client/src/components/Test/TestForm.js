@@ -39,7 +39,7 @@ const TestForm = ({
             handleSubmit()
         } else {
             const errorName = handlerResult
-            
+            console.log(messages[errorName]);
         }
     }
     return (

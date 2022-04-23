@@ -11,7 +11,7 @@ const Navbar = () => {
     const toggleNav = () => {
         setOpen(prev => !prev)
     }
-    
+    console.log(open);
     return (
         <div className={s.wrapper}>
             <div className={s.mainNav}>

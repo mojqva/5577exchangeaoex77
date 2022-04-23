@@ -121,7 +121,7 @@ router.get(
                 res.send(result)
             })
             .catch(e => {
-                
+                console.log(e);
             })
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова'})
@@ -135,7 +135,7 @@ router.post(
         try {
             
         } catch (e) {
-            
+            console.log(e);
         }
     }
     //TODO

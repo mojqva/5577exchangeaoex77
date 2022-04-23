@@ -13,7 +13,7 @@ router.get(
                res.send(result)
            })
            .catch(e => {
-               
+               console.log(e);
            })
 
         } catch (e) {

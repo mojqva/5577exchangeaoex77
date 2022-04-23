@@ -33,7 +33,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
     const M = newTime[1] < 10 ? `0${newTime[1]}` : newTime[1]
     const S = newTime[2] < 10 ? `0${newTime[2]}` : newTime[2]
 
-    
+    console.log(H, M, S);
 
     return (
         <div className={s.inner}>
