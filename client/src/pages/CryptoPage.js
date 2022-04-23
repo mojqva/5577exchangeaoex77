@@ -1,6 +1,6 @@
 import s from './crypto.module.css'
 import cn from 'classnames'
-import {ReactComponent as SvgHelper} from '../img/helper.svg'
+import Helper from '../img/helper.png'
 
 const CryptoPage = () => {
     return (
@@ -18,7 +18,7 @@ const CryptoPage = () => {
                     <div className={cn(s.coin, s.c3)}>
                         <img src={require("../img/coin-3.png")} alt="Bitcoin"/>
                     </div>
-                    <SvgHelper/>
+                    <img src={Helper} alt='Helper'/>
                 </div>
                 <div className={s.cryptoDesc}>
                     Уважаемые, Чубаки!

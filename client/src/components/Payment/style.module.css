@@ -60,6 +60,7 @@ h1 {
 }
 .paymentTimer .desc b {
     color: #3c4859;
+    word-break: break-all;
 }
 .paymentTimer .qrcode {
     height: 150px;

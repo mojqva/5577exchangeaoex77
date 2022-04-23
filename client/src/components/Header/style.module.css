@@ -28,12 +28,25 @@
 .right {
     float: right;
 }
+.right .eas {
+    color: #fff;
+    text-decoration: none;
+}
 .eas {
     -webkit-transition: all ease-out .2s;
     -moz-transition: all ease-out .2s;
     -ms-transition: all ease-out .2s;
     -o-transition: all ease-out .2s;
     transition: all ease-out .2s;
+}
+.signWrapper > *{
+    vertical-align: middle;
+}
+.signWrapper > span {
+    cursor: pointer !important;
+}
+.signWrapper span:hover {
+    color: #ff7d00;
 }
 .headerTop .left a {
     margin-right: 40px;
@@ -58,6 +71,7 @@
 .headerTop .worktime span {
     position: relative;
     padding-left: 25px;
+    cursor: default;
 }
 .headerTop .worktime span:after {
     position: absolute;

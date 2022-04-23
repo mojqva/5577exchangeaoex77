@@ -2,7 +2,7 @@ import s from './style.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'
 import findImg from '../../utils/img'
-import LogoBlue from '../../img/logo-blue.png'
+import {ReactComponent as LogoGray} from '../../img/logo.svg'
 import {FaTelegramPlane} from 'react-icons/fa'
 import {FaInstagram} from 'react-icons/fa'
 
@@ -15,7 +15,7 @@ const Footer = () => {
                 <div className={cn(s.row, s.row1)}>
                     <div className={s.logo}>
                         <Link to={'/ru/'}>     
-                            <img src={LogoBlue} alt='Logo'/>
+                            <LogoGray className={s.logoGray}/>
                         </Link>
                     </div>
                     <div className={s.copyright}>
@@ -38,13 +38,10 @@ const Footer = () => {
                             <Link to={'/ru/reviews'}>Отзывы</Link>
                         </li>
                         <li>
-                            <Link to={'/ru/reserves'}>Резервы валют</Link>
+                            <Link to={'/ru/pages/crypto-helper'}>Крипто-помощник</Link>
                         </li>
                         <li>
-                            <Link to={'/ru/crypto-helper'}>Все направления</Link>
-                        </li>
-                        <li>
-                            <Link to={'/ru/support'}>Крипто-помощник</Link>
+                            <Link to={'/ru/support'}>Техническая поддержка</Link>
                         </li>
                     </ul>
                 </div>
@@ -73,13 +70,10 @@ const Footer = () => {
                     </div>
                     <ul>
                         <li>
-                            <Link to={'/ru/blog'}>Помощь</Link>
+                            <Link to={'/ru/pages/help'}>Помощь</Link>
                         </li>
                         <li>
-                            <Link to={'/ru/booster'}>Правила сервиса</Link>
-                        </li>
-                        <li>
-                            <a href="https://api.avanchange.com/" target="_blank" rel='noreferrer'>Источник происхождения средств</a>
+                            <Link to={'/ru/pages/terms'}>Правила сервиса</Link>
                         </li>
                     </ul>
 

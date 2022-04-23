@@ -26,7 +26,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                     return ownerAddress
                 }
             } catch (e) {
-                console.log(e);
+                
             }
         }
 
@@ -41,7 +41,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                     return ownerQr
                 }
             } catch (e) {
-                console.log(e);
+                
             }
         }
 

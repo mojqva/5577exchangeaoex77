@@ -72,6 +72,15 @@
     filter: grayscale(100%) opacity(50%);
     height: 100%!important;
 }
+.logoGray g:nth-child(1) > path {
+    fill: #2C414C;
+}
+.logoGray g:nth-child(2) > path, .logoGray g:nth-child(3) > path{
+    fill: #2C414C;
+}
+.logoGray g:nth-child(1) > path:nth-child(2) {
+    fill: #3dd94b
+}
 
 @media (max-width: 340px) {
     .inner {

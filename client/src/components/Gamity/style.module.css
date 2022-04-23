@@ -29,17 +29,19 @@
     color: #fff;
     font-size: 16px;
     margin-bottom: 3px;
+    margin-left: 10px;
 }
 .gamityMain .fifty .image {
     width: 50px;
     height: 60px;
     position: absolute;
     top: 15px;
-    left: 15px;
+    left: 10px;
 }
 .gamityMain .fifty .desc {
     color: #7a8593;
     line-height: 17px;
+    margin-left: 10px;
 }
 .gamityMain .fifty .desc span {
     color: #fff;

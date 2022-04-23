@@ -11,7 +11,7 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
     const message = useMessage()
     const {loading, request, error, clearError} = useHttp()
     const [rePassword, setRePassword] = useState("")
-    const [formErrors, setFormErrors] = useState("")
+    const formErrors = ""
     const [form, setForm] = useState({
         username: "", email: "", password: ""
     })
@@ -50,22 +50,25 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
         const usernameWrong = form.username.length === 0
         const repasswordWrong = rePassword !== form.password || rePassword.length === 0
 
-        if(repasswordWrong) {
-            setFormErrors("Repeat password") 
-        } else if (usernameWrong) {
-            setFormErrors("Input username")
+        if (usernameWrong) {
+            return 'Введите никнейм'
         } else if (emailWrong) {
-            setFormErrors("Input email")
+            return 'Введите E-mail'
         } else if (passwordWrong) {
-            setFormErrors("Input password")
+            return 'Введите пароль'
+        } else if(repasswordWrong) { 
+            return 'Повторите пароль'
         } else {
-            setFormErrors("")
+            return ''
         }
+        // if(repasswordWrong) {
+        //     setFormErrors("Repeat password") 
     }
 
     const toContin = () => {
-        if(formErrors.length !== 0) {
-            message(formErrors)
+        const e = errorsHandler()
+        if(e.length !== 0) {
+            message(e)
         } else {
             registerHandler()
         }

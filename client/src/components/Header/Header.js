@@ -47,21 +47,19 @@ const Header = ({isAuth}) => {
                         <span className={cn(s.flaticonUser, s.ico4)}></span>
                         {
                             isAuth ?
-                            <>
-                                <FiUser size={14} color='#ff7d00'/>
+                            <div className={s.signWrapper}>
+                                <FiUser size={14} color='#ff7d00' fill='#ff7d00'/>
                                 <Link to={'/account'} className={cn(s.eas, s.url)}> Мой аккаунт </Link>
-                                <Link to={'/'} className={s.logout}>
-                                    <span className={s.flaticonLogout} onClick={logOut}>
-                                        <ImSwitch size={12} color='#ff7d00'/>
-                                    </span>
+                                <Link to={'/'} className={s.logout} onClick={logOut}>
+                                    <ImSwitch size={12} color='#ff7d00'/>
                                 </Link>
-                            </> :
-                            <>
-                                <FiUser size={14} color='#ff7d00'/>
+                            </div> :
+                            <div className={s.signWrapper}>
+                                <FiUser size={14} color='#ff7d00' fill='#ff7d00'/>
                                 <span className={s.eas} onClick={() => setLoginModalActive(true)}> Вход </span>
                                 /
                                 <span className={s.eas} onClick={() => setRegisterModalActive(true)}> Регистрация</span>
-                            </>
+                            </div>
 
                         }
                     </div>

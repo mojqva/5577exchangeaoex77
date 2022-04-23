@@ -24,7 +24,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
             isSend = true
         }
         
-    })
+    }, [])
 
     const time = [timeH, timeM, timeS]
     let newTime = time.map(item => item = Math.abs(item))
@@ -33,7 +33,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
     const M = newTime[1] < 10 ? `0${newTime[1]}` : newTime[1]
     const S = newTime[2] < 10 ? `0${newTime[2]}` : newTime[2]
 
-    console.log(H, M, S);
+    
 
     return (
         <div className={s.inner}>
@@ -74,13 +74,15 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                 <div className={s.desc}>
                     Отправьте ровно <b>{giveAmount} {giveSymbol.toUpperCase()} </b>
                     на адрес
+                    <br/>
                     <b> {ownerAddress}</b>
                 </div>
                 {
-                    qr.length !== 0 &&
+                    qr.length !== 0 ?
                     <div className={s.qrcode}>
                         <img src={qr} alt="QR"/>
                     </div>
+                    : <br/>
                 }           
                 <div className={s.timer}>{H}:{M}:{S}</div>
                 <div className={s.timerInfo}>Осталось времени</div>

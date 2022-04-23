@@ -48,7 +48,7 @@ const MainPage = () => {
     //         .then(res => {
     //             setApi(res.data)
     //         })
-    //         .catch(e => console.log(e))
+    //         .catch(e => 
     //     }
     //     getCoins()
     //     getCryptoApi()
@@ -59,7 +59,7 @@ const MainPage = () => {
     // }
 
     // let filteredApi = api ? api.filter(item => cryptoNames.includes(item.name)) : null
-    // console.log(filteredApi);
+    // 
 
 
     // const [giveName, setGiveName] = useState(coins[0].name)

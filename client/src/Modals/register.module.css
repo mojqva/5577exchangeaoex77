@@ -49,6 +49,9 @@
     color: #fff;
     font-size: 12px;
 }
+.popup .close span {
+    cursor: pointer;
+}
 .popup .popupContainer {
     padding: 30px 20px 20px 20px;
     width: 380px;
