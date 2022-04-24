@@ -43,7 +43,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
     const errorsHandler = () => {
         const amountInputEmpty = form.give.length === 0 || form.take.length === 0
         const emailInputWrong = form.email.length === 0 || !emailValidation.test(String(form.email).toLowerCase())
-        const userAddressWrong = form.address.length < 26 || form.address.length > 35
+        const userAddressWrong = form.address.length < 25
         const reserveOut = form.take >= reserves[reserve]
         
         if(amountInputEmpty) {
