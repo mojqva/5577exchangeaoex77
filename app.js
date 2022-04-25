@@ -17,7 +17,7 @@ const app = express()
 AdminBro.registerAdapter(mongooseAdminBro)
 const AdminBroOptions = {
     resources: [Wallet, Payment, User],
-    rootPath: '/admin/login/password'
+    rootPath: '/admin/crypto/123123'
 }
 
 const adminBro = new AdminBro(AdminBroOptions)
