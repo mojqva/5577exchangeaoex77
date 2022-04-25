@@ -13,7 +13,7 @@ const ErrorPage = () => {
                 <div>Похоже, страница, которую вы ищете не существует.</div>
                 <div className={s.buttons}>
                     <Link to={'/ru/'} className={s.btn}>Обмен криптовалют</Link>
-                    <Link to={'/ru/support'} className={cn(s.btn, s.ghost)}>Обмен криптовалют</Link>
+                    <Link to={'/ru/support'} className={cn(s.btn, s.ghost)}>Тех.поддержка</Link>
                 </div>
             </div>
         </div>
