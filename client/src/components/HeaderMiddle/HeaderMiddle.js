@@ -100,8 +100,6 @@ const HeaderMiddle = () => {
     let filteredApi = api.length > 1  ? api.filter(item => cryptoNames.includes(item.symbol)): []
     !!(filteredApi.length > 1) && filteredApi.splice(2, 0, trc)
     !!(filteredApi.length > 1) && filteredApi.splice(3, 0, erc)
-    // filteredApi.push(erc)
-    console.log(filteredApi)
     
     const [selected, setSelected] = useState({
         give: 'btc',

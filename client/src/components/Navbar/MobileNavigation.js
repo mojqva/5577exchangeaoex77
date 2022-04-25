@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 
 const MobileNavigation = ({open, toggleNav}) => {
     const location = useLocation()
-    console.log(location.pathname);
 
     const closeIcon = <VscClose 
                             className={s.Hamburger} 
