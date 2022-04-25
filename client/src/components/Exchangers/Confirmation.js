@@ -57,7 +57,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
 
   return (
     <div className={s.exchangeConfirmation}>
-        <h3>
+        {/* <h3>
             Ожидаем оплаты по заявке <b>№{number} </b>
             от
             <b> {day} {month} {year}</b>
@@ -88,7 +88,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 <b>&nbsp;</b>
                 <i className={s.purse}>{form.address}</i>
             </div>
-        </div> 
+        </div>  */}
         <Link 
             to={`/payment/go/${hash}`} 
             state={{
