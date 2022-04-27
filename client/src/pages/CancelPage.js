@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './cancel.module.css'
 
 const CancelPage = () => {

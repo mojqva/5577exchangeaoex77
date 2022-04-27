@@ -1,3 +1,4 @@
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import AboutPage from './pages/AboutPage'
 import AccountPage from './pages/AccountPage'
@@ -13,7 +14,7 @@ import ReviewsPage from './pages/ReviewsPage'
 import TermsPage from './pages/TermsPage'
 import PaymentPage from './pages/PaymentPage'
 
-export const useRoutes = (isAuthenticated, isPayment) => {
+const useRoutes = (isAuthenticated, isPayment) => {
     if (isAuthenticated) {
         return (
             <Routes>
@@ -84,3 +85,5 @@ export const useRoutes = (isAuthenticated, isPayment) => {
         </Routes>
     )
 }
+
+export default useRoutes

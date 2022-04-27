@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './support.module.css'
 import cn from 'classnames'
 import {FaTelegramPlane} from 'react-icons/fa'

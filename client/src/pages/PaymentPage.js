@@ -1,3 +1,4 @@
+import React from 'react'
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect} from "react";
 import { AuthContext } from "../context/AuthContext";

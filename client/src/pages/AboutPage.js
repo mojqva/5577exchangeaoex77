@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './about.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'

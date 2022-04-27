@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './crypto.module.css'
 import cn from 'classnames'
 import Helper from '../img/helper.png'

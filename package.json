@@ -37,8 +37,14 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@babel/plugin-transform-react-display-name": "^7.16.7",
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.15"
+    "customize-cra": "^1.0.0",
+    "nodemon": "^2.0.15",
+    "react-app-rewired": "^2.2.1"
   }
 }

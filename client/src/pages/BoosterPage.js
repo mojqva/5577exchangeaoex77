@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './booster.module.css'
 import cn from 'classnames'
 import BoosterTask from '../components/BoosterTask/BoosterTask';

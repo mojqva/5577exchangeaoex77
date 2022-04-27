@@ -1,3 +1,4 @@
+import React from 'react'
 import BlogNews from '../components/BlogNews/BlogNews';
 import s from './blog.module.css'
 import One from '../img/blog/1.jpg'

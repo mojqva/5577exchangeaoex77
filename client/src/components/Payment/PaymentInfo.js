@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import s from './style.module.css'
 const axios = require('axios')
 

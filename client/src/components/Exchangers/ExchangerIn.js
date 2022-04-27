@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 import Dropdown from '../Dropdown/Dropdown'
@@ -57,7 +58,6 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, s
                     <div className={s.exchangeRateChoice}>
                         <div 
                             className={s.t}
-                            data-tooltip="<b class='tooltip-rate-title'><span class='flaticon-star-1 tooltip-s10'></span> Лучший курс</b><br>Система автоматически пересчитает Вашу заявку при резких колебаниях курса. Обращаем Ваше внимание, что сумма к получению изменяется как в меньшую, так и в большую для Вас сторону.<br><br><b class='tooltip-rate-title'><span class='flaticon-lock-1 tooltip-s10'></span> Фиксированный курс</b><br>Система фиксирует курс при создании заявки на все время отведенное для вашей заявки. В среднем это 60 минут." data-hasqtip="142" aria-describedby="qtip-142"
                         >
                             Выберите тип курса
                         </div>

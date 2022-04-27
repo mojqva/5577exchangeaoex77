@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
 import {Link} from 'react-router-dom'
@@ -82,19 +83,19 @@ const Footer = () => {
                     </div>
                     <ul className={s.social}>
                         <li>
-                            <a href="https://t.me/avanchange_bot" rel="noreferrer" target="_blank" class="eas">
+                            <a href="https://t.me/avanchange_bot" rel="noreferrer" target="_blank" className={s.eas}>
                                 <FaTelegramPlane color='#0facf3' size={15}/>
                                 <b> Telegram (Бот)</b>
                             </a>
                         </li>
                         <li>
-                            <a href="https://t.me/avanchange" rel="noreferrer" target="_blank" class="eas">
+                            <a href="https://t.me/avanchange" rel="noreferrer" target="_blank" className={s.eas}>
                                 <FaTelegramPlane color='#0facf3' size={15}/>
                                 <b> Telegram (Канал)</b>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/avanchange/" rel='noreferrer' target="_blank" class="eas">
+                            <a href="https://www.instagram.com/avanchange/" rel='noreferrer' target="_blank" className={s.eas}>
                                 <FaInstagram size={15} color='#bc2a8d'/>
                                 <b> Instagram</b>
                             </a>

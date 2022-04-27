@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect } from "react";
 import Bestchanger from '../Bestchanger/Bestchanger'
 import Gamity from '../Gamity/Gamity'
@@ -82,7 +83,7 @@ const HeaderMiddle = () => {
                     return data
                 }   
             } catch (e) {
-                throw new Error(e)
+                console.log(e)
             }
         }
         getCryptoApi()

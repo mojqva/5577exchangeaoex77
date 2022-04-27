@@ -35,7 +35,7 @@ const examples = {
 }
 
 const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, handleInputChange, handleOutputChange}) => {
-    const emailValidation = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    const emailValidation = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/
     const reserve = Object.keys(reserves).find(item => takeItem.symbol.toLowerCase() === item)
     const example = Object.keys(examples).find(item => takeItem.symbol.toLowerCase() === item)
     const message = useMessage()

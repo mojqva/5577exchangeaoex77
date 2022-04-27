@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
 import s from './style.module.css'
 import Navigation from './Navigation'
@@ -11,7 +12,6 @@ const Navbar = () => {
     const toggleNav = () => {
         setOpen(prev => !prev)
     }
-    console.log(open);
     return (
         <div className={s.wrapper}>
             <div className={s.mainNav}>
