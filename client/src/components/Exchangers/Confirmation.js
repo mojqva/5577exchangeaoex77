@@ -7,6 +7,13 @@ import ratioPrice from '../../utils/ratio'
 import { AuthContext } from "../../context/AuthContext"
 
 const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerAddress, green, qr}) => {
+    //Test
+    // console.log('form', form);
+    // console.log('giveItem', giveItem);
+    // console.log('takeItem', takeItem);
+    // console.log('ownerAddress', ownerAddress);
+    // console.log('green', green);
+    // console.log('qr', qr === null);
     const hashes = [
         '6234518dfc5c9374d6ec5e3b', 
         '623464181c1740bba9ca83fa',
@@ -58,7 +65,20 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
 
   return (
     <div className={s.exchangeConfirmation}>
-        <h3>
+        <p>#{number}</p>
+        <p>{day} {month} {year}</p>
+        <p>{form.give} {giveSymbol}</p>
+        <img src={giveImg} alt='test' width='50px'></img>
+        <p>{giveName}</p>
+        <p>1 {giveSymbol} : {takeRatio} {takeSymbol}</p>
+        <br/>
+        <p>{form.take} {takeSymbol}</p>
+        <img src={takeImg} alt='test' width='50px'></img>
+        <p>{takeName}</p>
+        <p>Na {form.address}</p>
+        <p>&nbsp;</p>
+        <p>Skinut vladeltzu: {owner}</p>
+        {/* <h3>
             Ожидаем оплаты по заявке <b>№{number} </b>
             от
             <b> {day} {month} {year}</b>
@@ -89,8 +109,8 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 <b>&nbsp;</b>
                 <i className={s.purse}>{form.address}</i>
             </div>
-        </div> 
-        <Link 
+        </div>  */}
+        {/* <Link 
             to={`/payment/go/${hash}`} 
             state={{
                 number: number,
@@ -118,7 +138,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
         >
             Оплатить
         </Link>
-        <Link to={'/'} className={cn(s.btn, s.ghost)} onClick={stepBack}>Отменить</Link>
+        <Link to={'/'} className={cn(s.btn, s.ghost)} onClick={stepBack}>Отменить</Link> */}
     </div>
   )
 }
