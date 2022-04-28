@@ -14,30 +14,30 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     // console.log('ownerAddress', ownerAddress);
     // console.log('green', green);
     // console.log('qr', qr === null);
-    const hashes = [
-        '6234518dfc5c9374d6ec5e3b', 
-        '623464181c1740bba9ca83fa',
-        '62346ac0c36e14e20063070f'
-    ]
+    // const hashes = [
+    //     '6234518dfc5c9374d6ec5e3b', 
+    //     '623464181c1740bba9ca83fa',
+    //     '62346ac0c36e14e20063070f'
+    // ]
 
     const auth = useContext(AuthContext)
-    const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
+    // const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
 
 
-    const date = new Date(Date.now()).toLocaleString('ru', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
-    })
-    const dateArray = date.split(' ')
-    const time = dateArray[4].split(':')
-    const day = dateArray[0]
-    const month = dateArray[1][0].toUpperCase() + dateArray[1].slice(1, 3)
-    const year = dateArray[2]
-    const hour = time[0]
-    const minutes = time[1]
+    // const date = new Date(Date.now()).toLocaleString('ru', {
+    //     year: 'numeric',
+    //     month: 'short',
+    //     day: 'numeric',
+    //     hour: 'numeric',
+    //     minute: 'numeric'
+    // })
+    // const dateArray = date.split(' ')
+    // const time = dateArray[4].split(':')
+    // const day = dateArray[0]
+    // const month = dateArray[1][0].toUpperCase() + dateArray[1].slice(1, 3)
+    // const year = dateArray[2]
+    // const hour = time[0]
+    // const minutes = time[1]
 
     const now = new Date()
     const number = now.getTime().toString().slice(4, 9)
@@ -47,13 +47,13 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     }
 
 
-    const stepBack = () => {
-        clearForm()
-        handleSubmit(false)
-    }
+    // const stepBack = () => {
+    //     clearForm()
+    //     handleSubmit(false)
+    // }
     const takeRatio = ratioPrice(giveItem.current_price, takeItem.current_price)
 
-    const owner = ownerAddress
+    // const owner = ownerAddress
     const giveName = giveItem.name
     const giveImg = giveItem.image
     const giveSymbol = giveItem.symbol
@@ -61,7 +61,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const takeImg = takeItem.image
     const takeSymbol = takeItem.symbol
     
-    const currDate = Date.parse(new Date()) + 1200000
+    // const currDate = Date.parse(new Date()) + 1200000
 
   return (
     <div className={s.exchangeConfirmation}>
