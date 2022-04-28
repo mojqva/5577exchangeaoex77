@@ -66,7 +66,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
   return (
     <div className={s.exchangeConfirmation}>
         <p>#{number}</p>
-        <p>{day} {month} {year}</p>
+        {/* <p>{day} {month} {year}</p> */}
         <p>{form.give} {giveSymbol}</p>
         <img src={giveImg} alt='test' width='50px'></img>
         <p>{giveName}</p>
