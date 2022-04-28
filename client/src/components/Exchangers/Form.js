@@ -61,11 +61,19 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
         return null
     }
 
+    function ConfE() {
+        if(true) {
+            throw new Error('Confirm Error')
+        }
+        
+    }
+
     const toContin = e => {
         e.preventDefault()
         const handlerResult = errorsHandler()
         if(handlerResult === null) {
-            handleSubmit()
+            handleSubmit(true)
+            // ConfE()
         } else {
             message(messages[handlerResult]);
         }

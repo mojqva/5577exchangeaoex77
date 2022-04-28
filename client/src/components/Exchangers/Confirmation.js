@@ -42,7 +42,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
 
     const stepBack = () => {
         clearForm()
-        handleSubmit()
+        handleSubmit(false)
     }
     const takeRatio = ratioPrice(giveItem.current_price, takeItem.current_price)
 

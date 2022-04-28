@@ -4,6 +4,8 @@ import Confirmation from './Confirmation'
 import Form from './Form'
 import ratioPrice from '../../utils/ratio'
 import s from './style.module.css'
+import {ErrorBoundary} from 'react-error-boundary'
+import {ErrorFallback} from '../ErrorFallback'
 const axios = require('axios')
 
 const ExchangerOut = ({selected, coins, filteredApi, green}) => {
@@ -112,8 +114,8 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
         setForm({...form, [event.target.name]: event.target.value, give: giveAmount})
     }
 
-    const handleSubmit = () => {
-        setStep(prev => !prev)
+    const handleSubmit = (bool) => {
+        setStep(bool)
     }
 
     return (
@@ -134,20 +136,23 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                             handleInputChange={handleInputChange}
                             handleOutputChange={handleOutputChange}
                             handleSubmit={handleSubmit}
-                        />
-                            
+                        />  
                          :
-                        <Confirmation
-                            giveItem={giveItem}
-                            takeItem={takeItem}
-                            AMOUNT={AMOUNT}
-                            form={form}
-                            handleSubmit={handleSubmit}
-                            clearForm={clearForm}
-                            ownerAddress={wallet}
-                            qr={qr}
-                            green={green}
-                        />
+                         <div>Test Succed 1</div>
+                        //  <Confirmation
+                        //         giveItem={giveItem}
+                        //         takeItem={takeItem}
+                        //         AMOUNT={AMOUNT}
+                        //         form={form}
+                        //         handleSubmit={handleSubmit}
+                        //         clearForm={clearForm}
+                        //         ownerAddress={wallet}
+                        //         qr={qr}
+                        //         green={green}
+                        //     />
+                        //  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                            
+                        // </ErrorBoundary>
                     }      
                 </div>
             </div>
