@@ -138,21 +138,19 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                             handleSubmit={handleSubmit}
                         />  
                          :
-                         <div>Test Succed 1</div>
-                        //  <Confirmation
-                        //         giveItem={giveItem}
-                        //         takeItem={takeItem}
-                        //         AMOUNT={AMOUNT}
-                        //         form={form}
-                        //         handleSubmit={handleSubmit}
-                        //         clearForm={clearForm}
-                        //         ownerAddress={wallet}
-                        //         qr={qr}
-                        //         green={green}
-                        //     />
-                        //  <ErrorBoundary FallbackComponent={ErrorFallback}>
-                            
-                        // </ErrorBoundary>
+                        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => clearForm()}>
+                            <Confirmation
+                                giveItem={giveItem}
+                                takeItem={takeItem}
+                                AMOUNT={AMOUNT}
+                                form={form}
+                                handleSubmit={handleSubmit}
+                                clearForm={clearForm}
+                                ownerAddress={wallet}
+                                qr={qr}
+                                green={green}
+                            />  
+                        </ErrorBoundary>
                     }      
                 </div>
             </div>
