@@ -77,7 +77,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
         <p>{takeName}</p>
         <p>Na {form.address}</p>
         <p>&nbsp;</p>
-        <p>Skinut vladeltzu: {owner}</p>
+        {/* <p>Skinut vladeltzu: {owner}</p> */}
         {/* <h3>
             Ожидаем оплаты по заявке <b>№{number} </b>
             от
