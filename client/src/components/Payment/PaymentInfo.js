@@ -2,7 +2,14 @@ import React, { useEffect } from 'react'
 import s from './style.module.css'
 const axios = require('axios')
 
-const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, day, month, year, hour, minutes, timeH, timeM, timeS, green, qr}) => {
+{/*Add : day, month, year, hour, minutes */}
+const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, timeH, timeM, timeS, green, qr}) => {
+
+    const day = '29'
+    const month = 'Апр'
+    const year = '2022'
+    const hour = '17'
+    const minutes = '56'
 
     const sendInfo = async () => {
         await axios.post('/api/payment/sendInfo', {
@@ -32,8 +39,6 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
     const H = newTime[0] < 10 ? `0${newTime[0]}` : newTime[0]
     const M = newTime[1] < 10 ? `0${newTime[1]}` : newTime[1]
     const S = newTime[2] < 10 ? `0${newTime[2]}` : newTime[2]
-
-    console.log(H, M, S);
 
     return (
         <div className={s.inner}>

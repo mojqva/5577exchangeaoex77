@@ -14,14 +14,14 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     // console.log('ownerAddress', ownerAddress);
     // console.log('green', green);
     // console.log('qr', qr === null);
-    // const hashes = [
-    //     '6234518dfc5c9374d6ec5e3b', 
-    //     '623464181c1740bba9ca83fa',
-    //     '62346ac0c36e14e20063070f'
-    // ]
+    const hashes = [
+        '6234518dfc5c9374d6ec5e3b', 
+        '623464181c1740bba9ca83fa',
+        '62346ac0c36e14e20063070f'
+    ]
 
     const auth = useContext(AuthContext)
-    // const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
+    const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
 
 
     // const date = new Date(Date.now()).toLocaleString('ru', {
@@ -47,13 +47,13 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     }
 
 
-    // const stepBack = () => {
-    //     clearForm()
-    //     handleSubmit(false)
-    // }
+    const stepBack = () => {
+        clearForm()
+        handleSubmit(false)
+    }
     const takeRatio = ratioPrice(giveItem.current_price, takeItem.current_price)
 
-    // const owner = ownerAddress
+    const owner = ownerAddress
     const giveName = giveItem.name
     const giveImg = giveItem.image
     const giveSymbol = giveItem.symbol
@@ -61,32 +61,20 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const takeImg = takeItem.image
     const takeSymbol = takeItem.symbol
     
-    // const currDate = Date.parse(new Date()) + 1200000
+    const currDate = Date.parse(new Date()) + 1200000
 
+    //NOW ITS WORKING WITHOUT DATE!!!
   return (
     <div className={s.exchangeConfirmation}>
-        <p>#{number}</p>
-        {/* <p>{day} {month} {year}</p> */}
-        <p>{form.give} {giveSymbol}</p>
-        <img src={giveImg} alt='test' width='50px'></img>
-        <p>{giveName}</p>
-        <p>1 {giveSymbol} : {takeRatio} {takeSymbol}</p>
-        <br/>
-        <p>{form.take} {takeSymbol}</p>
-        <img src={takeImg} alt='test' width='50px'></img>
-        <p>{takeName}</p>
-        <p>Na {form.address}</p>
-        <p>&nbsp;</p>
-        {/* <p>Skinut vladeltzu: {owner}</p> */}
-        {/* <h3>
+        <h3>
             Ожидаем оплаты по заявке <b>№{number} </b>
-            от
-            <b> {day} {month} {year}</b>
+            {/* от
+            <b> {day} {month} {year}</b> */}
         </h3>
         Для завершения необходимо оплатить <b>{form.give} {giveSymbol.toUpperCase()} </b>
         в платежной системе <b>{giveName}</b>
         <div className={s.warning}>
-            <b className={s.textBlue}>Внимание:</b> заявка активна <b>120 минут </b>, после чего она будет отменена
+            <b className={s.textBlue}>Внимание:</b> заявка активна <b>20 минут </b>, после чего она будет отменена
         </div>
         <div className={s.orderInfo}>
             <div className={s.ol}>
@@ -109,16 +97,12 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 <b>&nbsp;</b>
                 <i className={s.purse}>{form.address}</i>
             </div>
-        </div>  */}
-        {/* <Link 
+        </div> 
+        {/*Add : day, month, year, hour, minutes */}
+        <Link 
             to={`/payment/go/${hash}`} 
             state={{
                 number: number,
-                day: day,
-                month: month,
-                year: year,
-                hour: hour,
-                minutes: minutes,
                 ownerAddress: owner,
                 giveAmount: form.give,
                 takeAmount: form.take,
@@ -131,14 +115,14 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 userAddress: form.address,
                 currDate: currDate,
                 green: green,
-                qr
+                qr: qr
             }}
             className={cn(s.btn, s.green)} 
             onClick={() => auth.isPayment = true}
         >
             Оплатить
         </Link>
-        <Link to={'/'} className={cn(s.btn, s.ghost)} onClick={stepBack}>Отменить</Link> */}
+        <Link to={'/'} className={cn(s.btn, s.ghost)} onClick={stepBack}>Отменить</Link>
     </div>
   )
 }
