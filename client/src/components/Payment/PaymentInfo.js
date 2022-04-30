@@ -2,14 +2,8 @@ import React, { useEffect } from 'react'
 import s from './style.module.css'
 const axios = require('axios')
 
-{/*Add : day, month, year, hour, minutes */}
-const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, timeH, timeM, timeS, green, qr}) => {
+const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, timeH, timeM, timeS, green, qr,  day, month, year, hour, minutes}) => {
 
-    const day = '29'
-    const month = 'Апр'
-    const year = '2022'
-    const hour = '17'
-    const minutes = '56'
 
     const sendInfo = async () => {
         await axios.post('/api/payment/sendInfo', {
@@ -127,7 +121,6 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                     <li>Отправьте точную сумму <u><strong>без учета комиссии</strong></u>, иначе платеж может зависнуть на длительный срок;</li>
                     <li>Указывайте комиссию с  <u><strong>быстрым приоритетом</strong></u>, иначе платеж будет идти 2-4 часа и <b>сервис отклонит его</b></li>
                     <li>Страница автоматически обновляется после изменения статуса заявки. Статус заявки изменится на <b className={s.textBlue}>«Оплачено»</b></li>
-                    <li>Ознакомьтесь с <a href="/ru/" target="_blank">пользовательским соглашением</a>. Оформляя и оплачивая заявку на обмен, Вы подтверждаете согласие с условиями использования нашего сервиса.</li>
                 </ul>
             </div>
         </div>

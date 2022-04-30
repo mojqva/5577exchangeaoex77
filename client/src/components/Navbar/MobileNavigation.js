@@ -20,7 +20,7 @@ const MobileNavigation = ({open, toggleNav}) => {
                     </div>
                     <ul onClick={toggleNav}>
                         <li>
-                            <Link to={'/ru/'} className={location.pathname === '/ru/' || location.pathname === '/' ? s.active : null}>Главная</Link>
+                            <Link to={'/ru/'} className={location.pathname === '/ru/' || location.pathname === '/' ? s.active : null}>Обмен</Link>
                         </li> 
                         <li>
                             <Link to={'/ru/booster'} className={location.pathname === '/ru/booster' || location.pathname === '/booster' ? s.active : null}>Скидки</Link>

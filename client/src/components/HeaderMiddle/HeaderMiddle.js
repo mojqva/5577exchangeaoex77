@@ -101,6 +101,9 @@ const HeaderMiddle = () => {
     let filteredApi = api.length > 1  ? api.filter(item => cryptoNames.includes(item.symbol)): []
     !!(filteredApi.length > 1) && filteredApi.splice(2, 0, trc)
     !!(filteredApi.length > 1) && filteredApi.splice(3, 0, erc)
+
+    {/*Up price to 2% */}
+    filteredApi.forEach(el => el.current_price += el.current_price/100 * 1)
     
     const [selected, setSelected] = useState({
         give: 'btc',
