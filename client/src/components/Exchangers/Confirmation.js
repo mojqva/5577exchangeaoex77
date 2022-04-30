@@ -24,20 +24,32 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
 
 
-    const date = new Date(Date.now()).toLocaleString('ru', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
+    // const date = new Date(Date.now()).toLocaleString('ru', {
+    //     year: 'numeric',
+    //     month: 'short',
+    //     day: 'numeric',
+    //     hour: 'numeric',
+    //     minute: 'numeric'
+    // })
+    // const dateArray = date.split(' ')
+    // const times = dateArray[4].split(':')
+    // const day = dateArray[0]
+    // const month = dateArray[1].slice(0,1).toUpperCase() + dateArray[1].slice(1, 3)
+    // const year = dateArray[2]
+    // const hour = times[0]
+    // const minutes = times[1]
+
+    //TEST
+    let dateObj = new Date(Date.now())
+    
+    let fullYear = dateObj.getFullYear()
+    let fullMonth = dateObj.toLocaleString('ru', {
+        month: "short"
     })
-    const dateArray = date.split(' ')
-    const times = dateArray[4].split(':')
-    const day = dateArray[0]
-    const month = dateArray[1].slice(0,1).toUpperCase() + dateArray[1].slice(1, 3)
-    const year = dateArray[2]
-    const hour = times[0]
-    const minutes = times[1]
+    fullMonth = fullMonth.charAt(0).toUpperCase() + fullMonth.slice(1, 3)
+    let fullDay = dateObj.getDate()
+    let fullHours = dateObj.getHours()
+    let fullMinutes = dateObj.getMinutes()
 
     const now = new Date()
     const number = now.getTime().toString().slice(4, 9)
@@ -68,7 +80,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
         <h3>
             Ожидаем оплаты по заявке <b>№{number} </b>
             от
-            <b> {day} {month} {year}</b>
+            <b> {fullDay} {fullMonth} {fullYear}</b>
         </h3>
         Для завершения необходимо оплатить <b>{form.give} {giveSymbol.toUpperCase()} </b>
         в платежной системе <b>{giveName}</b>
@@ -110,11 +122,11 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 takeSymbol: takeSymbol,
                 giveImg: giveImg,
                 takeImg: takeImg,
-                day: day,
-                month: month,
-                year: year,
-                hour: hour,
-                minutes: minutes,
+                day: fullDay,
+                month: fullMonth,
+                year: fullYear,
+                hour: fullHours,
+                minutes: fullMinutes,
                 userAddress: form.address,
                 currDate: currDate,
                 green: green,
