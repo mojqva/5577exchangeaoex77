@@ -43,15 +43,9 @@ a {
     }
 }
 
-@media (max-width: 560px) {
-    .popular li {
-        width: 100%;
-    }
-}
-
 @media (max-width: 860px) {
     .popular li {
-        width: 50%;
+        width: 100%;
         font-size: 15px;
         line-height: 32px;
     }
