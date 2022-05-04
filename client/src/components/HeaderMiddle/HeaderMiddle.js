@@ -37,7 +37,7 @@ const walletsTemplate = [
     }
 ]
 
-const HeaderMiddle = () => {
+const HeaderMiddle = ({popularGive, popularTake}) => {
     const coins = walletsTemplate
     const [api, setApi] = useState([]) 
     const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20']
@@ -104,11 +104,21 @@ const HeaderMiddle = () => {
 
     {/*Up price to 2% */}
     filteredApi.forEach(el => el.current_price += el.current_price/100 * 1)
-    
+
     const [selected, setSelected] = useState({
         give: 'btc',
         take: 'eth'
     })
+
+    useEffect(() => {
+        if(popularGive != undefined && popularTake != undefined) {
+            setSelected({
+                give: popularGive,
+                take: popularTake
+            })
+        }
+        
+    }, [popularGive, popularTake])
 
     const selectCurrency = (code, give) => {
         const item = filteredApi.find(item => item.symbol === code)

@@ -36,8 +36,8 @@ const examples = {
 
 const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, handleInputChange, handleOutputChange}) => {
     const emailValidation = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/
-    const reserve = Object.keys(reserves).find(item => takeItem.symbol.toLowerCase() === item)
-    const example = Object.keys(examples).find(item => takeItem.symbol.toLowerCase() === item)
+    const reserve = Object.keys(reserves).find(item => takeItem?.symbol.toLowerCase() === item)
+    const example = Object.keys(examples).find(item => takeItem?.symbol.toLowerCase() === item)
     const message = useMessage()
 
     const errorsHandler = () => {
@@ -85,7 +85,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                 <div className={s.line}>
                     <div className={s.lineInput}>
                         <input type='number' id='giveCoins' name='give' onChange={handleInputChange}/>
-                        <label htmlFor='giveCoins'>Отдаете <span>{giveItem.symbol.toUpperCase()}</span></label>
+                        <label htmlFor='giveCoins'>Отдаете <span>{giveItem?.symbol.toUpperCase()}</span></label>
                     </div>
                     <div className={s.i}>
                         {/* Min: <span>0.3</span> Max: <span>6.5</span>
@@ -97,7 +97,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                 <div className={s.line}>
                     <div className={s.lineInput}>
                         <input type='number' id='takeCoins' name='take' onChange={handleOutputChange}/>
-                        <label htmlFor='takeCoins'>Получаете <span>{takeItem.symbol.toUpperCase()}</span></label>
+                        <label htmlFor='takeCoins'>Получаете <span>{takeItem?.symbol.toUpperCase()}</span></label>
                     </div>
                     <div className={s.i}>
                         Резерв: <span>{reserves[reserve]}</span>
@@ -108,7 +108,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                         <input type='text' id='addressCoins' name='address' onChange={changeHandler}/>
                         <label htmlFor='addressCoins'>
                             <i>Адрес </i>
-                            <b>{takeItem.name}</b>
+                            <b>{takeItem?.name}</b>
                         </label>
                     </div>
                     <div className={s.i}>

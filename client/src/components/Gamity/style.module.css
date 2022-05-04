@@ -53,6 +53,20 @@
 .gamityMain .fifty:nth-child(2) h3 span {
     color: #0facf3;
 }
+.gamityMain .new {
+    background: #0facf3;
+    color: #fff!important;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 0 4px 0 3px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    height: 17px;
+    line-height: 17px;
+    top: -1px;
+    margin: 0 0 0 3px;
+}
 .gamityMain .fifty .button {
     position: absolute;
     top: 50%;

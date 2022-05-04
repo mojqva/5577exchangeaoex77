@@ -23,7 +23,7 @@ const reserves = {
 
 
 const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, setSelected, green, changeGreen}) => {
-    const reserve = Object.keys(reserves).find(item => selected.take.toLowerCase() === item)
+    const reserve = Object.keys(reserves).find(item => selected.take && selected.take.toLowerCase() === item)
 
     let giveItem = filteredApi.length > 1 ? filteredApi.find(item => item.symbol.toLowerCase() === selected.give) : {}
 
@@ -103,15 +103,15 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, s
                                     priceZero ?
                                     <b className={s.customCurrencyRate}>
                                         {reverseRatio}
-                                        <span>{` ${giveItem.symbol.toUpperCase()} `}</span>
+                                        <span>{` ${giveItem?.symbol.toUpperCase()} `}</span>
                                         ~ 1
-                                        <span>{` ${takeItem.symbol.toUpperCase()}`}</span>
+                                        <span>{` ${takeItem?.symbol.toUpperCase()}`}</span>
                                     </b>
                                     : <b className={s.customCurrencyRate}>
                                             1
-                                            <span>{` ${giveItem.symbol.toUpperCase()} `}</span>
+                                            <span>{` ${giveItem?.symbol.toUpperCase()} `}</span>
                                             ~ {ratio}
-                                            <span>{` ${takeItem.symbol.toUpperCase()}`}</span>
+                                            <span>{` ${takeItem?.symbol.toUpperCase()}`}</span>
                                         </b>
                                 }
                                 
@@ -120,7 +120,7 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, s
                                 Резерв
                                 <b className={s.customCurrencyReserve}>
                                     {reserves[reserve]}
-                                    <span>{` ${selected.take.toUpperCase()}`}</span>
+                                    <span>{` ${selected.take?.toUpperCase()}`}</span>
                                 </b>
                             </div>
                             <div className={s.row}>

@@ -10,7 +10,7 @@ const Gamity = () => {
         <div className={cn(s.fifty, s.iphone)}>
             <div className={s.in}>
                 <h3>
-                    Розыгрыш из <span>метавселенной </span>
+                    Розыгрыш <span>Tether USDT!</span> 🤑 <span className={s.new}>new</span>
                 </h3>
                 <div className={s.image}>
                     <a href='https://avanchange.com/ru/contest/4/' target={'_blank'} rel='noreferrer' className={s.eas}>
@@ -18,7 +18,7 @@ const Gamity = () => {
                     </a>
                 </div>
                 <div className={s.desc}>
-                    Криптовалюты <span>The Sandbox, Decentraland, Gala</span> ждут вас
+                    Призовой фонд <span>580 USDT</span> TRC20 на блюдечке!
                 </div>
                 <div className={s.button}>
                     <a href='https://avanchange.com/ru/contest/4/' target={'_blank'} rel='noreferrer'>Хочу выиграть!</a>

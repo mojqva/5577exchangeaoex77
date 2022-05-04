@@ -40,14 +40,14 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                     </div>
                 :   <div className={s.selected} id={give ? 'give' : 'take'}>
                         <span className={cn(s.icon, s.customCurrencyGiveIcon)}>
-                            <img src={Selected.image} alt={Selected.name}></img>
+                            <img src={Selected?.image} alt={Selected?.name}></img>
                         </span>
                         <span className={s.customCurrencyDropdownTitle}>
                             <span className={cn(s.name, s.customCurrencyGiveName)}>
-                                {Selected.name}
+                                {Selected?.name}
                             </span>
                             <span className={cn(s.currency, s.customCurrencyGiveCurrency)}>
-                                {Selected.symbol}
+                                {Selected?.symbol}
                             </span>
                         </span>
                         <span className={cn(s.arrow, s.eas)} onClick={() => setIsListOpen(true)}>

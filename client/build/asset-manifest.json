@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b5aa9b6b.css",
-    "main.js": "/static/js/main.886d8572.js",
+    "main.css": "/static/css/main.5799dd30.css",
+    "main.js": "/static/js/main.d00ad923.js",
     "static/media/17.jpg": "/static/media/17.fd8cb4b3363254992533.jpg",
     "static/media/13.jpg": "/static/media/13.0b1d4b39d3b80ecfa218.jpg",
     "static/media/11.jpg": "/static/media/11.e247c00ab3a5a329d9ba.jpg",
@@ -31,16 +31,17 @@
     "static/media/cryptotalk.png": "/static/media/cryptotalk.18832960243e1d922de2.png",
     "static/media/logo.svg": "/static/media/logo.d3244c3ad8ec8b245d6f6c83ae2f67d5.svg",
     "static/media/prize2.png": "/static/media/prize2.821b7e44160090779590.png",
+    "static/media/prize1.png": "/static/media/prize1.b0fc0f6af9d7d594d99f.png",
     "static/media/glazok-2.png": "/static/media/glazok-2.ef10c0166fb94382f25c.png",
     "static/media/mmgp.png": "/static/media/mmgp.46edbbc0dc1fb4243aad.png",
     "static/media/24-7.svg": "/static/media/24-7.acec8c03fca233044030.svg",
     "static/media/switch.svg": "/static/media/switch.3f9fb7f277de07907c4fd70314f8bf9e.svg",
     "index.html": "/index.html",
-    "main.b5aa9b6b.css.map": "/static/css/main.b5aa9b6b.css.map",
-    "main.886d8572.js.map": "/static/js/main.886d8572.js.map"
+    "main.5799dd30.css.map": "/static/css/main.5799dd30.css.map",
+    "main.d00ad923.js.map": "/static/js/main.d00ad923.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5aa9b6b.css",
-    "static/js/main.886d8572.js"
+    "static/css/main.5799dd30.css",
+    "static/js/main.d00ad923.js"
   ]
 }

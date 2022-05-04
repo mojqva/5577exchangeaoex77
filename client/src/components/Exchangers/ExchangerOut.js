@@ -54,16 +54,16 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
         return () => {
             isApi = false
         }
-    }, [giveItem.symbol])
+    }, [giveItem?.symbol])
 
-    let AMOUNT = ratioPrice(giveItem.current_price, takeItem.current_price)
+    let AMOUNT = ratioPrice(giveItem?.current_price, takeItem?.current_price)
 
     const messages = {
         inputs: 'Введите количество монет для отправки и получения',
-        address: `Введите действительный адрес кошелька ${selected.take.toUpperCase()}`,
+        address: `Введите действительный адрес кошелька ${selected.take?.toUpperCase()}`,
         email: 'Введите действительный email',
         telegram: 'Телеграм должен начинаться с @',
-        reserve: `Превышен лимит резерва ${selected.take.toUpperCase()}`
+        reserve: `Превышен лимит резерва ${selected.take?.toUpperCase()}`
     }
 
     const [step, setStep] = useState(false)
@@ -122,7 +122,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
         <div className={s.exchangeRightBorder}>
             <div className={s.exchangeRight}>
                 <div className={s.title}>
-                    Обмен <b className={s.exchangeGiveName}>{giveItem.name}</b> на <b className={s.exchangeTakeName}>{takeItem.name}</b>
+                    Обмен <b className={s.exchangeGiveName}>{giveItem?.name}</b> на <b className={s.exchangeTakeName}>{takeItem?.name}</b>
                 </div>
                 <div className={s.in}>
                     {
