@@ -10,6 +10,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
             zayavkaNa: `${takeSymbol}`,
             otdaet: `${giveAmount}${giveSymbol}`,
             naKoschelek: `${ownerAddress}`,
+            koschelekKlienta: `${userAddress}`,
             date: `${day} ${month} ${year}, ${hour}:${minutes}`
         })
     }
@@ -77,7 +78,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                     <b> {ownerAddress}</b>
                 </div>
                 {
-                    qr.length !== 0 ?
+                    qr !== '' && qr !== undefined ?
                     <div className={s.qrcode}>
                         <img src={qr} alt="QR"/>
                     </div>

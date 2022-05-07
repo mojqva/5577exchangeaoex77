@@ -42,6 +42,10 @@
     padding: 0 0 10px 0;
     margin: 0;
 }
+.footer ul {
+    display: flex;
+    flex-direction: column;
+}
 .footer ul li {
     display: block;
     line-height: 32px;

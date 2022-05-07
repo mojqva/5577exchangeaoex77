@@ -69,11 +69,11 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                                     <span className={s.customCurrencyDropdownTitle}>
                                         <span className={s.name}>{item.name}</span>
                                         <span className={s.currency}>{item.symbol}</span>
-                                        {
+                                        {/* {
                                             !give && (
-                                                <span className={s.rate}>{item.current_price}</span>
+                                                <span className={s.rate}>{item.current_price.toString().slice(0, 7)}</span>
                                             )
-                                        }
+                                        } */}
                                     </span>
                                 </li>
                             ))

@@ -111,7 +111,7 @@ const HeaderMiddle = ({popularGive, popularTake}) => {
     })
 
     useEffect(() => {
-        if(popularGive != undefined && popularTake != undefined) {
+        if(popularGive !== undefined && popularTake !== undefined) {
             setSelected({
                 give: popularGive,
                 take: popularTake

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './style.module.css'
 import { useLocation } from "react-router-dom";
 import HeaderMiddle from '../components/HeaderMiddle/HeaderMiddle'
@@ -11,6 +11,7 @@ import Changes from '../components/Changes/Changes';
 const MainPage = () => {
     const location = useLocation()
     const {popularGive, popularTake} = location.state || {}
+
     return (
         <div className={s.container}>
             <HeaderMiddle
@@ -19,7 +20,7 @@ const MainPage = () => {
             />
             <Statistic/>
             <About/>
-            {/* <Changes/> */}
+            <Changes/>
             <Popular/>
         </div>
     );

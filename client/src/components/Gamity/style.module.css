@@ -4,7 +4,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     z-index: 2;
-    position: relative;
     margin: 20px 0 0 0;
 }
 .gamityMain .fifty {
@@ -23,7 +22,7 @@
     -webkit-border-radius: 10px;
     position: relative;
     background: -webkit-linear-gradient(90deg,rgba(15,21,29,.3) 0,rgba(15,21,29,.1) 100%);
-    overflow: hidden;
+    min-height: 110px;
 }
 .gamityMain .fifty h3 {
     color: #fff;
@@ -98,6 +97,32 @@
     text-align: center;
 }
 
+
+@media (max-width: 1024px) {
+    .gamityMain {
+        margin: 35px 0 0 0;
+    }
+    .gamityMain .fifty:nth-child(1) {
+        padding-right: 10px;
+    }
+    .gamityMain .fifty:nth-child(2) {
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 860px) {
+    .gamityMain {
+        margin: 25px 0 0 0;
+    }
+    .gamityMain .fifty:nth-child(1) {
+        padding-right: 0;
+        width: 100%;
+    }
+    .gamityMain .fifty:nth-child(2) {
+        display: none;
+    }
+}
+
 @media (max-width: 480px) {
     .gamityMain {
         margin: 25px 0 0 0;
@@ -116,28 +141,9 @@
     }
 }
 
-@media (max-width: 860px) {
-    .gamityMain {
-        margin: 25px 0 0 0;
-    }
-    .gamityMain .fifty:nth-child(1) {
-        padding-right: 0;
-        width: 100%;
-        display: none;
-    }
-    .gamityMain .fifty:nth-child(2) {
-        display: none;
+@media (max-width: 398px) {
+    .gamityMain .fifty .in {
+        min-height: 150px;
     }
 }
 
-@media (max-width: 1024px) {
-    .gamityMain {
-        margin: 35px 0 0 0;
-    }
-    .gamityMain .fifty:nth-child(1) {
-        padding-right: 10px;
-    }
-    .gamityMain .fifty:nth-child(2) {
-        padding-left: 10px;
-    }
-}

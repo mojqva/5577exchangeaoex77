@@ -24,7 +24,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                     const response = await axios.get('/api/payment/wallets')
                     const data = await response.data
                     const ownerAddress = data && data.find(item => item.symbol.toLowerCase() === giveItem.symbol)
-                    setWallet(ownerAddress === undefined ? '' : ownerAddress.address)
+                    ownerAddress === undefined ? setWallet('') : setWallet(ownerAddress.address)
 
                     return ownerAddress
                 }
