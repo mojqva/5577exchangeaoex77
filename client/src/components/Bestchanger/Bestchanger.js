@@ -7,8 +7,8 @@ const Bestchanger = () => {
     <div className={s.bestchange}>
         <h5>Понравился обменник</h5>
         <div className={s.desc}>
-            Оставь отзыв на 
-            <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank" rel="noreferrer"> BestChange </a> 
+            Оставь отзыв на&nbsp;
+            <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank" rel="noreferrer">BestChange</a>&nbsp;
             и получи <b>5 USDT TRC20</b>
         </div>
         <div className={s.logo}>

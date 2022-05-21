@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react' 
 import { Link } from 'react-router-dom'
+import {toast} from 'react-toastify'
 import s from './account.module.css'
 import cn from 'classnames'
 import Partners from '../components/AccountPartners/Partners'
@@ -38,6 +39,9 @@ const AccountPage = () => {
     //     }
     //     getUsers()
     // }, [])
+    const changeMessageApi = () => {
+        toast.error('Ошибка! Попробуйте позже')
+    }
     
     return (
         <div className={s.static}>
@@ -113,9 +117,9 @@ const AccountPage = () => {
                         <br/>
                         <div className={s.line}>
                             <div className={s.l}>Статус API</div>
-                            <div className={s.r}>
+                            <div className={s.r} >
                                 <input type={'checkbox'} className={s.apiStatus} id={'api-status'}/>
-                                <label htmlFor={'api-status'} className={s.apiStatusLabel}></label>
+                                <label htmlFor={'api-status'} className={s.apiStatusLabel} onClick={changeMessageApi}></label>
                             </div>
                         </div>
                     </div>

@@ -23,8 +23,8 @@ const About = () => {
                             <FaRegMoneyBillAlt size={40} color={'#3dd94b'}/>
                         </div>
                         <h4>Актуальный курс</h4>
-                        Система может скорректировать курс в момент обмена, если наблюдаются резкие скачки. Подробнее в 
-                        <Link to={'/ru/pages/terms'}> п.5 правил сервиса</Link>
+                        Система может скорректировать курс в момент обмена, если наблюдаются резкие скачки. Подробнее в&nbsp;
+                        <Link to={'/ru/pages/terms'}>п.5 правил сервиса</Link>
                     </div>
                     <div className={cn(s.guarantee, s.g2)}>
                         <div className={s.ico}>

@@ -148,6 +148,18 @@
     background-image: -ms-linear-gradient(90deg,#3dd94b 0,#6be877 100%);
 }
 
+.link {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #0facf3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 @media (max-width: 480px) {
     .popup .in {
         top: 10%;

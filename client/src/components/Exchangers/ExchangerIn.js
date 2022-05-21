@@ -142,18 +142,18 @@ const ExchangerIn = ({ filteredApi, walletsTemplate, selected, selectCurrency, s
                                 <li className={s.termsRateType}>
                                     Комиссия сервиса 
                                     <b> 0.4</b>
-                                    %. Обновление биржевого курса на основе
-                                    <a href='https://coinmarketcap.com/' target='_blank' rel='noreferrer'> CoinMarketCap</a>
+                                    %. Обновление биржевого курса на основе&nbsp;
+                                    <a href='https://coinmarketcap.com/' target='_blank' rel='noreferrer'>CoinMarketCap</a>
                                 </li>
                                 <li className={s.termsRateType}>
                                     Курс корректируется каждые  
                                     <b> 5 минут</b>
-                                    , подробнее в разделе
-                                    <Link to={'/ru/pages/help'} target={'_blank'} rel={'noreferrer'}> помощь</Link>
+                                    , подробнее в разделе&nbsp;
+                                    <Link to={'/ru/pages/help'} target={'_blank'} rel={'noreferrer'}>помощь</Link>
                                 </li>
                                 <li className={s.termsRateType}>
-                                    Курс в заявке может быть изменен на актуальный, согласно пункту 5.5  
-                                    <Link to={'/ru/pages/help'} target={'_blank'} rel={'noreferrer'}> текущих правил</Link>
+                                    Курс в заявке может быть изменен на актуальный, согласно пункту 5.5&nbsp;
+                                    <Link to={'/ru/pages/help'} target={'_blank'} rel={'noreferrer'}>текущих правил</Link>
                                 </li>
                             </ul>
                         </div>

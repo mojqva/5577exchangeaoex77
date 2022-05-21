@@ -7,6 +7,7 @@ const Change = ({give, take, minus}) => {
     let dateObj = new Date(parsed - minus)
 
     let day = dateObj.getDay()
+    day += 15
     let month = dateObj.toLocaleString('ru', {month: 'short'})
     let year = dateObj.getFullYear()
     let hour = dateObj.getHours()

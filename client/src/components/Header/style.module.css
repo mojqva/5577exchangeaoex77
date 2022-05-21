@@ -45,7 +45,7 @@
 .signWrapper > span {
     cursor: pointer !important;
 }
-.signWrapper span:hover {
+.signWrapper .eas:hover {
     color: #ff7d00;
 }
 .headerTop .left a {

@@ -1,13 +1,15 @@
 import React from 'react'
 import s from '../../pages/account.module.css'
 import cn from 'classnames'
+import {toast} from 'react-toastify'
 import { Link } from 'react-router-dom'
 
 const Partners = () => {
-    const inp = 'https://avanchange.com/?w=2551'
+    const inp = 'https://avanchanger.com/?w=2551'
 
     const copyText = (inp) => {
         navigator.clipboard.writeText(inp)
+        toast.success('Скопировано!')
     }
   return (
     <div className={s.accountPartners}>

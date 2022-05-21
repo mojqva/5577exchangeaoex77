@@ -126,8 +126,9 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
                             />
                         </div>
                         <div className={s.lineInfo}>
-                            Создавая аккаунт вы соглашаетесь с <a href='/#'> правилами обработки персональных данных </a> и
-                            <a href='/#'> правилами сервиса</a>
+                            <p>
+                                Создавая аккаунт вы соглашаетесь с <a href='/#'>правилами обработки персональных данных</a> и <a href='/#'>правилами сервиса</a>
+                            </p>
                         </div>
                         <div className={cn(s.line, s.lineButtons)}>
                             <div className={s.fl}>
@@ -141,8 +142,9 @@ const ModalRegister = ({registerActive, setRegisterActive, switchModals}) => {
                                 </button>
                             </div>
                             <div className={s.fl}>
-                                Есть аккаунт?
-                                <a href='/' onClick={switchModals}> Войти</a>
+                                <p>
+                                    Есть аккаунт? <button onClick={switchModals} className={s.link} type={"button"}>Войти</button>
+                                </p>
                             </div>
                         </div>
                     </form>

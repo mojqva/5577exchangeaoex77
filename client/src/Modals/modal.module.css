@@ -152,6 +152,18 @@
     margin-bottom: 1px;
 }
 
+.link {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #0facf3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 
 @media (max-width: 480px) {
     .popup .in {
