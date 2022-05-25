@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './reviews.module.css'
 import cn from 'classnames'
 import { Link } from 'react-router-dom';
@@ -7,9 +7,37 @@ import findImg from '../utils/img';
 import { useMessage } from '../hooks/message.hook';
 import { AiFillStar} from 'react-icons/ai'
 
+const axios = require('axios')
+
 const ReviewsPage = () => {
     const {Best, Summo, Kurs, Pro, Glazok, Top, Ex, Mmgp, Talk, Pilot, Wot} = findImg()
     const message = useMessage()
+
+    const [reviews, setReviews] = useState()
+
+    useEffect(() => {
+        let isCancel = false
+        const getReviews = async () => {
+            try {
+                if(!isCancel) {
+                    const response = await axios.get('/api/payment/abc')
+                    const data = await response.data
+                    // const data = await response.data
+                    data === undefined ? setReviews('') : setReviews(data)
+
+                    return data
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        getReviews()
+
+        return () => {isCancel = true}
+    }, [])
+
+    console.log(reviews);
+
     return (
         <>
         <div className={cn(s.static, s.reviews)}>

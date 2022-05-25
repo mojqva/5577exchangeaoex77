@@ -9,7 +9,7 @@
     "client": "npm run start --prefix client",
     "client:install": "npm install --prefix client",
     "client:build": "npm run build --prefix client",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+    "dev": "cross-env NODE_ENV=development ./node_modules/.bin/concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "mern",
@@ -32,6 +32,7 @@
     "mongoose": "^6.2.6",
     "openssl": "^2.0.0",
     "path-browserify": "^1.0.1",
+    "puppeteer": "^14.1.1",
     "react-router-dom": "^6.2.2",
     "tslib": "^2.3.1",
     "validator": "^13.7.0"
