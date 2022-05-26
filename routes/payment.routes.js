@@ -29,12 +29,17 @@ router.get(
                 const links = await page.evaluate(() => {
                     return Array.from(document.querySelectorAll("#list > div > div.reviews-l > div > div.name > a[href]")).map(x=>x.getAttribute('href'))
                 })
+                const amount = await page.evaluate(() => {
+                    return Array.from(document.querySelectorAll("#list > div > div.reviews-r > div.reviews-total > div.o")).map(x=>x.textContent)
+                })
+                
 
                 res.send({
                     names: names,
                     text: text,
                     date: date,
-                    links: links
+                    links: links,
+                    amount: amount
                 })
 
                 // const names = await page.evaluate(() => {
