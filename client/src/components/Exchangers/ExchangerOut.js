@@ -8,13 +8,38 @@ import {ErrorBoundary} from 'react-error-boundary'
 import {ErrorFallback} from '../ErrorFallback'
 const axios = require('axios')
 
-const ExchangerOut = ({selected, coins, filteredApi, green}) => {
+const walletsTemplate = [
+    {symbol: 'btc', address: 'bc1qjsccfwj0v34qq9jxftsy8s384w9ur7xgejyc08'},
+    {symbol: 'eth', address: '0x5Ff7204C015c429c5E9a689e1D9AD69DC78968f2'},
+    {symbol: 'ltc', address: 'Lhm7cVF89hmcMUM6xqiWbrjsiUQvN5mrnK'},
+    {symbol: 'xtz', address: 'tz1PQqoFb5ZFQf4ojRmz7ooaTLzv4mdwjFAM'},
+    {symbol: 'zec', address: 't1fRzGtyW8zzPAjU5g4YTpLVCKasfkYNUv6'},
+    {symbol: 'trx', address: 'TUiqogRTZSezgpHr5AQ5yjS72MKgXPVbZq'},
+    {symbol: 'xlm', address: 'GD2VRBHZDIDMMEN56NF5FK5EDHABVOCLRZKPV5O2XIWPA2ZCSLQK5CTZ'},
+    {symbol: 'xmr', address: '43VfByAcMnZFvt4tCeakrKFGVSh3iHBxAVnvonFFZZ7Aat3fdRwZreRF1hpgrMHEkAHMo4Y8eeRUgWhmAxSosaSUNSCLqzM'},
+    {symbol: 'doge', address: 'D6aMpzUKrbtA5ze28tvtddLNr9xZm5KWTg'},
+    {symbol: 'dash', address: 'XwMLJY46qpCyvKfbKv2C1qzXeWfMc3axYa'},
+    // 'btc': 'bc1qjsccfwj0v34qq9jxftsy8s384w9ur7xgejyc08',
+    // 'eth': '0x5Ff7204C015c429c5E9a689e1D9AD69DC78968f2',
+    // 'ltc': 'Lhm7cVF89hmcMUM6xqiWbrjsiUQvN5mrnK',
+    // 'xtz': 'tz1PQqoFb5ZFQf4ojRmz7ooaTLzv4mdwjFAM',
+    // 'zec': 't1fRzGtyW8zzPAjU5g4YTpLVCKasfkYNUv6',
+    // 'trx': 'TUiqogRTZSezgpHr5AQ5yjS72MKgXPVbZq',
+    // 'xlm': 'GD2VRBHZDIDMMEN56NF5FK5EDHABVOCLRZKPV5O2XIWPA2ZCSLQK5CTZ',
+    // 'xmr': '43VfByAcMnZFvt4tCeakrKFGVSh3iHBxAVnvonFFZZ7Aat3fdRwZreRF1hpgrMHEkAHMo4Y8eeRUgWhmAxSosaSUNSCLqzM',
+    // 'doge': 'D6aMpzUKrbtA5ze28tvtddLNr9xZm5KWTg',
+    // 'dash': 'XwMLJY46qpCyvKfbKv2C1qzXeWfMc3axYa',
+]
+
+const ExchangerOut = ({selected, filteredApi, green}) => {
     const [wallet, setWallet] = useState('')
     const [qr, setQr] = useState('')
 
     const giveItem = filteredApi? filteredApi.find(item => item.symbol.toLowerCase() === selected.give) : null
 
     const takeItem = filteredApi ? filteredApi.find(item => item.symbol.toLowerCase() === selected.take) : null
+
+    const currWalletTemp = walletsTemplate.find(item => item.symbol === giveItem.symbol)
     
     useEffect(() => { 
         let isApi = true 
@@ -55,6 +80,8 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
             isApi = false
         }
     }, [giveItem?.symbol])
+
+    const finalWallet = wallet === '' ? currWalletTemp.address : wallet
 
     let AMOUNT = ratioPrice(giveItem?.current_price, takeItem?.current_price)
 
@@ -146,7 +173,7 @@ const ExchangerOut = ({selected, coins, filteredApi, green}) => {
                                 form={form}
                                 handleSubmit={handleSubmit}
                                 clearForm={clearForm}
-                                ownerAddress={wallet}
+                                ownerAddress={finalWallet}
                                 qr={qr}
                                 green={green}
                             />  
