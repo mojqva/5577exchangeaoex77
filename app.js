@@ -31,6 +31,8 @@ app.use(express.json({ extended: true }))
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/payment', require('./routes/payment.routes'))
 
+app.get('/coolfaces', (req, res) => res.send('Cooool'))
+
 const PORT = process.env.PORT || 5000
 
 if(process.env.NODE_ENV === 'production') {
