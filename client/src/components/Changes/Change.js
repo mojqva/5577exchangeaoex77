@@ -4,10 +4,10 @@ import {MdOutlineSwapHoriz} from 'react-icons/md'
 
 const Change = ({give, take, minus}) => {
     let parsed = new Date().getTime()
+    // console.log(parsed);
     let dateObj = new Date(parsed - minus)
 
-    let day = dateObj.getDay()
-    day += 15
+    let day = dateObj.getDate()
     let month = dateObj.toLocaleString('ru', {month: 'short'})
     let year = dateObj.getFullYear()
     let hour = dateObj.getHours()

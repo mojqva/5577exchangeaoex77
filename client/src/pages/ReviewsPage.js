@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import s from './reviews.module.css'
 import cn from 'classnames'
 import { Link } from 'react-router-dom';
@@ -7,11 +7,108 @@ import findImg from '../utils/img';
 import { useMessage } from '../hooks/message.hook';
 import { AiFillStar} from 'react-icons/ai'
 
-const axios = require('axios')
-
 const ReviewsPage = () => {
     const {Best, Summo, Kurs, Pro, Glazok, Top, Ex, Mmgp, Talk, Pilot, Wot} = findImg()
     const message = useMessage()
+
+    const names = [
+        'Юпитер-У', 
+        'Владлен', 
+        'Кулаков А', 
+        'Arina',
+        'Aleksandr',
+        'Дима',
+        'Стрелец',
+        'Виталий',
+        'Escobar',
+        'Андрей',
+        'Михаил',
+        'Ruslan',
+        'Павел',
+        'Леонид',
+        'Иван',
+        'More',
+        'Алихан',
+        'Алиса',
+        'Азалия',
+        'Valery',
+        'Александра',
+        'Svetlana',
+        'Good.boy.228.007',
+        'Alizade',
+        'Принглс',
+        'Алисия',
+        'Vagarsh',
+        'Аслан',
+        'Andro',
+        '6Ix9Ine',
+        'Adam',
+        'мастер',
+        'Smerch',
+        'Gorbi',
+        'Dmitri',
+        'Кирилл',
+        'Виктор',
+        'Лиза',
+        'Kirill',
+        'Mr',
+        'Nesquik',
+        'Любовь',
+        'Ништяк',
+        'Татарин',
+        'Максим',
+        'Эдвард',
+        'Илья',
+        'Eva',
+        'Alixan',
+        'Гранд',
+        'Viacheslav',
+        'Ayder',
+        'Evgeny',
+        'Белуга',
+        'Ярик',
+        'Данила',
+        'Пётр',
+    ]
+
+    const revs = [
+        'Превосходный обменник, всё сделали быстро и качественно!', 
+        'Лучший сервис. Спасибо за обмен', 
+        'Сегодня первый раз воспользовался этим сервисом\nПолёт нормальный, биток пришёл на бинанс в течение 10 минут ;-)', 
+        'Топовый обменник',
+        'На юмани за пару сек. Рекомендую однозначно',
+        'Хорошая консультация, удобный сайт, быстрый обмен !!!\nМне понравились ребята) Буду с вами',
+        'Спасибо большое за оперативность',
+        'Обмен без лишних движений, четко и быстро.',
+        'Курс зафиксировали на момент сделки, отправили деньги спустя 5 минут, после перевода',
+        'Меняю только тут',
+        'Классный обменник. Спасибо вам за вашу работу',
+        'Меняю только тут',
+        'Обменяли быстро. Без обмана',
+        'Eth -> btc\nЛегко и быстро. Рекомендую',
+        'Оперативненько, молодцы ребята',
+        'Всё очень быстро. без проблем. рекомендую.',
+        'Все прошло отлично!',
+        'Быстрый обмен, хороший курс, служба поддержки ответила на вопрос очень оперативно.',
+        'Avanchange это обменник с самым лучшим курсом на минимальную сумму и при этом не нужно заполнять кучу данных, только самое важное. Обмен происходит быстро, просто и информативно благодаря приятному, оригинальному дизайну. При всем при этом еще и регулярные розыгрыши призов проводят. Хочется пожелать создателям Avanchange огромного успеха и навсегда сохранить такой отличный сервис. Большое Вам спасибо!',
+        'Отличный стабильный обменник, всё быстро приходит не каких задержек интуитивно понятный',
+        'Хорошая консультация, удобный сайт, быстрый обмен !!!\nМне понравились ребята) Буду с вами)',
+        'Быстрый вывод. Без задержек. Без лишней комиссии. Постоянно пользуюсь данной платформой. Рекомендую',
+        'Cамый лучший сервис. Курс отличный',
+        'Отличный обменник. Хороший курс, быстрый обмен, отличная работа тех поддержки?',
+        'Как всегда быстро и качественно!',
+        'Очень быстро и без обмана. Ребята спасибо. Рекомендую',
+        'Отличный сайт, обменный был быстрым, рекомендую!',
+        'Молниеносный обмен. Спасибо за оперативность',
+        'Лучший топовый обменник, рекомендую',
+        'Обмен за 5 минут\nСпасибо большое',
+    ]
+
+    const shuffled = names.sort(() => 0.5 - Math.random())
+    const revShuffled = revs.sort(() => 0.5 - Math.random())
+
+    let selected = shuffled.slice(0, 20)
+    let revSelected = revShuffled.slice(0, 20)
 
     // const [error, setError] = useState('')
     // const [loading, setLoading] = useState(false)
@@ -73,13 +170,13 @@ const ReviewsPage = () => {
                         <li>
                             <a href="https://www.bestchange.ru/avanchange-exchanger.html" target="_blank" rel="noreferrer">
                                 <img src={Best} alt="AvanChange"/>
-                                <span className={s.count}>1752+</span>
+                                <span className={s.count}>2347+</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://exchangesumo.com/exchanger/955/Avanchange/" target="_blank" rel="noreferrer">
                                 <img src={Summo} alt="AvanChange"/>
-                                <span className={s.count}>1430+</span>
+                                <span className={s.count}>2497+</span>
                             </a>
                         </li>
                         <li>
@@ -166,164 +263,183 @@ const ReviewsPage = () => {
                     } */}
                     <Review
                         src={Best}
-                        name='Белуга'
+                        name={selected[0]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1405564'
                         date='16 Апр 2022, 08:16 '
                         ip='82.118.22.*'
-                        text='Классный и быстрый обменник. Рекомендую'
+                        text={revSelected[0]}
+                        minus={9000000}
                     />
-
                     <Review
                         src={Best}
-                        name='Дима'
+                        name={selected[1]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1405341'
                         date='15 Апр 2022, 22:17 '
                         ip='188.241.177.*'
-                        text='Спасибо за быструю сделку. Не смотря на то, что у меня 2 часа ночи, время обмена заняло 5 минут'
+                        text={revSelected[1]}
+                        minus={19999999}
                     />
                     <Review
                         src={Summo}
-                        name='Aygul'
+                        name={selected[2]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 19:23 '
                         ip='188.241.177.*'
-                        text='Обмен за 5 минут'
+                        text={revSelected[2]}
+                        minus={29999999}
                     />
                     <Review
                         src={Summo}
-                        name='Avaz'
+                        name={selected[3]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 19:22 '
                         ip='188.241.177.*'
-                        text='Топ из топов!'
+                        text={revSelected[3]}
+                        minus={49999999}
                     />
                     <Review
                         src={Summo}
-                        name='Kuriyama'
+                        name={selected[4]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 19:21 '
                         ip='188.241.177.*'
-                        text='Быстрый обменник'
+                        text={revSelected[4]}
+                        minus={69999999}
                     />
                     <Review
                         src={Summo}
-                        name='Азалия'
+                        name={selected[5]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 19:19  '
                         ip='188.241.177.*'
-                        text='Молниеносный обмен'
+                        text={revSelected[5]}
+                        minus={79999999}
                     />
                     <Review
                         src={Best}
-                        name='Genium'
+                        name={selected[6]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1405067'
                         date='15 Апр 2022, 18:09 '
                         ip='92.124.163.*'
-                        text='Всё прошло чётко и быстро!'
+                        text={revSelected[6]}
+                        minus={99999999}
                     />
                     <Review
                         src={Summo}
-                        name='Tron'
+                        name={selected[7]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 16:19 '
                         ip='31.40.25.*'
-                        text='Спасибо большое за обмен'
+                        text={revSelected[7]}
+                        minus={109999999}
                     />
                     <Review
                         src={Best}
-                        name='Белуга'
+                        name={selected[8]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1405564'
                         date='16 Апр 2022, 08:16 '
                         ip='188.241.177.*'
-                        text='Спасибо за быструю сделку. Не смотря на то, что у меня 2 часа ночи, время обмена заняло 5 минут'
+                        text={revSelected[8]}
+                        minus={116666666}
                     />
                     <Review
                         src={Summo}
-                        name='Катерина'
+                        name={selected[9]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 14:56 '
                         ip='31.40.25.*'
-                        text='Обменял очень быстро'
+                        text={revSelected[9]}
+                        minus={159999999}
                     />
                     <Review
                         src={Summo}
-                        name='Garry Mirosh'
+                        name={selected[10]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 12:32 '
                         ip='146.70.82.*'
-                        text='Быстро обменяли'
+                        text={revSelected[10]}
+                        minus={169999999}
                     />
                     <Review
                         src={Summo}
-                        name='ACP'
+                        name={selected[11]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 11:52 '
                         ip='31.40.25.*'
-                        text='Хороший обменник'
+                        text={revSelected[11]}
+                        minus={179999999}
                     />
                     <Review
                         src={Best}
-                        name='Ярик'
+                        name={selected[12]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1404544'
                         date='15 Апр 2022, 10:57 '
                         ip='185.245.85.*'
-                        text='Выводил деньги со счёта AdvCash на карту Тиньков. Лучший курс, который смог найти и моментальное зачисление на карту.'
+                        text={revSelected[12]}
+                        minus={199999999}
                     />
                     <Review
                         src={Best}
-                        name='Smash'
+                        name={selected[13]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1404541'
                         date='15 Апр 2022, 10:55 '
                         ip='88.208.221.*'
-                        text='Отличный курс, самый выгодный'
+                        text={revSelected[13]}
+                        minus={211111111}
                     />
                     <Review
                         src={Summo}
-                        name='Escobar'
+                        name={selected[14]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 10:43 '
                         ip='146.70.16.*'
-                        text='Очень быстрый обмен ETH-Сбер, рекомендую. Комиссия мизер. Обмен идёт 10 мин от перевода денег до поступления на кошелек. Спасибо'
+                        text={revSelected[14]}
+                        minus={233333333}
                     />
                     <Review
                         src={Summo}
-                        name='Максим'
+                        name={selected[15]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 08:38 '
                         ip='31.207.207.*'
-                        text='Обменялся всё хорошо! Рекомендую!'
+                        text={revSelected[15]}
+                        minus={255555555}
                     />
                     <Review
                         src={Summo}
-                        name='Шептун'
+                        name={selected[16]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 07:30 '
                         ip='31.40.25.*'
-                        text='Удобно и в конце ждёт котик)'
+                        text={revSelected[16]}
+                        minus={266666666}
                     />
                     <Review
                         src={Summo}
-                        name='Captown'
+                        name={selected[17]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='15 Апр 2022, 03:23 '
                         ip='31.40.25.*'
-                        text='Курс как всегда топовый Советую всем!'
+                        text={revSelected[17]}
+                        minus={277777777}
                     />
                     <Review
                         src={Best}
-                        name='Vagarsh'
+                        name={selected[18]}
                         link='https://www.bestchange.ru/avanchange-exchanger.html#review1404313'
                         date='15 Апр 2022, 02:15 '
                         ip='37.252.80.*'
-                        text='Как всегда круто и без проблем'
+                        text={revSelected[18]}
+                        minus={288888888}
                     />
                     <Review
                         src={Summo}
-                        name='Аваз'
+                        name={selected[19]}
                         link='https://exchangesumo.com/exchanger/955/Avanchange/'
                         date='14 Апр 2022, 19:08 '
                         ip='51.15.107.*'
-                        text='Лучший обменник'
+                        text={revSelected[19]}
+                        minus={299999999}
                     />
                 </div>
                 <div className={s.reviewsR}>

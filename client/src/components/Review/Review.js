@@ -39,7 +39,22 @@ import { AiFillStar} from 'react-icons/ai'
 //         </div>
 //     )
 // }
-const Review = ({src, name, date, ip, text, link}) => {
+const Review = ({src, name, date, ip, text, link, minus}) => {
+    let parsed = new Date().getTime()
+    let dateObj = new Date(parsed - minus)
+
+    let day = dateObj.getDate()
+    let month = dateObj.toLocaleString('ru', {month: 'short'})
+    let year = dateObj.getFullYear()
+    let hour = dateObj.getHours()
+    let minute = dateObj.getMinutes()
+
+    const fullDay = ('0' + day).slice(-2)
+    const fullHours = ('0' + hour).slice(-2)
+    const fullMinutes = ('0' + minute).slice(-2)
+
+    const bigMonth = month[0].toUpperCase() + month.slice(1, 3)
+
     return (
         <div className={s.item}>
             <div className={s.img}>
@@ -56,7 +71,7 @@ const Review = ({src, name, date, ip, text, link}) => {
                 <span className={s.flaticonStar1}><AiFillStar size={15}/></span>
             </div>
             <div className={s.date}>
-                <p>{date}</p>
+                <p>{`${fullDay} ${bigMonth} ${year}, ${fullHours} ${fullMinutes}`}</p>
                 <span>{ip}</span>
             </div>
             <div className={s.text}>
