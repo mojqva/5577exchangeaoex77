@@ -40,8 +40,11 @@ const walletsTemplate = [
 const HeaderMiddle = ({popularGive, popularTake}) => {
     const coins = walletsTemplate
     const [api, setApi] = useState([]) 
-    const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20']
+    const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash']
     const cryptoUsdt = ['usdt']
+    const cryptoNamesAdditional = ['xrp', 'usdp', 'ada', 'dot', 'bnb', 'link', 'bch', 'uni', 'atom', 'miota', 'etc', 'busd', 'zrx', 'waves', 'xvg', 'matic', 'gala', 'mana', 'sand', 'near', 'ton']
+
+    let filteredAdditional = api.length > 1 ? api.filter(item => cryptoNamesAdditional.includes(item.symbol)): []
 
     let filteredUsdt = api.length > 1 ? api.filter(item => cryptoUsdt.includes(item.symbol)): []
     let erc = !!filteredUsdt[0] ? JSON.parse(JSON.stringify(filteredUsdt[0])) : {}
@@ -54,7 +57,6 @@ const HeaderMiddle = ({popularGive, popularTake}) => {
     trc.key = 'trc20'
     trc.symbol = 'trc20'
     trc.id = 'trc20'
-    
 
     const [green, setGreen] = useState({
         fix: false,
@@ -101,6 +103,7 @@ const HeaderMiddle = ({popularGive, popularTake}) => {
     let filteredApi = api.length > 1  ? api.filter(item => cryptoNames.includes(item.symbol)): []
     !!(filteredApi.length > 1) && filteredApi.splice(2, 0, trc)
     !!(filteredApi.length > 1) && filteredApi.splice(3, 0, erc)
+    filteredApi = filteredApi.concat(filteredAdditional)
 
     {/*Up price to 2% */}
     filteredApi.forEach(el => el.current_price += el.current_price/100 * 1)

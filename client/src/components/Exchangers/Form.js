@@ -61,13 +61,6 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
         return null
     }
 
-    function ConfE() {
-        if(true) {
-            throw new Error('Confirm Error')
-        }
-        
-    }
-
     const toContin = e => {
         e.preventDefault()
         const handlerResult = errorsHandler()
@@ -79,12 +72,28 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
         }
     }
 
+    const invalidChars = [
+        '-',
+        '+',
+        'e'
+    ]
+
+    const handleSymb = (event) => {
+        if(invalidChars.includes(event.key)) {
+            event.preventDefault()
+        }
+    }
+
+    const handleSymbInput = (e) => {
+        e.target.value = e.target.value.replace(/[e\+\-]/gi, "")
+    }
+
     return (
         <form className={s.formExchange}>
             <div className={s.lines}>
                 <div className={s.line}>
                     <div className={s.lineInput}>
-                        <input type='number' id='giveCoins' name='give' onChange={handleInputChange}/>
+                        <input type='number' id='giveCoins' name='give' onChange={handleInputChange} onKeyDown={(e) => handleSymb(e)} onInput={(e) => handleSymbInput(e)}/>
                         <label htmlFor='giveCoins'>Отдаете <span>{giveItem?.symbol.toUpperCase()}</span></label>
                     </div>
                     <div className={s.i}>
@@ -96,7 +105,7 @@ const Form = ({giveItem, takeItem, form, messages, changeHandler, handleSubmit, 
                 </div>
                 <div className={s.line}>
                     <div className={s.lineInput}>
-                        <input type='number' id='takeCoins' name='take' onChange={handleOutputChange}/>
+                        <input type='number' id='takeCoins' name='take' onChange={handleOutputChange} onKeyDown={(e) => handleSymb(e)} onInput={(e) => handleSymbInput(e)}/>
                         <label htmlFor='takeCoins'>Получаете <span>{takeItem?.symbol.toUpperCase()}</span></label>
                     </div>
                     <div className={s.i}>

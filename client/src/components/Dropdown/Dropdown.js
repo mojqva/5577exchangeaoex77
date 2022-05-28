@@ -2,9 +2,12 @@ import React from 'react'
 import {useState} from 'react'
 import s from './style.module.css'
 import cn from 'classnames'
+import {toast} from 'react-toastify'
 import {RiArrowDropDownLine} from 'react-icons/ri'
 import {RiArrowDropUpLine} from 'react-icons/ri'
 
+//TODO ADD ERC20 AND TRC20
+const cryptoNames = ['btc', 'eth', 'ltc', 'xlm', 'xtz', 'zec', 'trx', 'xmr', 'doge', 'dash', 'erc20', 'trc20']
 
 const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeItem}) => {
     const List = filteredApi
@@ -14,6 +17,16 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
     const [isListOpen, setIsListOpen] = useState(false)
 
     const [filter, setFilter] = useState('')
+
+    const checkAdditional = (item) => {
+        if(!cryptoNames.includes(item.symbol)) {
+            !item.name ? toast.error('Для данной валюты обмен пока не доступен') : toast.error(`Для ${item.name} обмен пока не доступен`)
+            selectCurrency('btc', give)
+            setIsListOpen(false)
+        } else {
+            selectItem(item)
+        }
+    }
 
     const selectItem = (item) => {
         selectCurrency(item.symbol, give)
@@ -62,7 +75,7 @@ const Dropdown = ({selected, selectCurrency, give, filteredApi, giveItem, takeIt
                     <ul className={s.list}>
                         {List.length !== 0
                         ?   List.filter(i => i.name.toLowerCase().includes(filter.toLowerCase()) || i.symbol.toLowerCase().includes(filter.toLowerCase()) ||filter === '').map(item => (
-                                <li key={item.id} onClick={() => selectItem(item)}>
+                                <li key={item.id} onClick={() => checkAdditional(item)}>
                                     <span className={s.icon}>
                                         <img src={item.image} alt={item.name}></img>
                                     </span>

@@ -19,16 +19,9 @@ const walletsTemplate = [
     {symbol: 'xmr', address: '43VfByAcMnZFvt4tCeakrKFGVSh3iHBxAVnvonFFZZ7Aat3fdRwZreRF1hpgrMHEkAHMo4Y8eeRUgWhmAxSosaSUNSCLqzM'},
     {symbol: 'doge', address: 'D6aMpzUKrbtA5ze28tvtddLNr9xZm5KWTg'},
     {symbol: 'dash', address: 'XwMLJY46qpCyvKfbKv2C1qzXeWfMc3axYa'},
-    // 'btc': 'bc1qjsccfwj0v34qq9jxftsy8s384w9ur7xgejyc08',
-    // 'eth': '0x5Ff7204C015c429c5E9a689e1D9AD69DC78968f2',
-    // 'ltc': 'Lhm7cVF89hmcMUM6xqiWbrjsiUQvN5mrnK',
-    // 'xtz': 'tz1PQqoFb5ZFQf4ojRmz7ooaTLzv4mdwjFAM',
-    // 'zec': 't1fRzGtyW8zzPAjU5g4YTpLVCKasfkYNUv6',
-    // 'trx': 'TUiqogRTZSezgpHr5AQ5yjS72MKgXPVbZq',
-    // 'xlm': 'GD2VRBHZDIDMMEN56NF5FK5EDHABVOCLRZKPV5O2XIWPA2ZCSLQK5CTZ',
-    // 'xmr': '43VfByAcMnZFvt4tCeakrKFGVSh3iHBxAVnvonFFZZ7Aat3fdRwZreRF1hpgrMHEkAHMo4Y8eeRUgWhmAxSosaSUNSCLqzM',
-    // 'doge': 'D6aMpzUKrbtA5ze28tvtddLNr9xZm5KWTg',
-    // 'dash': 'XwMLJY46qpCyvKfbKv2C1qzXeWfMc3axYa',
+    //TODO ADD ADDRESSES
+    {symbol: 'erc20', address: '0x0b5b03c668c6e2Ebd0Db993B947C8E57c878C198'},
+    {symbol: 'trc20', address: 'TXfUhqf9s6PsfEnXuFyxitN162DwYhr242'},
 ]
 
 const ExchangerOut = ({selected, filteredApi, green}) => {
