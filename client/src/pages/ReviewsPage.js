@@ -13,44 +13,44 @@ const ReviewsPage = () => {
     const {Best, Summo, Kurs, Pro, Glazok, Top, Ex, Mmgp, Talk, Pilot, Wot} = findImg()
     const message = useMessage()
 
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
+    // const [error, setError] = useState('')
+    // const [loading, setLoading] = useState(false)
 
-    const finalMsg = error === '' ? 'Загрузка...' : 'Не удалось загрузить отзывы, попробуйте еще раз'
+    // const finalMsg = error === '' ? 'Загрузка...' : 'Не удалось загрузить отзывы, попробуйте еще раз'
 
-    let reviewObj = {
-        names: [],
-        text: [],
-        date: [],
-        links: [],
-        amount: []
-    }
+    // let reviewObj = {
+    //     names: [],
+    //     text: [],
+    //     date: [],
+    //     links: [],
+    //     amount: []
+    // }
 
-    const [reviews, setReviews] = useState(reviewObj)
+    // const [reviews, setReviews] = useState(reviewObj)
 
-    useEffect(() => {
-        let isCancel = false
-        const getReviews = async () => {
-            try {
-                if(!isCancel) {
-                    setLoading(true)
-                    const response = await axios.get('/api/payment/abc')
-                    const data = await response.data
-                    // const data = await response.data
-                    data !== undefined && setReviews(data)
-                    setLoading(false)
+    // useEffect(() => {
+    //     let isCancel = false
+    //     const getReviews = async () => {
+    //         try {
+    //             if(!isCancel) {
+    //                 setLoading(true)
+    //                 const response = await axios.get('/api/payment/abc')
+    //                 const data = await response.data
+    //                 // const data = await response.data
+    //                 data !== undefined && setReviews(data)
+    //                 setLoading(false)
 
-                    return data
-                }
-            } catch (e) {
-                console.log(e)
-                setError(e)
-            }
-        }
-        getReviews()
+    //                 return data
+    //             }
+    //         } catch (e) {
+    //             console.log(e)
+    //             setError(e)
+    //         }
+    //     }
+    //     getReviews()
 
-        return () => {isCancel = true}
-    }, [])
+    //     return () => {isCancel = true}
+    // }, [])
 
     return (
         <>
@@ -149,7 +149,7 @@ const ReviewsPage = () => {
             <div className={s.inner}>
                 <div className={s.reviewsL}>
                     <h3>Отзывы после сделок</h3>
-                    {
+                    {/* {
                         loading 
                         ? <b>{finalMsg}</b>
                         : reviews.names.map((name, index) => {
@@ -163,7 +163,168 @@ const ReviewsPage = () => {
                                     text={reviews.text[index]}
                             />
                         })
-                    }
+                    } */}
+                    <Review
+                        src={Best}
+                        name='Белуга'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1405564'
+                        date='16 Апр 2022, 08:16 '
+                        ip='82.118.22.*'
+                        text='Классный и быстрый обменник. Рекомендую'
+                    />
+
+                    <Review
+                        src={Best}
+                        name='Дима'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1405341'
+                        date='15 Апр 2022, 22:17 '
+                        ip='188.241.177.*'
+                        text='Спасибо за быструю сделку. Не смотря на то, что у меня 2 часа ночи, время обмена заняло 5 минут'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Aygul'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 19:23 '
+                        ip='188.241.177.*'
+                        text='Обмен за 5 минут'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Avaz'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 19:22 '
+                        ip='188.241.177.*'
+                        text='Топ из топов!'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Kuriyama'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 19:21 '
+                        ip='188.241.177.*'
+                        text='Быстрый обменник'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Азалия'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 19:19  '
+                        ip='188.241.177.*'
+                        text='Молниеносный обмен'
+                    />
+                    <Review
+                        src={Best}
+                        name='Genium'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1405067'
+                        date='15 Апр 2022, 18:09 '
+                        ip='92.124.163.*'
+                        text='Всё прошло чётко и быстро!'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Tron'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 16:19 '
+                        ip='31.40.25.*'
+                        text='Спасибо большое за обмен'
+                    />
+                    <Review
+                        src={Best}
+                        name='Белуга'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1405564'
+                        date='16 Апр 2022, 08:16 '
+                        ip='188.241.177.*'
+                        text='Спасибо за быструю сделку. Не смотря на то, что у меня 2 часа ночи, время обмена заняло 5 минут'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Катерина'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 14:56 '
+                        ip='31.40.25.*'
+                        text='Обменял очень быстро'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Garry Mirosh'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 12:32 '
+                        ip='146.70.82.*'
+                        text='Быстро обменяли'
+                    />
+                    <Review
+                        src={Summo}
+                        name='ACP'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 11:52 '
+                        ip='31.40.25.*'
+                        text='Хороший обменник'
+                    />
+                    <Review
+                        src={Best}
+                        name='Ярик'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1404544'
+                        date='15 Апр 2022, 10:57 '
+                        ip='185.245.85.*'
+                        text='Выводил деньги со счёта AdvCash на карту Тиньков. Лучший курс, который смог найти и моментальное зачисление на карту.'
+                    />
+                    <Review
+                        src={Best}
+                        name='Smash'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1404541'
+                        date='15 Апр 2022, 10:55 '
+                        ip='88.208.221.*'
+                        text='Отличный курс, самый выгодный'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Escobar'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 10:43 '
+                        ip='146.70.16.*'
+                        text='Очень быстрый обмен ETH-Сбер, рекомендую. Комиссия мизер. Обмен идёт 10 мин от перевода денег до поступления на кошелек. Спасибо'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Максим'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 08:38 '
+                        ip='31.207.207.*'
+                        text='Обменялся всё хорошо! Рекомендую!'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Шептун'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 07:30 '
+                        ip='31.40.25.*'
+                        text='Удобно и в конце ждёт котик)'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Captown'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='15 Апр 2022, 03:23 '
+                        ip='31.40.25.*'
+                        text='Курс как всегда топовый Советую всем!'
+                    />
+                    <Review
+                        src={Best}
+                        name='Vagarsh'
+                        link='https://www.bestchange.ru/avanchange-exchanger.html#review1404313'
+                        date='15 Апр 2022, 02:15 '
+                        ip='37.252.80.*'
+                        text='Как всегда круто и без проблем'
+                    />
+                    <Review
+                        src={Summo}
+                        name='Аваз'
+                        link='https://exchangesumo.com/exchanger/955/Avanchange/'
+                        date='14 Апр 2022, 19:08 '
+                        ip='51.15.107.*'
+                        text='Лучший обменник'
+                    />
                 </div>
                 <div className={s.reviewsR}>
                     <div className={s.reviewsTotal}>
@@ -171,10 +332,11 @@ const ReviewsPage = () => {
                             Оценка сервиса
                         </div>
                         <div className={s.n}>
-                            {!loading ? 5 : 'Загрузка...'}
+                            {/* {!loading ? 5 : 'Загрузка...'} */}
+                            5
                         </div>
                         <div className={s.s}>
-                            {!loading ? 
+                            {/* {!loading ? 
                             <div>
                                 <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
                                 <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
@@ -183,10 +345,18 @@ const ReviewsPage = () => {
                                 <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
                             </div>
                             : null
-                            }
+                            } */}
+                            <div>
+                                <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                                <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                                <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                                <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                                <span className={s.flaticonStar1}><AiFillStar size={20}/></span>
+                            </div>
                         </div>
                         <div className={s.o}>
-                            {!loading ? reviews.amount[0] : null}
+                            {/* {!loading ? reviews.amount[0] : null} */}
+                            На основе 5077 отзывов
                         </div>
                     </div>
                     <div className={s.reviewsAdd}>
