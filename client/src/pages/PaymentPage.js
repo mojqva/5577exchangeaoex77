@@ -10,7 +10,7 @@ import s from './payment.module.css'
 
 const PaymentPage = () => {
     const location = useLocation()
-    const {giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, currDate, green, qr, day, month, year, hour, minutes} = location.state || {}
+    const {giveName, giveSymbol, email, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, currDate, green, qr, day, month, year, hour, minutes} = location.state || {}
 
     const auth = useContext(AuthContext)
 
@@ -52,6 +52,7 @@ const PaymentPage = () => {
                 timeS={timeS}
                 green={green}
                 qr={qr}
+                email={email}
                     />
                 : <CancelPage/>
             } 

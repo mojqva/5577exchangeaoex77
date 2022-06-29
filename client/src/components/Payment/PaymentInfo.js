@@ -1,12 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './style.module.css'
+import cn from 'classnames'
+import emailjs from 'emailjs-com'
 const axios = require('axios')
 
-const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, timeH, timeM, timeS, green, qr,  day, month, year, hour, minutes}) => {
+const PaymentInfo = ({ giveName, email, giveSymbol, giveImg, takeName, takeSymbol, takeImg, userAddress, giveAmount, takeAmount, number, ownerAddress, timeH, timeM, timeS, green, qr,  day, month, year, hour, minutes}) => {
 
+    let templateParams = {
+        number: `${number}`,
+        amountGive: `${giveAmount} ${giveSymbol}`,
+        amountTake: `${takeAmount} ${takeSymbol}`,
+        wallet: `${userAddress}`,
+        date: `${day} ${month} ${year}, ${hour}:${minutes}`,
+        email_to: `${email}`,
+    }
+
+    const [paymentStatus, setPaymentStatus] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+
+    const Status = !paymentStatus ? false : true
+
+    const sendEmail = () => {
+        setPaymentStatus(true)
+        setDisabled(true)
+        console.log('CLICK');
+        emailjs.send("service_fo7i8yb","template_aoqa05o", templateParams, "T6dl6-4HD1RHqpWsi")
+            .then((result) => {
+                window.location.reload()
+            }, (error) => {
+                console.log(error.text);
+            })
+    }
 
     const sendInfo = async () => {
         await axios.post('/api/payment/sendInfo', {
+            nomerZayavki: `${number}`,
             zayavkaNa: `${takeSymbol}`,
             otdaet: `${giveAmount}${giveSymbol}`,
             naKoschelek: `${ownerAddress}`,
@@ -17,6 +45,8 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
 
     useEffect(() => {
         let isSend = false
+        setDisabled(JSON.parse(window.sessionStorage.getItem(`disabled${number}${hour}${minutes}${day}`)))
+        setPaymentStatus(JSON.parse(window.sessionStorage.getItem(`status${number}${hour}${minutes}${day}`)))
         
         if(!isSend) {
             sendInfo()
@@ -27,6 +57,11 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
         }
         
     }, [])
+
+    useEffect(() => {
+        window.sessionStorage.setItem(`disabled${number}${hour}${minutes}${day}`, disabled);
+        window.sessionStorage.setItem(`status${number}${hour}${minutes}${day}`, paymentStatus);
+    }, [disabled, paymentStatus])
 
     const time = [timeH, timeM, timeS]
     let newTime = time.map(item => item = Math.abs(item))
@@ -69,7 +104,7 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
             <div className={s.paymentTimer}>
                 <div className={s.status}>
                     Статус оплаты: 
-                    <b className={s.textBlue}>ожидает оплаты</b>
+                    {!Status ? <b className={s.textBlue}>ожидает оплаты</b> : <b className={s.textGreen}>оплачено</b>}   
                 </div>
                 <div className={s.desc}>
                     Отправьте ровно <b>{giveAmount} {giveSymbol.toUpperCase()} </b>
@@ -86,6 +121,11 @@ const PaymentInfo = ({giveName, giveSymbol, giveImg, takeName, takeSymbol, takeI
                 }           
                 <div className={s.timer}>{H}:{M}:{S}</div>
                 <div className={s.timerInfo}>Осталось времени</div>
+
+                <div className={s.button}>
+                    <button className={cn(s.btn, s.green)} onClick={sendEmail} disabled={disabled ? disabled : false}>Я оплатил</button>
+                </div>
+
                 <div className={s.paymentType}>
                     <h5>Тип обмена: {green.best ? <b>Лучший курс</b> : <b>Фиксированный курс</b>}</h5>
                     <div className={s.desc}>

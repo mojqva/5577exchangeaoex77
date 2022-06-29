@@ -1,5 +1,5 @@
 import React from 'react'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import s from './style.module.css'
 import cn from 'classnames'
@@ -23,6 +23,16 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const auth = useContext(AuthContext)
     const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
 
+    const [paymentStatus, setPaymentStatus] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+
+    const handleStatus = () => {
+        setPaymentStatus(true)
+    }
+
+    const handleDisabled = () => {
+        setDisabled(true)
+    }
 
     // const date = new Date(Date.now()).toLocaleString('ru', {
     //     year: 'numeric',
@@ -114,6 +124,7 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
             state={{
                 number: number,
                 ownerAddress: owner,
+                email: form.email,
                 giveAmount: form.give,
                 takeAmount: form.take,
                 giveName: giveName,
@@ -130,7 +141,11 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
                 userAddress: form.address,
                 currDate: currDate,
                 green: green,
-                qr: qr
+                qr: qr,
+                // paymentStatus: paymentStatus,
+                // setPaymentStatus: handleStatus,
+                // disabled: disabled,
+                // setDisabled: handleDisabled
             }}
             className={cn(s.btn, s.green)} 
             onClick={() => auth.isPayment = true}
