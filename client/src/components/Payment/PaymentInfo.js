@@ -70,9 +70,14 @@ const PaymentInfo = ({ giveName, email, giveSymbol, giveImg, takeName, takeSymbo
     const M = newTime[1] < 10 ? `0${newTime[1]}` : newTime[1]
     const S = newTime[2] < 10 ? `0${newTime[2]}` : newTime[2]
 
+    const fullDay = day < 10 ? `0${day}` : day
+
+    const fullHours = hour < 10 ? `0${hour}` : hour
+    const fullMinutes = minutes < 10 ? `0${minutes}` : minutes
+
     return (
         <div className={s.inner}>
-            <h1 className={s.h1}>Обмен №{number} от {day} {month} {year}, {hour}:{minutes}</h1>
+            <h1 className={s.h1}>Обмен №{number} от {fullDay} {month} {year}, {fullHours}:{fullMinutes}</h1>
             <div className={s.paymentGive}>
                 <h3>
                     <img src={giveImg} alt='giveImg'/>

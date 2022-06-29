@@ -1,5 +1,5 @@
 import React from 'react'
-import {useContext, useState} from 'react'
+import {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import s from './style.module.css'
 import cn from 'classnames'
@@ -14,25 +14,8 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     // console.log('ownerAddress', ownerAddress);
     // console.log('green', green);
     // console.log('qr', qr === null);
-    const hashes = [
-        '6234518dfc5c9374d6ec5e3b', 
-        '623464181c1740bba9ca83fa',
-        '62346ac0c36e14e20063070f'
-    ]
 
     const auth = useContext(AuthContext)
-    const hash = auth.userId ? auth.userId : hashes[getRandom(3)]
-
-    const [paymentStatus, setPaymentStatus] = useState(false)
-    const [disabled, setDisabled] = useState(false)
-
-    const handleStatus = () => {
-        setPaymentStatus(true)
-    }
-
-    const handleDisabled = () => {
-        setDisabled(true)
-    }
 
     // const date = new Date(Date.now()).toLocaleString('ru', {
     //     year: 'numeric',
@@ -84,6 +67,8 @@ const Confirmation = ({form, giveItem, takeItem, handleSubmit, clearForm, ownerA
     const takeSymbol = takeItem.symbol
     
     const currDate = Date.parse(new Date()) + 1200000
+
+    const hash = `${currDate}${number}${giveSymbol}${fullHours}${takeSymbol}${fullMinutes}`
 
   return (
     <div className={s.exchangeConfirmation}>
